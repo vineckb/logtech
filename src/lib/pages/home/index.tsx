@@ -7,6 +7,7 @@ import {
   Input,
   Text,
   Link,
+  Image,
 } from "@chakra-ui/react";
 
 function Index() {
@@ -126,10 +127,13 @@ function Index() {
             h="92%"
             bgColor="#136a93"
             position="absolute"
-            borderRadius="15px"
+            borderRadius="40px"
             left="48%"
             top="4%"
           />
+          <Flex position="absolute" zIndex="1" right="16%" top="37%">
+            <Image src="images/logoWMS.png" w="200px" alt="Logo" />
+          </Flex>
         </Flex>
       </Flex>
     </Flex>
