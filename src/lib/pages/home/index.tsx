@@ -29,12 +29,13 @@ function Index() {
           <Flex
             direction="column"
             flexDirection="column"
-            justifyContent="center"
+            justifyContent="start"
             alignItems="start"
             w="86%"
             background="transparent"
             p="48px"
-            mt={{ md: "150px", lg: "40px" }}
+            // mt={{ md: "150px", lg: "5px" }}
+            pb="300px"
           >
             <Heading color="#004E6C" fontSize="32px" mb="10px">
               Login
@@ -122,12 +123,12 @@ function Index() {
         >
           <Flex
             w="50%"
-            h="90%"
+            h="92%"
             bgColor="#136a93"
             position="absolute"
             borderRadius="15px"
-            left="51%"
-            top="5%"
+            left="48%"
+            top="4%"
           />
         </Flex>
       </Flex>
