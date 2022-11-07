@@ -3,13 +3,6 @@
 This is a project bootstrapped with [`@vitejs/app`](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) (`react-ts`), added with [Chakra UI](https://chakra-ui.com) and [TypeScript](https://www.typescriptlang.org) setup.
 
 - ⚡ blazing fast dev server and build
-- 🔗 route management added (`react-router-dom` configured)
-
-[**Live Demo**](https://vite-react-chakra-starter.sznm.dev/)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/sozonome/vite-react-chakra-starter) [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sozonome/vite-react-chakra-starter)
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/sozonome/vite-react-chakra-starter)
 
 ## Getting Started
 
