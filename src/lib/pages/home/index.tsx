@@ -10,8 +10,13 @@ import {
   Image,
   StackDivider,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function Index() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => navigate("/dashboard");
+
   return (
     <Flex position="relative" bgColor="#e4ebf6" borderRadius="40" w="60vw">
       <Flex
@@ -82,6 +87,7 @@ function Index() {
                 </FormLabel>
               </FormControl> */}
               <Button
+                onClick={handleLogin}
                 fontSize="14px"
                 type="submit"
                 bg="#445379"

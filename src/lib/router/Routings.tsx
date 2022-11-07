@@ -12,6 +12,7 @@ import { Routes, Route } from "react-router-dom";
 
 import RequireAuth from "lib/components/auth/RequireAuth";
 import Page404 from "lib/pages/404";
+import Dashboard from "lib/pages/dashboard";
 
 import { routes, privateRoutes } from "./routes";
 
@@ -35,6 +36,7 @@ const Routings = () => {
         />
       ))}
       <Route path="*" element={<Page404 />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 };
