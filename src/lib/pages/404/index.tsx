@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Heading,
-  Image,
-  Link,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Grid, Heading, Image, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const Page404 = () => {
