@@ -8,6 +8,7 @@ import {
   Text,
   Link,
   Image,
+  StackDivider,
 } from "@chakra-ui/react";
 
 function Index() {
@@ -18,7 +19,7 @@ function Index() {
         w="60vw"
         // justifyContent="space-between"
         // mb="30px"
-        p="20"
+        p="10"
         // pt={{ sm: "100px", md: "0px" }}
       >
         <Flex
@@ -36,7 +37,7 @@ function Index() {
             background="transparent"
             p="48px"
             // mt={{ md: "150px", lg: "5px" }}
-            pb="300px"
+            pb="200px"
           >
             <Heading color="#004E6C" fontSize="32px" mb="10px">
               Login
@@ -99,6 +100,8 @@ function Index() {
                 Entrar
               </Button>
             </FormControl>
+            <StackDivider bgColor="#c2cadc" h="2px" mb="20px" mt="20px" />
+
             <Flex
               flexDirection="column"
               justifyContent="center"
@@ -107,10 +110,29 @@ function Index() {
               mt="0px"
             >
               <Link color="#556EE6" href="#">
-                <Text color="#556EE6" fontWeight="medium" fontSize="sm">
+                <Text
+                  color="#556EE6"
+                  fontWeight="medium"
+                  fontSize="sm"
+                  ml="15px"
+                >
                   Esqueci minha Senha
                 </Text>
               </Link>
+            </Flex>
+            <Flex position="absolute" top="87%" left="13%">
+              <Image src="images/logo.png" w="230px" alt="Logo" />
+            </Flex>
+            <Flex position="absolute" top="94%" left="17%">
+              <Text
+                mb="36px"
+                ms="4px"
+                fontWeight="bold"
+                fontSize="14px"
+                color="#555B6D"
+              >
+                Versão 1.0.2
+              </Text>
             </Flex>
           </Flex>
         </Flex>
