@@ -16,18 +16,17 @@ const Page404 = () => {
 
   return (
     <Grid gap={4} textAlign="center">
-      <Heading>Page not Found</Heading>
+      <Heading>Ops!!!</Heading>
+      <Text>Não conseguimos encontrar a página que você está procurando.</Text>
 
       <Box maxWidth={[280, 400]} marginX="auto">
         <Image width={400} src="/assets/404 Error-rafiki.svg" />
-        <Link fontSize="xs" href="https://stories.freepik.com/web" isExternal>
-          Illustration by Freepik Stories
-        </Link>
       </Box>
 
       <Box>
-        <Text>It&apos;s Okay!</Text>
-        <Button onClick={handleBackToHome}>Let&apos;s Head Back</Button>
+        <Button onClick={handleBackToHome}>
+          Voltar para a página principal
+        </Button>
       </Box>
     </Grid>
   );
