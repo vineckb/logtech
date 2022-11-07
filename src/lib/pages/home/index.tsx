@@ -58,6 +58,7 @@ function Index() {
             </Text>
             <FormControl>
               <Input
+                autoFocus
                 borderRadius="15px"
                 mb="24px"
                 fontSize="sm"
