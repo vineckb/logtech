@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import type { BoxProps, FlexProps } from "@chakra-ui/react";
 import {
+  Image,
   IconButton,
   Box,
   CloseButton,
@@ -19,12 +20,15 @@ import type { ReactNode, ReactText } from "react";
 import type { IconType } from "react-icons";
 import {
   FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
   FiSettings,
   FiMenu,
-  FiBell,
+  FiTruck,
+  FiClipboard,
+  FiArchive,
+  FiCornerUpRight,
+  FiBook,
+  FiUsers,
+  FiAperture,
 } from "react-icons/fi";
 
 interface LinkItemProps {
@@ -33,10 +37,13 @@ interface LinkItemProps {
 }
 const LinkItems: Array<LinkItemProps> = [
   { name: "Dashboard", icon: FiHome },
-  { name: "Integração", icon: FiTrendingUp },
-  { name: "Cadastro", icon: FiCompass },
-  { name: "Entradas", icon: FiStar },
-  { name: "Movimentação", icon: FiSettings },
+  { name: "Integração", icon: FiAperture },
+  { name: "Cadastro", icon: FiBook },
+  { name: "Entradas", icon: FiCornerUpRight },
+  { name: "Movimentação", icon: FiTruck },
+  { name: "Expedição", icon: FiClipboard },
+  { name: "Inventário", icon: FiArchive },
+  { name: "Gestão", icon: FiUsers },
 ];
 
 export default function SidebarWithHeader({
@@ -46,7 +53,7 @@ export default function SidebarWithHeader({
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box minH="100vh" w="100vw" bg={useColorModeValue("gray.100", "gray.100")}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -81,22 +88,23 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("#004f6c", "#004f6c")}
       borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      borderRightColor={useColorModeValue("white", "gray.700")}
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          WMSEXPERT
-        </Text>
+        <Image src="images/logo-negative.png" w="230px" alt="Logo" />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
+      <Text color="#82a7b6" ml="20px" mt="10px" mb="10px">
+        Menu
+      </Text>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem color="#98b6c3" key={link.name} icon={link.icon}>
           {link.name}
         </NavItem>
       ))}
@@ -122,9 +130,10 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         borderRadius="lg"
         role="group"
         cursor="pointer"
+        opacity="0.5"
         _hover={{
-          bg: "cyan.400",
-          color: "white",
+          bg: "#004f6c",
+          color: "#ffffff",
         }}
         {...rest}
       >
@@ -168,21 +177,14 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu />}
       />
 
-      <Text
-        display={{ base: "flex", md: "none" }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
-      >
-        Logo
-      </Text>
+      <Image src="images/logo-negative.png" w="230px" alt="Logo" />
 
       <HStack spacing={{ base: "0", md: "6" }}>
         <IconButton
           size="lg"
           variant="ghost"
           aria-label="open menu"
-          icon={<FiBell />}
+          icon={<FiSettings />}
         />
       </HStack>
     </Flex>

@@ -18,7 +18,15 @@ function Index() {
   const handleLogin = () => navigate("/dashboard");
 
   return (
-    <Flex position="relative" bgColor="#e4ebf6" borderRadius="40" w="60vw">
+    <Flex
+      position="relative"
+      bgColor="#e4ebf6"
+      borderRadius="40"
+      w="60vw"
+      flexDirection="row"
+      // h="100vh"
+      top="45px"
+    >
       <Flex
         h={{ sm: "initial", md: "75vh", lg: "90vh" }}
         w="60vw"
@@ -26,6 +34,9 @@ function Index() {
         // mb="30px"
         p="10"
         // pt={{ sm: "100px", md: "0px" }}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
       >
         <Flex
           alignItems="center"

@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
     >
       <Meta />
       <Flex>
-        <Box width="full" as="main" p="140">
+        <Box width="full" as="main">
           {children}
         </Box>
       </Flex>
