@@ -1,18 +1,21 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from './contexts/auth';
+import RoutesApp from './routes';
 
-import Layout from "lib/layout";
-import Routings from "lib/router/Routings";
-import { theme } from "lib/styles/customTheme";
-
-const App = () => (
-  <ChakraProvider theme={theme}>
-    <Router>
-      <Layout>
-        <Routings />
-      </Layout>
-    </Router>
-  </ChakraProvider>
-);
+function App() {
+  return (
+    <>
+      <AuthProvider>
+            <BrowserRouter>
+              <ToastContainer autoClose={2000} />
+              <RoutesApp />
+            </BrowserRouter>
+        </AuthProvider>
+    </>
+  
+  )
+}
 
 export default App;

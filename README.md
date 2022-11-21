@@ -1,31 +1,24 @@
-# vite-react-chakra-starter
+### Pré-requisitos
 
-This is a project bootstrapped with [`@vitejs/app`](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) (`react-ts`), added with [Chakra UI](https://chakra-ui.com) and [TypeScript](https://www.typescriptlang.org) setup.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-- ⚡ blazing fast dev server and build
-
-## Getting Started
-
-You can either click [`Use this template`](https://github.com/sozonome/vite-react-chakra-starter/generate) button on this repository and clone the repo or use npx degit like so:
+### 🎲 Rodando o Projeto (frontend)
 
 ```bash
-npx degit sozonome/vite-react-chakra-starter <app_name>
+# Clone este repositório
+$ git clone https://github.com/WKTechnologyBR/Fabrica-Logtech-WMS-Frontend/logtech
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd logtech
+
+# Instale as dependências
+$ yarn 
+
+# Execute a aplicação em modo de desenvolvimento
+$ yarn start
+
+# O serviço inciará na porta:3000 - acesse <http://localhost:3000>
+
 ```
-
-Then, run the development server:
-
-```bash
-yarn dev
-```
-
-## Deployment
-
-- build command: `yarn build`
-- output directory: `dist`
-
-## References
-
-- [vite](https://vitejs.dev)
-  - [avoid manual import](https://vitejs.dev/guide/features.html#jsx)
-- [Chakra UI](https://chakra-ui.com/)
-- [TypeScript](https://www.typescriptlang.org)
