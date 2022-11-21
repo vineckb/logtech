@@ -11,7 +11,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 $ git clone https://github.com/WKTechnologyBR/Fabrica-Logtech-WMS-Frontend
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd logtech
+$ cd Fabrica-Logtech-WMS-Frontend
 
 # Instale as dependências
 $ yarn 
