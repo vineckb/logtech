@@ -1,3 +1,11 @@
+
+## O projeto tem como proposito criar uma aplicação de WMS.
+
+<h1 align="center">
+  <img alt="Area Logada" title="Area Logada" src="./assets/screen_1.png" />
+</h1>
+
+
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
