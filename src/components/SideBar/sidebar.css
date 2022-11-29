@@ -1,0 +1,168 @@
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #004E6C !important;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 0px;
+}
+
+
+.menu, .submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu a  {
+    padding: 10px 0 1.25rem 1.875rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+  }
+  
+
+ 
+  
+  .menu a:hover {
+    color: #f1f1f1;
+}
+
+.menu li:hover .submenu {
+    display: block;
+    max-height: 25rem;
+  }
+
+  .menu .active{
+    color: #ffffff;
+    font-weight: 800;
+  }
+
+  .submenu a {
+    padding-top: 16px;
+    padding-left: 50px;
+    align-items: center;
+
+  }
+  
+
+  .submenu a:hover {
+    opacity: 0.7;
+    background-color: #556EE6;
+  }
+  
+
+  .submenu {
+    overflow: hidden;
+    max-height: 0;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.5s ease-out;
+  }
+
+  .sidebar .logo-container-header {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+     flex-direction: column;
+  }
+
+  .sidebar .logo{
+    min-width:50px;
+    width: 80%;
+  }
+
+ .logo-container-header span.sidebar-menu-label{
+    margin-top: 40px;
+    opacity: 0.5;
+    color: #ffffff;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .sidebar .sidebar-footer-label {
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    font-size: 0.75rem;
+    color: #556EE6;
+    opacity: 1;
+    font-weight: 500;
+    margin-bottom: 10px;
+    justify-content: center;
+    margin-left: 5rem;
+  }
+
+
+
+  .menu svg {
+    margin-right: 10px;
+  }
+
+  .menu .mobile {
+    display: none;
+  }
+
+  .btnClose {
+    display: none;
+  }
+
+  
+  @media screen and (max-width: 700px){
+      .sidebar {
+         display: block;
+         width: 100% !important;
+      }
+      .content {
+        height: 50px;
+        margin-left: 0 !important;
+        width: 100%;
+      }
+
+      .sidebar .menu {
+        display: block;
+      }
+      .sidebar .menu .mobile {
+        width: 100% !important;
+        display: block !important;
+      }
+
+      .sidebar .btnClose {
+        display: block !important;
+      }
+
+      .sidebar .menu .mobile{
+        display: block;
+      }
+
+      button.btnClose {
+        float: right;
+        padding: 10px;
+        background: transparent;
+        outline: none;
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    
+    .sidebar .sidebar-footer-label-min{
+      max-width: 700px;
+       font-size: 10px;
+      color: #556EE6;
+      opacity: 1;
+       font-weight: 500;
+      margin-bottom: 10px;
+      margin: 0 !important;
+   
+    }
+  }

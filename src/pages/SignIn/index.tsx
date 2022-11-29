@@ -52,7 +52,6 @@ export function SignIn(){
         }).catch((error) => {
             setLoading(false)
             toast.error(error.response.data.mensagem)
-            console.log('deu ruim ')
         })
 
     }
@@ -63,8 +62,7 @@ export function SignIn(){
 
     return(
         <div className='container-signin'>
-            <div className='login-container'>
-                
+            <div className='login-container'> 
                 <div className='logo-header'>
                     <img  className='logo' src={logo}  alt='Logo Logtech'/>
                     <span className='login-footer-version'>Versão 1.0.2</span>

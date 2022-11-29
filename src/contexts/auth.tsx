@@ -40,7 +40,6 @@ export function AuthProvider( {children}: AuthProps){
         let userInfo = localStorage.getItem('@userInfo')
 
         if(userInfo){
-            console.log('logadinho')
             setUser(JSON.parse(userInfo))
             setSigned(true)
         }else{
