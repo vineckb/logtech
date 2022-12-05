@@ -1,4 +1,4 @@
-import '../Dashboard/dashboard.css'
+import '../Painel/painel.css'
 import { useState} from 'react'
 import { AuthContext } from '../../contexts/auth';
 import { useContext } from 'react';
@@ -8,7 +8,7 @@ import { Header } from '../../components/Header';
 import { Content } from '../../components/Content';
 import { Title } from '../../components/Title';
   
-export function Dashboard(){
+export function Painel(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
 
@@ -30,7 +30,7 @@ export function Dashboard(){
         <div className='container-dashboard'>
             <SideBar isOpen={isOpen} closeMenu={closeMenu} close={close} />
             <Header openMenu={openMenu} isOpen={isOpen} close={close} />
-            <Title title='Dashboard'  isOpen={isOpen} close={close}/>
+            <Title title='Painel'  isOpen={isOpen} close={close}/>
             <Content isOpen={isOpen} close={close}>
                 <>
                  <div><h1>Conteudo</h1></div>

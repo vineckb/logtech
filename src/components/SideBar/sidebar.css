@@ -28,9 +28,6 @@
     transition: 0.3s;
   }
   
-
- 
-  
   .menu a:hover {
     color: #f1f1f1;
 }
@@ -68,10 +65,10 @@
 
   .sidebar .logo-container-header {
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
      flex-direction: column;
   }
 
@@ -81,7 +78,7 @@
   }
 
  .logo-container-header span.sidebar-menu-label{
-    margin-top: 40px;
+    margin-top: 35px;
     opacity: 0.5;
     color: #ffffff;
     font-size: 0.75rem;

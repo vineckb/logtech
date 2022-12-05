@@ -1,4 +1,4 @@
-import '../Dashboard/dashboard.css'
+import '../Painel/painel.css'
 import { useState} from 'react'
 import { AuthContext } from '../../contexts/auth';
 import { useContext } from 'react';
