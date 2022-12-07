@@ -1,7 +1,8 @@
 
 import './signin.css'
 import logoFooter from '../../assets/logo_footer.svg';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo-white.svg';
+import worker from '../../assets/worker.svg';
 import { toast } from 'react-toastify';
 import { api } from '../../service/api';
 import { Link,useNavigate } from 'react-router-dom';
@@ -61,43 +62,51 @@ export function SignIn(){
     }
 
     return(
-        <div className='container-signin'>
-            <div className='login-container'> 
-                <div className='logo-header'>
-                    <img  className='logo' src={logo}  alt='Logo Logtech'/>
-                    <span className='login-footer-version'>Versão 1.0.2</span>
-                </div>
+         
+            
+            <div className='container-all'>
+                <div className='container-signin'>
+                 
+                 <div className="content-signin">
+                     
+                 <img src={worker} alt="" className='img-worker-container' />
+                 
+                 <div className='login-container'> 
+                     <div className='logo-header'>
+                         <img  className='logo' src={logo}  alt='Logo Logtech'/>
+                         
+                     </div>
+                      
+                         <form onSubmit={handleSubmi}>
+                             <div className='login-input-form'>
+                                 <input type='text' placeholder='E-mail' value={user} onChange={(e) => setUser(e.target.value)} />
+                                 <input  type='password' placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} />
+                                 
+                                 {
+                                     loading? <button disabled className='btnEnter'>Carregando...</button>:  <button className='btnEnter'>Entrar</button>
+                                 }
+ 
+                             </div>
+                         </form>
+ 
+                         <span className='login-form-footer-line'></span>
+                     
+                         <div  className='login-footer-container'>
+                              
+                             <span className='login-footer-version'>Versão 1.0.2</span>
+                         </div>
+                
+                         
+                
+             </div>
+ 
+             </div>  
+                 <span className='line-footer'></span>        
+             </div>   
+            </div> 
+                        
 
-               <div className='login-form-box'>
-                    <span className='login-title'>Login</span>
-                    <span className='login-description'>Entre com sua credencial de login</span>
-
-                    <form onSubmit={handleSubmi}>
-                        <div className='login-input-form'>
-                            <input type='text' placeholder='E-mail' value={user} onChange={(e) => setUser(e.target.value)} />
-                            <input  type='password' placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} />
-                            
-                            {
-                                loading? <button disabled className='btnEnter'>Carregando...</button>:  <button className='btnEnter'>Entrar</button>
-                            }
-
-                        </div>
-                    </form>
-
-                    <span className='login-form-footer-line'></span>
-                  
-                    <Link to='#' className='login-form-recovery-password'>Esqueci minha senha</Link>
-               </div>
-
-                <div  className='login-footer-container'>
-                <img  className='login-footer-logo' src={logoFooter} alt='Logo logtech' />
-                <span className='login-footer-version'>Versão 1.0.2</span>
-                </div>
-            </div>
-
-            <div className='logo-container'>
-                <img  className='logo' src={logo} alt='Logo Logtech'/>
-            </div>
-        </div>
+           
+        
     )
 }
