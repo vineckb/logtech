@@ -39,7 +39,7 @@ export function SignIn(){
         .then((response)=>{
             setLoading(false)
             
-           navigate('/dashboard')
+           navigate('/painel')
 
            console.log(response.data.content.token)
             let user_login = {
@@ -57,7 +57,7 @@ export function SignIn(){
     }
 
     if(signed){
-        navigate('/dashboard')
+        navigate('/painel')
     }
 
     return(

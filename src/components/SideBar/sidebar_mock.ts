@@ -1,3 +1,11 @@
+
+interface MenuItem {
+    idmenu: number,
+    nomemenu: string,
+    ordem: number,
+    ativo: string
+}
+
 const menu_list = {
     "content": [
         {
@@ -68,4 +76,6 @@ const menu_list = {
 }
 
 
-export default menu_list
+export default function getMenuList(){
+    return menu_list.content
+}
