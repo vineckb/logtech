@@ -68,16 +68,16 @@ span.line-footer {
     color: rgba(0, 0, 0, 0.5);
     outline: none;
     padding: 8px;
-    width: 300px;
-    height: 48px;
+    width: 18.75rem;
+    height: 3rem;
 }
 
 .login-input-form button{
     border-radius: 4px;
     background-color: #44537A;
     border: none;
-    width: 300px;
-    height: 48px;
+    width: 18.75rem;
+    height: 3rem;
     outline: none;
     padding: 8px;
     margin-bottom: 10px;
@@ -99,25 +99,36 @@ span.line-footer {
 @media (max-width: 960px)
 {
     .login-input-form input {
-        width: 250px;
-        height: 48px;
+        width: 15.625rem;
+        height: 3rem;
     }
 
     .login-input-form button {
-        width: 250px;
-        height: 48px;
+        width: 15.625rem;
+        height: 3rem;
     }
   
 }
 
-@media (max-width: 700px)
+@media (max-width: 900px)
 {
- .img-worker-container{
-    display: none;
- }
+    .logo {
+        height: 2.75rem;
+    }
 
- .login-container {
- 
-    border-radius: 1rem;
-}
+    .img-worker-container{
+        display: none;
+    }
+
+    .login-container {
+        width: 18rem;
+        height: 18rem;
+        border-radius: 1rem;
+        margin: 0 auto;
+    }
+
+    .container-signin {
+        justify-content: center;
+        display: flex;
+    }
 }
