@@ -1,6 +1,6 @@
 .container-all{
     position: relative;
-    height: 39rem;
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -19,7 +19,7 @@
 }
  
 img.img-worker-container{
-   height: 39rem;
+   height: 100vh;
 }
 
 
@@ -93,4 +93,31 @@ span.line-footer {
     color: #fff;
     text-transform: uppercase;
     font-size: 12px;
+}
+
+
+@media (max-width: 960px)
+{
+    .login-input-form input {
+        width: 250px;
+        height: 48px;
+    }
+
+    .login-input-form button {
+        width: 250px;
+        height: 48px;
+    }
+  
+}
+
+@media (max-width: 700px)
+{
+ .img-worker-container{
+    display: none;
+ }
+
+ .login-container {
+ 
+    border-radius: 1rem;
+}
 }
