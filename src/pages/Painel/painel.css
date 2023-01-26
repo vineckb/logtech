@@ -4,5 +4,48 @@
     height: 100vh;
     background-color: #E4EBF6;
 }
+.container-grids{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.grid-rotinas {
+    margin: 0.3% 0.5% 0.3% 0.5%;
+    width: 32%;
+    height: 250px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
 
+.top-grid-rotinas{
+    background: #117BAA;
+    border-radius: 8px 8px 0px 0px;
+    height: 64.45px;
+    display: flex;
+}
 
+.top-grid-rotinas {
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.conteudo-grid-rotinas {
+    padding: 20px;
+    
+}
+
+.conteudo-grid-rotinas p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+}
