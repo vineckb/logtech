@@ -32,9 +32,85 @@ export function Painel(){
             <Header openMenu={openMenu} isOpen={isOpen} close={close} />
             <Title title='Painel'  isOpen={isOpen} close={close}/>
             <Content isOpen={isOpen} close={close}>
-                <>
-                 <div><h1>Conteudo</h1></div>
-                </>
+                <div className='container-grids'>
+                   <div className='grid-rotinas'>
+                     <div className='top-grid-rotinas'>
+                        <p>Definição  de Licença</p>
+                     </div>
+                     <div className='conteudo-grid-rotinas'>
+                        <p>Incluir</p>
+                        <p>Alterar</p>
+                        <p>Excluir</p>
+                        <p>Permissão</p>
+                     </div>
+                   </div>
+                   <div className='grid-rotinas'>
+                     <div className='top-grid-rotinas'>
+                        <p>Cadastro de ERP</p>
+                     </div>
+                     <div className='conteudo-grid-rotinas'>
+                        <p>Incluir</p>
+                        <p>Alterar</p>
+                        <p>Excluir</p>
+                        <p>Permissão</p>
+                     </div>
+                   </div>
+                   <div className='grid-rotinas'>
+                     <div className='top-grid-rotinas'>
+                        <p>Cadastro de BD</p>
+                     </div>
+                     <div className='conteudo-grid-rotinas'>
+                        <p>Incluir</p>
+                        <p>Alterar</p>
+                        <p>Excluir</p>
+                        <p>Permissão</p>
+                     </div>
+                   </div>
+                   <div className='grid-rotinas'>
+                     <div className='top-grid-rotinas'>
+                        <p>Conexão Cliente</p>
+                     </div>
+                     <div className='conteudo-grid-rotinas'>
+                        <p>Incluir</p>
+                        <p>Alterar</p>
+                        <p>Excluir</p>
+                        <p>Permissão</p>
+                     </div>
+                   </div>
+                   <div className='grid-rotinas'>
+                     <div className='top-grid-rotinas'>
+                        <p>Liberação Rotina</p>
+                     </div>
+                     <div className='conteudo-grid-rotinas'>
+                       <p>Incluir</p>
+                        <p>Alterar</p>
+                        <p>Excluir</p>
+                        <p>Permissão</p>
+                     </div>
+                   </div>
+                   <div className='grid-rotinas'>
+                     <div className='top-grid-rotinas'>
+                        <p>Permissão Filial</p>
+                     </div>
+                     <div className='conteudo-grid-rotinas'>
+                        <p>Incluir</p>
+                        <p>Alterar</p>
+                        <p>Excluir</p>
+                        <p>Permissão</p>
+                     </div>
+                   </div>
+                   <div className='grid-rotinas'>
+                     <div className='top-grid-rotinas'>
+                        <p>Permissão  do Usuário</p>
+                     </div>
+                     <div className='conteudo-grid-rotinas'>
+                       <p>Incluir</p>
+                        <p>Alterar</p>
+                        <p>Excluir</p>
+                        <p>Permissão</p>
+                     </div>
+                   </div>
+                </div>
             </Content>
         </div>
     )

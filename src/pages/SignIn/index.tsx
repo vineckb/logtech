@@ -15,8 +15,8 @@ import { AuthContext } from '../../contexts/auth';
 
 export function SignIn(){
     
-    const [user,setUser] = useState('')
-    const [password,setPassword] = useState('')
+    const [user,setUser] = useState('wmsexpert')
+    const [password,setPassword] = useState('Wms3xp3rt@')
     const [loading,setLoading] = useState(false)
     const navigate = useNavigate();
     const {saveAuth,signed} = useContext(AuthContext)
