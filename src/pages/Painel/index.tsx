@@ -8,7 +8,7 @@ import { Header } from '../../components/Header';
 import { Content } from '../../components/Content';
 import { Title } from '../../components/Title';
 
-import {getRotinas} from '../../service/rotinas'
+import {getRotinasIdmenu} from '../../service/rotinas'
 import { getPermissoesIdRotina } from '../../service/permissoes';
 
 interface RotinasDTO {
@@ -38,7 +38,7 @@ export function Painel(){
      const [permissoes, setPermissoes] = useState<Array<PermissoesDTO>>([])
 
      const loadRotinas = async () => {
-      const dados = await getRotinas();   
+      const dados = await getRotinasIdmenu(10);   
       setRotinas(dados)
      }
 
@@ -49,7 +49,7 @@ export function Painel(){
 
      useEffect(() => {
       loadRotinas();
-     })
+     }, [])
 
     function openMenu() {
         setIsOpen(!isOpen)

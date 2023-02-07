@@ -9,3 +9,13 @@ export const getRotinas = async () => {
     return error;
    }
 }
+
+
+export const getRotinasIdmenu = async (idmenu: number) => {
+    try {
+    const {data} = await apiPrivate.get(`/menu/${idmenu}?method=SelecionarRotinas`);
+    return data.content;
+   } catch (error) {
+    return error;
+   }
+}
