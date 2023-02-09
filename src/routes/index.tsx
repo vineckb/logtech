@@ -10,6 +10,8 @@ import { Users } from '../pages/Painel/usuarios';
 import { CreateUsers } from '../pages/Painel/usuarios/createUsuarios';
 import { Motivo } from '../pages/Painel/motivo';
 import { CreateMotivos } from '../pages/Painel/motivo/createMotivo';
+import { UsersLogados } from '../pages/Painel/usuariosLogados';
+import { CreateTipoMotivos } from '../pages/Painel/tipoMotivo';
 
 export default function RoutesApp(){
     return(
@@ -22,7 +24,9 @@ export default function RoutesApp(){
             <Route path="/painel/usuarios" element={<Users />} />
             <Route path="/painel/usuarios/create" element={<CreateUsers />} />
             <Route path="/painel/motivo" element={<Motivo />} />
-            <Route path="/painel/motivo/create" element={<CreateMotivos />} />
+            <Route path="/painel/motivo/tipo-motivo" element={<CreateTipoMotivos />} />
+            <Route path="/painel/motivUsersLogadoso/create" element={<CreateMotivos />} />
+            <Route path="/painel/usuarios-logado" element={<UsersLogados />} />
             
             <Route path="/integracao" element={<Integracao />} />
             
@@ -30,6 +34,8 @@ export default function RoutesApp(){
             <Route path="/configuracao/licenca" element={<Licenca />} />
             <Route path="/configuracao/conexao-cliente" element={<ConexaoCliente />} />
             <Route path="/configuracao/conexao-cliente/create" element={<CreateConexaoCliente />} />
+
+            
 
             </Routes>
      )

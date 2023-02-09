@@ -3,7 +3,7 @@ import '../../configuracao/licenca.css'
 import { SearchOutlined } from '@ant-design/icons';
 import { Divider, Input, Table, Button, Space } from 'antd';
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { AuthContext } from '../../../contexts/auth';
 import { useContext } from 'react';
 import { useNavigate} from 'react-router-dom'
@@ -13,29 +13,64 @@ import { Content } from '../../../components/Content';
 import { Title } from '../../../components/Title';
 
 import type { ColumnsType } from 'antd/es/table';
-import { getMotivos } from '../../../service/motivos';
 
 interface DataType {
-   idmotivo: number,
-   idtipomotivo: number,
-   status: string,
-   bloqestoque: string
+  key: React.Key;
+  nome: string;
+  login: string;
+  data_hora_login: string;
+  data_hora_logoff: string;
 }
 
 const columns: ColumnsType<DataType> = [
   {
-    title: 'Status',
-    dataIndex: 'status',
+    title: 'Nome',
+    dataIndex: 'nome',
     render: (text: string) => <a>{text}</a>,
   },
   {
-    title: 'Bloqueio de Estoque',
-    dataIndex: 'bloqestoque',
+    title: 'Login',
+    dataIndex: 'login',
   },
   {
-    title: 'Tipo de Motivo',
-    dataIndex: 'idtipomotivo',
+    title: 'Data Hora do Login',
+    dataIndex: 'data_hora_login',
+  },
+  {
+    title: 'Data Hora do Logoff',
+    dataIndex: 'data_hora_logoff',
   }
+];
+
+const data: DataType[] = [
+  {
+    key: '1',
+    nome: 'Joaquim Leopoudo',
+    login: 'Joaquim',
+    data_hora_login: '27/01/2023',
+    data_hora_logoff: '27/01/2023',
+  },
+  {
+    key: '2',
+    nome: 'Joaquim Leopoudo',
+    login: 'Joaquim',
+    data_hora_login: '27/01/2023',
+    data_hora_logoff: '27/01/2023',
+  },
+  {
+    key: '3',
+    nome: 'Joaquim Leopoudo',
+    login: 'Joaquim',
+    data_hora_login: '27/01/2023',
+    data_hora_logoff: '27/01/2023',
+  },
+  {
+    key: '4',
+    nome: 'Joaquim Leopoudo',
+    login: 'Joaquim',
+    data_hora_login: '27/01/2023',
+    data_hora_logoff: '27/01/2023',
+  },
 ];
 
 // rowSelection object indicates the need for row selection
@@ -44,24 +79,14 @@ const rowSelection = {
     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
   },
   getCheckboxProps: (record: DataType) => ({
-    disabled: record.status === '', // Column configuration not to be checked
-    name: record.status,
+    disabled: record.nome === '', // Column configuration not to be checked
+    name: record.nome,
   }),
 };
 
-export function Motivo(){
-     const [data, setData] = useState<DataType[]>();
+export function UsersLogados(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
-
-     const loadData = async () => {
-       const res = await getMotivos()
-       setData(res);
-     }
-
-     useEffect( () => {
-      loadData()
-     }, [])
      
 
     function openMenu() {
@@ -82,18 +107,12 @@ export function Motivo(){
         <div className='container-dashboard'>
             <SideBar isOpen={isOpen} closeMenu={closeMenu} close={close} />
             <Header openMenu={openMenu} isOpen={isOpen} close={close} />
-            <Title title='MOTIVO'  isOpen={isOpen} close={close}/>
+            <Title title='CONSULTA USUÁRIOS LOGADOS'  isOpen={isOpen} close={close}/>
             <Content isOpen={isOpen} close={close}>
                <div>
                     <div className='container-filter-table'>
                         <div className='grid-input-filter-table'>
                           <Input size="large" placeholder="Pesquisar" prefix={<SearchOutlined />} />
-                        </div>
-                        <div className='grid-input-filter-table'>
-                          <Space wrap style={{ width: '100%', justifyContent: 'flex-end'}}>
-                            <Button size="large"  style={{width: '150px', fontSize: 14}} type="primary" block>NOVO</Button>
-                            <Button size="large"  style={{width: '150px', fontSize: 14}} type="primary" block danger>EXCLUIR</Button>
-                          </Space>
                         </div>
                     </div>
                     <Divider />
