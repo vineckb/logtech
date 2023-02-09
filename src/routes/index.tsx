@@ -8,6 +8,8 @@ import { ConexaoCliente } from '../pages/configuracao/conexaoCliente';
 import { CreateConexaoCliente } from '../pages/configuracao/conexaoCliente/createConexaoCliente';
 import { Users } from '../pages/Painel/usuarios';
 import { CreateUsers } from '../pages/Painel/usuarios/createUsuarios';
+import { Motivo } from '../pages/Painel/motivo';
+import { CreateMotivos } from '../pages/Painel/motivo/createMotivo';
 
 export default function RoutesApp(){
     return(
@@ -19,6 +21,8 @@ export default function RoutesApp(){
             <Route path="/painel" element={<Painel />} />
             <Route path="/painel/usuarios" element={<Users />} />
             <Route path="/painel/usuarios/create" element={<CreateUsers />} />
+            <Route path="/painel/motivo" element={<Motivo />} />
+            <Route path="/painel/motivo/create" element={<CreateMotivos />} />
             
             <Route path="/integracao" element={<Integracao />} />
             
