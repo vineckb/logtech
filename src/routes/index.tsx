@@ -12,6 +12,11 @@ import { Motivo } from '../pages/Painel/motivo';
 import { CreateMotivos } from '../pages/Painel/motivo/createMotivo';
 import { UsersLogados } from '../pages/Painel/usuariosLogados';
 import { CreateTipoMotivos } from '../pages/Painel/tipoMotivo';
+import { SubGrupos } from '../pages/entradas/subgrupo';
+import { Expedicao } from '../pages/expedicao';
+import { Fornecedores } from '../pages/Painel/fornecedores';
+import { Grupos } from '../pages/entradas/grupo';
+import { Entradas } from '../pages/entradas/entradas';
 
 export default function RoutesApp(){
     return(
@@ -27,6 +32,7 @@ export default function RoutesApp(){
             <Route path="/painel/motivo/tipo-motivo" element={<CreateTipoMotivos />} />
             <Route path="/painel/motivUsersLogadoso/create" element={<CreateMotivos />} />
             <Route path="/painel/usuarios-logado" element={<UsersLogados />} />
+            <Route path="/painel/fornecedores" element={<Fornecedores />} />
             
             <Route path="/integracao" element={<Integracao />} />
             
@@ -35,7 +41,13 @@ export default function RoutesApp(){
             <Route path="/configuracao/conexao-cliente" element={<ConexaoCliente />} />
             <Route path="/configuracao/conexao-cliente/create" element={<CreateConexaoCliente />} />
 
+
+            <Route path="/entradas" element={<Entradas />} />
+            <Route path="/entradas/grupos" element={<Grupos />} />
+            <Route path="/entradas/grupos" element={<SubGrupos />} />
+
             
+            <Route path="/expedicao" element={<Expedicao />} />
 
             </Routes>
      )
