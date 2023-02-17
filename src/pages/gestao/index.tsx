@@ -31,14 +31,14 @@ interface PermissoesDTO {
    ativo: string;
 }
 
-export function Expedicao(){
+export function Gestao(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
      const [rotinas, setRotinas] = useState<Array<RotinasDTO>>([])
      const [permissoes, setPermissoes] = useState<Array<PermissoesDTO>>([])
 
      const loadRotinas = async () => {
-      const dados = await getRotinasIdmenu(5);   
+      const dados = await getRotinasIdmenu(7);   
       setRotinas(dados)
      }
 
@@ -69,7 +69,7 @@ export function Expedicao(){
         <div className='container-dashboard'>
             <SideBar isOpen={isOpen} closeMenu={closeMenu} close={close} />
             <Header openMenu={openMenu} isOpen={isOpen} close={close} />
-            <Title title='Expedição'  isOpen={isOpen} close={close}/>
+            <Title title='Gestão'  isOpen={isOpen} close={close}/>
             <Content isOpen={isOpen} close={close}>
                 <div className='container-grids'>
                   {

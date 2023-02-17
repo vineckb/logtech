@@ -25,6 +25,12 @@ import { Transportadoras } from '../pages/expedicao/transportadoras';
 import { CreateTransportadoras } from '../pages/expedicao/transportadoras/createTransportadoras';
 import { VeiculoTransportadoras } from '../pages/expedicao/veiculostransportadoras';
 import { CreateVeiculoTransportadoras } from '../pages/expedicao/veiculostransportadoras/createTransportadoras';
+import { Movimentacao } from '../pages/movimentacao';
+import { Gestao } from '../pages/gestao';
+import { Auditoria } from '../pages/auditoria';
+import { Cadastro } from '../pages/Cadastro';
+import { Consulta } from '../pages/consulta';
+import { Recepcao } from '../pages/recepcao';
 
 export default function RoutesApp(){
     return(
@@ -65,7 +71,21 @@ export default function RoutesApp(){
                 <Route path="/expedicao/veiculotransportadoras" element={<VeiculoTransportadoras />} />
                 <Route path="/expedicao/veiculotransportadoras/create" element={<CreateVeiculoTransportadoras />} />
 
-           
+
+                <Route path="/movimentacao" element={<Movimentacao />} />
+
+                <Route path="/gestao" element={<Gestao />} />
+                          
+                <Route path="/auditoria" element={<Auditoria />} />
+
+
+                <Route path="/cadastro" element={<Cadastro />} />
+
+                <Route path="/consulta" element={<Consulta />} />
+
+                <Route path="/recepcao" element={<Recepcao />} />
+
+        
             </Routes>
      )
 }
