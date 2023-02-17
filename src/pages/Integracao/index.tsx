@@ -1,5 +1,5 @@
 import '../Painel/painel.css'
-import { useState} from 'react'
+import { useEffect, useState} from 'react'
 import { AuthContext } from '../../contexts/auth';
 import { useContext } from 'react';
 import { useNavigate} from 'react-router-dom'
@@ -7,10 +7,49 @@ import { SideBar } from '../../components/SideBar';
 import { Header } from '../../components/Header';
 import { Content } from '../../components/Content';
 import { Title } from '../../components/Title';
-  
+
+import {getRotinasIdmenu} from '../../service/rotinas'
+import { getPermissoesIdRotina } from '../../service/permissoes';
+
+interface RotinasDTO {
+   ativo: string;
+   idaplicacao: number;
+   idmenu: number;
+   idrotina: number
+   idtiporotina: number;
+   nomerotina: string;
+   ordem: number;
+}
+
+interface PermissoesDTO {
+   idpermissao: number;
+   idrotina: number;
+   idfuncionalidade: number;
+   idusuario: number;
+   dataliberacao: string;
+   idusuarioliberacao: number;
+   ativo: string;
+}
+
 export function Integracao(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
+     const [rotinas, setRotinas] = useState<Array<RotinasDTO>>([])
+     const [permissoes, setPermissoes] = useState<Array<PermissoesDTO>>([])
+
+     const loadRotinas = async () => {
+      const dados = await getRotinasIdmenu(3);   
+      setRotinas(dados)
+     }
+
+     const perrmissoesIdRotina = async (idrotinaParam : number) => {
+        const res = await getPermissoesIdRotina(idrotinaParam);
+        setPermissoes(res);
+      }
+
+     useEffect(() => {
+      loadRotinas();
+     }, [])
 
     function openMenu() {
         setIsOpen(!isOpen)
@@ -32,9 +71,24 @@ export function Integracao(){
             <Header openMenu={openMenu} isOpen={isOpen} close={close} />
             <Title title='Integracao'  isOpen={isOpen} close={close}/>
             <Content isOpen={isOpen} close={close}>
-                <>
-                 <div><h1>Integracao</h1></div>
-                </>
+                <div className='container-grids'>
+                  {
+                     rotinas.length > 0 ?
+                     rotinas.map((item) => {
+                        //perrmissoesIdRotina(item.idrotina);
+                        return (
+                            <div className='grid-rotinas'>
+                              <div className='top-grid-rotinas'>
+                                 <p>{item.nomerotina}</p>
+                              </div>
+                             
+                           </div>
+                        )
+                     })
+                     :
+                     <p>loading</p>
+                  }
+                </div>
             </Content>
         </div>
     )

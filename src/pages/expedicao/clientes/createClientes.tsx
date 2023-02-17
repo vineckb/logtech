@@ -1,5 +1,5 @@
 import '../../Painel/painel.css'
-import './clinetes.css'
+import './clientes.css'
 import { Button, Col, Form, Input, Row, Select, theme } from 'antd';
 
 

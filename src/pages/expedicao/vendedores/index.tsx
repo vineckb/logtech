@@ -1,5 +1,5 @@
 import '../../Painel/painel.css'
-import './regiao.css'
+import './vendedores.css'
 import { SearchOutlined } from '@ant-design/icons';
 import { Divider, Input, Table, Button, Space } from 'antd';
 
