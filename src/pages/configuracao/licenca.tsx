@@ -3,7 +3,7 @@ import './licenca.css'
 import { SearchOutlined } from '@ant-design/icons';
 import { Divider, Input, Table, Button, Space } from 'antd';
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/auth';
 import { useContext } from 'react';
 import { useNavigate} from 'react-router-dom'
@@ -13,15 +13,16 @@ import { Content } from '../../components/Content';
 import { Title } from '../../components/Title';
 
 import type { ColumnsType } from 'antd/es/table';
+import { getLicencas } from '../../service/licenca';
 
 interface DataType {
-  key: React.Key;
-  cnpj: string;
+  idlicenca: number;
+  cnpj: any;
   cliente: string;
-  qt_usuarios: number;
-  data_liberacao: string;
+  qtd_usuarios: number;
+  dataliberacao: string;
   chave: string;
-  status: string;
+  ativo: any;
 }
 
 const columns: ColumnsType<DataType> = [
@@ -36,58 +37,19 @@ const columns: ColumnsType<DataType> = [
   },
   {
     title: 'Qtde Usúarios',
-    dataIndex: 'qt_usuarios',
+    dataIndex: 'qtd_usuarios',
   },
   {
     title: 'Data Liberação',
-    dataIndex: 'data_liberacao',
+    dataIndex: 'dataliberacao',
   },
   {
     title: 'Chave',
     dataIndex: 'chave',
   },
   {
-    title: 'Status',
-    dataIndex: 'status',
-  },
-];
-
-const data: DataType[] = [
-  {
-    key: '1',
-    cnpj: '12.345.678/0001-99',
-    cliente: 'Camargo e Camargo',
-    qt_usuarios: 50,
-    data_liberacao: '27/01/2023',
-    chave: '656565656565656',
-    status: 'Ativo'
-  },
-  {
-    key: '2',
-    cnpj: '12.345.678/0001-99',
-    cliente: 'Camargo e Camargo',
-    qt_usuarios: 50,
-    data_liberacao: '27/01/2023',
-    chave: '656565656565656',
-    status: 'Ativo'
-  },
-  {
-    key: '3',
-    cnpj: '12.345.678/0001-99',
-    cliente: 'Camargo e Camargo',
-    qt_usuarios: 50,
-    data_liberacao: '27/01/2023',
-    chave: '656565656565656',
-    status: 'Ativo'
-  },
-  {
-    key: '4',
-    cnpj: '12.345.678/0001-99',
-    cliente: 'Camargo e Camargo',
-    qt_usuarios: 50,
-    data_liberacao: '27/01/2023',
-    chave: '656565656565656',
-    status: 'Ativo'
+    title: 'Ativo',
+    dataIndex: 'ativo',
   },
 ];
 
@@ -105,7 +67,16 @@ const rowSelection = {
 export function Licenca(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
+     const [data, setData] = useState<Array<DataType>>([])
+
+     const loadDatas = async () => {
+      const res = await getLicencas()
+      setData(res); 
+    }
      
+     useEffect(() => {
+       loadDatas()
+     }, [])
 
     function openMenu() {
         setIsOpen(!isOpen)
