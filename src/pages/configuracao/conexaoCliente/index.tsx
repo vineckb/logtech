@@ -3,7 +3,7 @@ import './conexao.css'
 import { SearchOutlined } from '@ant-design/icons';
 import { Divider, Input, Table, Button, Space } from 'antd';
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AuthContext } from '../../../contexts/auth';
 import { useContext } from 'react';
 import { useNavigate} from 'react-router-dom'
@@ -13,22 +13,24 @@ import { Content } from '../../../components/Content';
 import { Title } from '../../../components/Title';
 
 import type { ColumnsType } from 'antd/es/table';
+import { getConexaoClientes } from '../../../service/conexaoCliente';
 
 interface DataType {
-  key: React.Key;
-  nome_banco_de_dados: string;
+  idconexao: number;
+  idbd: number;
+  nomebd: string;
   servidor: string;
   usuario: string;
   senha: string;
-  id_erp: string;
+  ativo: string;
+  iderp: string;
   tipo: string;
-  status: string;
 }
 
 const columns: ColumnsType<DataType> = [
   {
     title: 'Nome do banco de dados',
-    dataIndex: 'nome_banco_de_dados',
+    dataIndex: 'nomebd',
     render: (text: string) => <a>{text}</a>,
   },
   {
@@ -45,7 +47,7 @@ const columns: ColumnsType<DataType> = [
   },
   {
     title: 'ID ERP',
-    dataIndex: 'id_erp',
+    dataIndex: 'iderp',
   },
   {
     title: 'Tipo',
@@ -53,52 +55,10 @@ const columns: ColumnsType<DataType> = [
   },
   {
     title: 'Status',
-    dataIndex: 'status',
+    dataIndex: 'ativo',
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: '1',
-    nome_banco_de_dados: 'matriz',
-    servidor: '200.145.51.1',
-    usuario: 'root',
-    id_erp: '213123123',
-    senha: '656565656565656',
-    tipo: 'Linux',
-    status: 'Ativo'
-  },
-  {
-    key: '2',
-    nome_banco_de_dados: 'matriz',
-    servidor: '200.145.51.1',
-    usuario: 'root',
-    id_erp: '213123123',
-    senha: '656565656565656',
-    tipo: 'Linux',
-    status: 'Ativo'
-  },
-  {
-    key: '3',
-    nome_banco_de_dados: 'matriz',
-    servidor: '200.145.51.1',
-    usuario: 'root',
-    id_erp: '213123123',
-    senha: '656565656565656',
-    tipo: 'Linux',
-    status: 'Ativo'
-  },
-  {
-    key: '4',
-    nome_banco_de_dados: 'matriz',
-    servidor: '200.145.51.1',
-    usuario: 'root',
-    id_erp: '213123123',
-    senha: '656565656565656',
-    tipo: 'Linux',
-    status: 'Ativo'
-  },
-];
 
 // rowSelection object indicates the need for row selection
 const rowSelection = {
@@ -114,6 +74,16 @@ const rowSelection = {
 export function ConexaoCliente(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
+     const [data, setData] = useState<Array<DataType>>([])
+
+    const loadData = async () => {
+      const res = await getConexaoClientes()
+      setData(res)
+    }
+
+    useEffect(() => {
+      loadData()
+    }, [])
      
 
     function openMenu() {
