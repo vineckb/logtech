@@ -3,7 +3,7 @@ import '../../configuracao/licenca.css'
 import { SearchOutlined } from '@ant-design/icons';
 import { Divider, Input, Table, Button, Space } from 'antd';
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AuthContext } from '../../../contexts/auth';
 import { useContext } from 'react';
 import { useNavigate} from 'react-router-dom'
@@ -13,16 +13,19 @@ import { Content } from '../../../components/Content';
 import { Title } from '../../../components/Title';
 
 import type { ColumnsType } from 'antd/es/table';
+import { getUsuarios } from '../../../service/usuarios';
 
 interface DataType {
-  key: React.Key;
-  nome: string;
-  login: string;
-  data_cadastro: string;
-  email: string;
-  cpf: string;
-  telefone: string;
-  status: string;
+  idusuario: number,
+  nome: string,
+  login: string,
+  senha: string,
+  ativo: string,
+  datacadastro: string,
+  idsetor: number,
+  idturno: number,
+  email: string,
+  telefone: string
 }
 
 const columns: ColumnsType<DataType> = [
@@ -37,68 +40,22 @@ const columns: ColumnsType<DataType> = [
   },
   {
     title: 'Data Cadastro',
-    dataIndex: 'data_cadastro',
+    dataIndex: 'datacadastro',
   },
   {
     title: 'E-mail',
     dataIndex: 'email',
   },
   {
-    title: 'Cpf',
-    dataIndex: 'cpf',
-  },
-  {
     title: 'Telefone',
     dataIndex: 'telefone',
   },
   {
-    title: 'Status',
-    dataIndex: 'status',
+    title: 'Ativo',
+    dataIndex: 'ativo',
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: '1',
-    nome: 'Joaquim Leopoudo',
-    login: 'Joaquim',
-    data_cadastro: '27/01/2023',
-    email: 'joaquim@email.com',
-    cpf: '656565656565656',
-    telefone: '27996451756',
-    status: 'Ativo'
-  },
-  {
-    key: '2',
-    nome: 'Joaquim Leopoudo',
-    login: 'Joaquim',
-    data_cadastro: '27/01/2023',
-    email: 'joaquim@email.com',
-    cpf: '656565656565656',
-    telefone: '27996451756',
-    status: 'Ativo'
-  },
-  {
-    key: '3',
-    nome: 'Joaquim Leopoudo',
-    login: 'Joaquim',
-    data_cadastro: '27/01/2023',
-    email: 'joaquim@email.com',
-    cpf: '656565656565656',
-    telefone: '27996451756',
-    status: 'Ativo'
-  },
-  {
-    key: '4',
-    nome: 'Joaquim Leopoudo',
-    login: 'Joaquim',
-    data_cadastro: '27/01/2023',
-    email: 'joaquim@email.com',
-    cpf: '656565656565656',
-    telefone: '27996451756',
-    status: 'Ativo'
-  },
-];
 
 // rowSelection object indicates the need for row selection
 const rowSelection = {
@@ -114,7 +71,20 @@ const rowSelection = {
 export function Users(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
+     const [data, setData] = useState<Array<DataType>>([])
      
+     const loadData = async () => {
+      const res = await getUsuarios()
+      setData(res)
+     }
+
+     const handleCadastro =  async () => {
+      navigate('/configuracao/usuarios/create')
+     }
+
+     useEffect(() => {
+        loadData()
+     }, [])
 
     function openMenu() {
         setIsOpen(!isOpen)
@@ -143,7 +113,7 @@ export function Users(){
                         </div>
                         <div className='grid-input-filter-table'>
                           <Space wrap style={{ width: '100%', justifyContent: 'flex-end'}}>
-                            <Button size="large"  style={{width: '150px', fontSize: 14}} type="primary" block>NOVO</Button>
+                            <Button onClick={() => handleCadastro()} size="large"  style={{width: '150px', fontSize: 14}} type="primary" block>NOVO</Button>
                             <Button size="large"  style={{width: '150px', fontSize: 14}} type="primary" block danger>EXCLUIR</Button>
                           </Space>
                         </div>

@@ -40,8 +40,6 @@ export default function RoutesApp(){
                 <Route path="/" element={<SignIn />} />
                 
                 <Route path="/painel" element={<Painel />} />
-                <Route path="/painel/usuarios" element={<Users />} />
-                <Route path="/painel/usuarios/create" element={<CreateUsers />} />
                 <Route path="/painel/motivo" element={<Motivo />} />
                 <Route path="/painel/motivo/tipo-motivo" element={<CreateTipoMotivos />} />
                 <Route path="/painel/motivUsersLogadoso/create" element={<CreateMotivos />} />
@@ -54,6 +52,8 @@ export default function RoutesApp(){
                 <Route path="/configuracao/licenca" element={<Licenca />} />
                 <Route path="/configuracao/conexao-cliente" element={<ConexaoCliente />} />
                 <Route path="/configuracao/conexao-cliente/create" element={<CreateConexaoCliente />} />
+                <Route path="/configuracao/usuarios" element={<Users />} />
+                <Route path="/configuracao/usuarios/create" element={<CreateUsers />} />
 
 
                 <Route path="/entradas" element={<Entradas />} />

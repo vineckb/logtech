@@ -52,8 +52,17 @@ export function Configuracao(){
         if(nome === 'Conexão Cliente') {
          navigate('/configuracao/conexao-cliente')
         }
+        if(nome === 'Cadastro de Usuario') {
+         navigate('/configuracao/usuarios')
+        }
+        if(nome === 'Permissão do Usuario') {
+         navigate('/configuracao/usuarios')
+        }
+        if(nome === 'Permissão da Filial') {
+         navigate('/configuracao/usuarios')
+        }
       }
-
+      
      useEffect(() => {
       loadRotinas();
      }, [])

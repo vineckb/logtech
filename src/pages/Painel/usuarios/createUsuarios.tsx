@@ -11,6 +11,7 @@ import { SideBar } from '../../../components/SideBar';
 import { Header } from '../../../components/Header';
 import { Content } from '../../../components/Content';
 import { Title } from '../../../components/Title';
+import { createUsuarios } from '../../../service/usuarios';
 
 const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
@@ -28,46 +29,55 @@ const handleChange = (value: string) => {
 };
 
   const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+    createUsuarios(values)
+   // navigate('/configuracao/usuarios')
+  };
+  
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
   };
 
   return (
-    <Form form={form} name="advanced_search"  layout="vertical" style={formStyle}  onFinish={onFinish} >
+    <Form 
+    form={form} 
+    name="advanced_search"  
+    layout="vertical" 
+    style={formStyle}  
+    initialValues={{ remember: true }}
+    onFinish={onFinish} 
+    onFinishFailed={onFinishFailed}
+    autoComplete="off" 
+    >
       <Row gutter={24}>
         <Col span={8}>
-          <Form.Item label="Nome" required tooltip="This is a required field">
+          <Form.Item label="Nome" name="nome" required tooltip="Campo Obrigatório" rules={[{ required: true, message:'Por favor, insira o nome! ' }]}>
               <Input size='large' style={{borderColor: '#808080', borderWidth: 1, backgroundColor: '#DDDDDD'}} />
           </Form.Item>
         </Col>
         <Col span={8}>
-          <Form.Item label="Login" required tooltip="This is a required field">
+          <Form.Item label="Login" name="login" required tooltip="Campo Obrigatório" rules={[{ required: true, message:'Por favor, insira o login! ' }]}>
               <Input size='large' style={{borderColor: '#808080', borderWidth: 1, backgroundColor: '#DDDDDD'}} />
           </Form.Item>
         </Col>
         <Col span={8}>
-          <Form.Item label="Senha" required tooltip="This is a required field">
+          <Form.Item label="Senha" name="senha" required tooltip="Campo Obrigatório" rules={[{ required: true, message:'Por favor, insira o senha! ' }]}>
               <Input size='large' style={{borderColor: '#808080', borderWidth: 1, backgroundColor: '#DDDDDD'}} />
           </Form.Item>
         </Col>
       </Row>
       <Row gutter={24}>
         <Col span={8}>
-          <Form.Item label="E-mail" required tooltip="This is a required field">
-              <Input size='large' style={{borderColor: '#808080', borderWidth: 1, backgroundColor: '#DDDDDD'}} />
-          </Form.Item>
-        </Col>
-        <Col span={5}>
-          <Form.Item label="CPF" required tooltip="This is a required field">
+          <Form.Item label="E-mail" name="email" required tooltip="Campo Obrigatório" rules={[{ required: true, message:'Por favor, insira o e-mail! ' }]}>
               <Input size='large' style={{borderColor: '#808080', borderWidth: 1, backgroundColor: '#DDDDDD'}} />
           </Form.Item>
         </Col>
         <Col span={7}>
-          <Form.Item label="Telefone" required tooltip="This is a required field">
+          <Form.Item label="Telefone" name="telefone" required tooltip="Campo Obrigatório" rules={[{ required: true, message:'Por favor, insira o Telefone! ' }]}>
               <Input size='large' style={{borderColor: '#808080', borderWidth: 1, backgroundColor: '#DDDDDD'}} />
           </Form.Item>
         </Col>
         <Col span={4}>
-          <Form.Item label="Status" required tooltip="This is a required field">
+          <Form.Item label="Status" name="ativo" required tooltip="Campo Obrigatório" rules={[{ required: true, message:'Por favor, insira o Status! ' }]}>
             <Select  size='large' style={{borderColor: '#808080', borderWidth: 1, backgroundColor: '#DDDDDD'}}
                 defaultValue="---"
                 onChange={handleChange}
@@ -81,7 +91,7 @@ const handleChange = (value: string) => {
       </Row>
       <Row>
         <Col span={24} style={{ textAlign: 'right' }}>
-            <Button size="large"  style={{width: '150px', fontSize: 14}} type="primary" block>NOVO</Button>
+            <Button htmlType="submit" size="large"  style={{width: '150px', fontSize: 14}} type="primary" block>NOVO</Button>
             &nbsp;  &nbsp;
             <Button size="large"  style={{width: '150px', fontSize: 14}} type="primary" block danger>CANCELAR</Button>
          </Col>
