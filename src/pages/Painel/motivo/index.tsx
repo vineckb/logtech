@@ -12,6 +12,7 @@ import { Header } from '../../../components/Header';
 import { Content } from '../../../components/Content';
 import { Title } from '../../../components/Title';
 
+
 import type { ColumnsType } from 'antd/es/table';
 import { getMotivos } from '../../../service/motivos';
 
@@ -92,7 +93,7 @@ export function Motivo(){
                         <div className='grid-input-filter-table'>
                           <Space wrap style={{ width: '100%', justifyContent: 'flex-end'}}>
                             <Button size="large"  style={{width: '150px', fontSize: 14}} type="primary" block>NOVO</Button>
-                            <Button size="large"  style={{width: '150px', fontSize: 14}} type="primary" block danger>EXCLUIR</Button>
+                            <Button size="large" onClick={() => navigate('/painel/motivo/create')}  style={{width: '150px', fontSize: 14}} type="primary" block danger>EXCLUIR</Button>
                           </Space>
                         </div>
                     </div>

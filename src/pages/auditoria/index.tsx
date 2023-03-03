@@ -9,43 +9,19 @@ import { Content } from '../../components/Content';
 import { Title } from '../../components/Title';
 
 import {getRotinasIdmenu} from '../../service/rotinas'
-import { getPermissoesIdRotina } from '../../service/permissoes';
+import { RotinasDTO } from '../../types';
 
-interface RotinasDTO {
-   ativo: string;
-   idaplicacao: number;
-   idmenu: number;
-   idrotina: number
-   idtiporotina: number;
-   nomerotina: string;
-   ordem: number;
-}
-
-interface PermissoesDTO {
-   idpermissao: number;
-   idrotina: number;
-   idfuncionalidade: number;
-   idusuario: number;
-   dataliberacao: string;
-   idusuarioliberacao: number;
-   ativo: string;
-}
 
 export function Auditoria(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
      const [rotinas, setRotinas] = useState<Array<RotinasDTO>>([])
-     const [permissoes, setPermissoes] = useState<Array<PermissoesDTO>>([])
 
      const loadRotinas = async () => {
       const dados = await getRotinasIdmenu(6);   
       setRotinas(dados)
      }
 
-     const perrmissoesIdRotina = async (idrotinaParam : number) => {
-        const res = await getPermissoesIdRotina(idrotinaParam);
-        setPermissoes(res);
-      }
 
      useEffect(() => {
       loadRotinas();
@@ -81,6 +57,18 @@ export function Auditoria(){
                               <div className='top-grid-rotinas'>
                                  <p>{item.nomerotina}</p>
                               </div>
+
+                               <div className="grid-permissoes"> 
+                                {
+                                    item.permissao ?
+                                    item?.permissao.length > 0 ?
+                                    item.permissao.map((i) => {
+                                        return (<p>{i.descricao}</p>)
+                                    })
+                                    : <p>Sem permissao</p>
+                                    : <p>Sem permissao</p>
+                                }
+                                </div>
                              
                            </div>
                         )
