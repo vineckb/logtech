@@ -16,6 +16,7 @@ import { createUsuarios } from '../../../service/usuarios';
 const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
   const [form] = Form.useForm();
+   const navigate = useNavigate()
   
   const formStyle = {
     maxWidth: 'none',
@@ -30,7 +31,6 @@ const handleChange = (value: string) => {
 
   const onFinish = (values: any) => {
     createUsuarios(values)
-   // navigate('/configuracao/usuarios')
   };
   
   const onFinishFailed = (errorInfo: any) => {
@@ -93,7 +93,7 @@ const handleChange = (value: string) => {
         <Col span={24} style={{ textAlign: 'right' }}>
             <Button htmlType="submit" size="large"  style={{width: '150px', fontSize: 14}} type="primary" block>NOVO</Button>
             &nbsp;  &nbsp;
-            <Button size="large"  style={{width: '150px', fontSize: 14}} type="primary" block danger>CANCELAR</Button>
+            <Button size="large" onClick={() =>navigate('/configuracao/usuarios')}  style={{width: '150px', fontSize: 14}} type="primary" block danger>CANCELAR</Button>
          </Col>
       </Row>
     </Form>

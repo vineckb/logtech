@@ -10,6 +10,7 @@ import { Title } from '../../components/Title';
 
 import {getRotinasIdmenu} from '../../service/rotinas'
 import { getPermissoesIdRotina } from '../../service/permissoes';
+import { Button } from 'antd';
 
 interface RotinasDTO {
    ativo: string;
@@ -79,7 +80,7 @@ export function Integracao(){
                         return (
                             <div className='grid-rotinas'>
                               <div className='top-grid-rotinas'>
-                                 <p>{item.nomerotina}</p>
+                                <Button size="large" onClick={() => {}}  style={{width: '150px', fontSize: 14}} type="link" block><p className='top-grid-rotinas-p'>{item.nomerotina}</p></Button>
                               </div>
                              
                            </div>

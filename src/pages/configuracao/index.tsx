@@ -9,44 +9,20 @@ import { Content } from '../../components/Content';
 import { Title } from '../../components/Title';
 
 import {getRotinasIdmenu} from '../../service/rotinas'
-import { getPermissoesIdRotina } from '../../service/permissoes';
 import { Button } from 'antd';
+import { RotinasDTO } from '../../types';
 
-interface RotinasDTO {
-   ativo: string;
-   idaplicacao: number;
-   idmenu: number;
-   idrotina: number
-   idtiporotina: number;
-   nomerotina: string;
-   ordem: number;
-}
-
-interface PermissoesDTO {
-   idpermissao: number;
-   idrotina: number;
-   idfuncionalidade: number;
-   idusuario: number;
-   dataliberacao: string;
-   idusuarioliberacao: number;
-   ativo: string;
-}
 
 export function Configuracao(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
      const [rotinas, setRotinas] = useState<Array<RotinasDTO>>([])
-     const [permissoes, setPermissoes] = useState<Array<PermissoesDTO>>([])
 
      const loadRotinas = async () => {
-      const dados = await getRotinasIdmenu(1);   
+       const dados = await getRotinasIdmenu(1);   
+      console.log('hu',dados)
       setRotinas(dados)
      }
-
-     const perrmissoesIdRotina = async (idrotinaParam : number) => {
-        const res = await getPermissoesIdRotina(idrotinaParam);
-        setPermissoes(res);
-      }
 
       const handleSub = (nome: string) => {
         if(nome === 'Conexão Cliente') {
@@ -97,6 +73,18 @@ export function Configuracao(){
                               <div className='top-grid-rotinas'>
                                 <Button size="large" onClick={() => handleSub(item.nomerotina)}  style={{width: '150px', fontSize: 14}} type="link" block><p className='top-grid-rotinas-p'>{item.nomerotina}</p></Button>
                               </div>
+
+                              <div className="grid-permissoes"> 
+                                {
+                                    item.permissao ?
+                                    item?.permissao.length > 0 ?
+                                    item.permissao.map((i) => {
+                                        return (<p>{i.descricao}</p>)
+                                    })
+                                    : <p>Sem permissao</p>
+                                    : <p>Sem permissao</p>
+                                }
+                                </div>
                              
                            </div>
                         )
