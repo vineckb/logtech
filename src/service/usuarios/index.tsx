@@ -1,9 +1,17 @@
 import {apiPrivate} from '../api';
 
 
-export const getUsuarios = async () => {
+export const getUsuarios = async (nome: string) => {
    try {
-    const {data} = await apiPrivate.get('/usuarios');
+      var search = '';
+      
+      if(nome !== ''){
+         search = `search=nome:${nome}`;
+      } else {
+         search = '';
+      }
+      console.log('vaca',search);
+    const {data} = await apiPrivate.get(`/usuarios?${search}`);
     return data.content;
    } catch (error) {
     return error;
