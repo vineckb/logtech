@@ -1,7 +1,7 @@
 import '../../Painel/painel.css'
 import './usuarios.css'
 import { Button, Col, Form, Input, Row, Select, theme } from 'antd';
-
+import { toast } from 'react-toastify';
 
 import { useState } from 'react'
 import { AuthContext } from '../../../contexts/auth';
@@ -31,6 +31,13 @@ const handleChange = (value: string) => {
 
   const onFinish = (values: any) => {
     createUsuarios(values)
+    form.setFieldValue('email', '')
+    form.setFieldValue('login', '')
+    form.setFieldValue('nome', '')
+    form.setFieldValue('senha', '')
+    form.setFieldValue('telefone', '')
+    form.setFieldValue('ativo', '')
+    toast.success('Usuário cadastrado')
   };
   
   const onFinishFailed = (errorInfo: any) => {

@@ -10,7 +10,6 @@ export const getUsuarios = async (nome: string) => {
       } else {
          search = '';
       }
-      console.log('vaca',search);
     const {data} = await apiPrivate.get(`/usuarios?${search}`);
     return data.content;
    } catch (error) {
@@ -18,6 +17,14 @@ export const getUsuarios = async (nome: string) => {
    }
 }
 
+export const deleteUsuario = async (id: any) => {
+   try {
+    const {data} = await apiPrivate.delete(`/usuarios/${id}`);
+    return data.content;
+   } catch (error) {
+    return error;
+   }
+}
 
 interface DataType {
   idusuario: number,

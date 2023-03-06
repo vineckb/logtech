@@ -76,7 +76,6 @@ export function Users(){
      
      const loadData = async () => {
       const res = await getUsuarios(nome)
-      console.log('vaca',res)
       setData(res)
      }
 
