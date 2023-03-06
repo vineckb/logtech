@@ -72,9 +72,11 @@ export function Users(){
      const [isOpen,setIsOpen] = useState(true)
      const [close,setClose] = useState(false)
      const [data, setData] = useState<Array<DataType>>([])
+     const [nome, setNome] = useState<string>('')
      
      const loadData = async () => {
-      const res = await getUsuarios()
+      const res = await getUsuarios(nome)
+      console.log('vaca',res)
       setData(res)
      }
 
@@ -84,7 +86,7 @@ export function Users(){
 
      useEffect(() => {
         loadData()
-     }, [])
+     }, [nome])
 
     function openMenu() {
         setIsOpen(!isOpen)
@@ -109,7 +111,7 @@ export function Users(){
                <div>
                     <div className='container-filter-table'>
                         <div className='grid-input-filter-table'>
-                          <Input size="large" placeholder="Pesquisar" prefix={<SearchOutlined />} />
+                          <Input size="large" placeholder="Pesquisar" onChange={(e)=> setNome(e.target.value)} prefix={<SearchOutlined />} />
                         </div>
                         <div className='grid-input-filter-table'>
                           <Space wrap style={{ width: '100%', justifyContent: 'flex-end'}}>
