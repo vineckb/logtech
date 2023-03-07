@@ -45,7 +45,6 @@ export default function RoutesApp(){
                 <Route path="/painel/motivo/tipo-motivo" element={<CreateTipoMotivos />} />
                 <Route path="/painel/motivUsersLogadoso/create" element={<CreateMotivos />} />
                 <Route path="/painel/usuarios-logado" element={<UsersLogados />} />
-                <Route path="/painel/fornecedores" element={<Fornecedores />} />
                 
                 <Route path="/integracao" element={<Integracao />} />
                 
@@ -59,7 +58,8 @@ export default function RoutesApp(){
 
                 <Route path="/entradas" element={<Entradas />} />
                 <Route path="/entradas/grupos" element={<Grupos />} />
-                <Route path="/entradas/grupos" element={<SubGrupos />} />
+                <Route path="/entradas/subgrupos" element={<SubGrupos />} />
+                 <Route path="/entradas/fornecedores" element={<Fornecedores />} />
 
 
                 <Route path="/expedicao" element={<Expedicao />} />
