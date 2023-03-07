@@ -9,7 +9,7 @@ import { CreateConexaoCliente } from '../pages/configuracao/conexaoCliente/creat
 import { Users } from '../pages/Painel/usuarios';
 import { CreateUsers } from '../pages/Painel/usuarios/createUsuarios';
 import { Motivo } from '../pages/Painel/motivo';
-import { CreateMotivos } from '../pages/Painel/motivo/createMotivo';
+import { CreateMotivos } from '../pages/Painel/motivo/createMotivos';
 import { UsersLogados } from '../pages/Painel/usuariosLogados';
 import { CreateTipoMotivos } from '../pages/Painel/tipoMotivo';
 import { SubGrupos } from '../pages/entradas/subgrupo';
@@ -41,6 +41,7 @@ export default function RoutesApp(){
                 
                 <Route path="/painel" element={<Painel />} />
                 <Route path="/painel/motivo" element={<Motivo />} />
+                <Route path="/painel/motivo/create" element={<CreateMotivos />} />
                 <Route path="/painel/motivo/tipo-motivo" element={<CreateTipoMotivos />} />
                 <Route path="/painel/motivUsersLogadoso/create" element={<CreateMotivos />} />
                 <Route path="/painel/usuarios-logado" element={<UsersLogados />} />
