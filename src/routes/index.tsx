@@ -3,7 +3,6 @@ import { SignIn } from '../pages/SignIn';
 import { Painel } from '../pages/Painel';
 import { Integracao } from '../pages/Integracao';
 import { Configuracao } from '../pages/configuracao';
-import { Licenca } from '../pages/configuracao/licenca';
 import { ConexaoCliente } from '../pages/configuracao/conexaoCliente';
 import { CreateConexaoCliente } from '../pages/configuracao/conexaoCliente/createConexaoCliente';
 import { Users } from '../pages/Painel/usuarios';
@@ -31,6 +30,7 @@ import { Auditoria } from '../pages/auditoria';
 import { Cadastro } from '../pages/Cadastro';
 import { Consulta } from '../pages/consulta';
 import { Recepcao } from '../pages/recepcao';
+import { Licencas } from '../pages/configuracao/licenca';
 
 export default function RoutesApp(){
     return(
@@ -50,7 +50,7 @@ export default function RoutesApp(){
                 <Route path="/integracao" element={<Integracao />} />
                 
                 <Route path="/configuracao" element={<Configuracao />} />
-                <Route path="/configuracao/licenca" element={<Licenca />} />
+                <Route path="/configuracao/licenca" element={<Licencas />} />
                 <Route path="/configuracao/conexao-cliente" element={<ConexaoCliente />} />
                 <Route path="/configuracao/conexao-cliente/create" element={<CreateConexaoCliente />} />
                 <Route path="/configuracao/usuarios" element={<Users />} />
