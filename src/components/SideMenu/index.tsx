@@ -29,7 +29,7 @@ export function SideMenu({ open }: Props) {
           </MenuLink>
         </MenuItem>
         <MenuItem>
-          <MenuLink as={ReachLink} to="/">
+          <MenuLink as={ReachLink} to="/dashboard">
             <MenuIcon as={MdSettings} fontSize={30} />
             <LinkText className={open ? '' : 'collapsed'}>
               <span>Painel de Controle</span>

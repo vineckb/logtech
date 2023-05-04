@@ -1,5 +1,5 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { Layout } from '@/components/Layout';
+import { Outlet } from 'react-router-dom';
 
 const theme = extendTheme({
   components: {
@@ -21,7 +21,7 @@ const theme = extendTheme({
 export function Root() {
   return (
     <ChakraProvider theme={theme}>
-      <Layout />
+      <Outlet />
     </ChakraProvider>
   );
 }
