@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   width: 177px;
   transition: width 0.2s linear;
   overflow: hidden;
+  min-height: 48px;
 
   & svg {
     width: auto;

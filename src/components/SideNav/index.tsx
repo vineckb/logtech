@@ -27,6 +27,8 @@ export function SideNav({ open }: Props) {
         height: '100vh',
         top: '0',
         color: '#999',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <CollapsibleLogo collapsed={!open} />
