@@ -9,7 +9,7 @@ export interface User {
 
 export interface AuthContextType {
   signed: boolean;
-  user: User;
+  user: User | null;
 
   signIn: (user: User, token: string) => void;
   signOut: () => void;
