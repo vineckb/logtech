@@ -1,13 +1,20 @@
 import { createContext } from 'react';
 
-export interface AuthContextType {
-  signed: boolean;
-  setSigned: (signed: boolean) => void;
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
 }
 
-const AuthContext = createContext<AuthContextType>({
-  signed: false,
-  setSigned: (signed: boolean) => {},
-});
+export interface AuthContextType {
+  signed: boolean;
+  user: User;
+
+  signIn: (user: User, token: string) => void;
+  signOut: () => void;
+}
+
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export default AuthContext;
