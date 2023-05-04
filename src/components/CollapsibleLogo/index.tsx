@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ReactComponent as Logo } from '../../assets/logo-white.svg';
+import { ReactComponent as Logo } from '@/assets/logo-white.svg';
 
 const Wrapper = styled.div`
   margin: 15px 20px;

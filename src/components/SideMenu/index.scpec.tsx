@@ -8,4 +8,6 @@ describe('<SideMenu />', () => {
   test('showing menu items without text when open is false');
 
   test('all menu items has icon');
+
+  test('the links are pointing to the right place');
 });

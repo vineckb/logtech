@@ -1,6 +1,6 @@
 import { useDisclosure } from '@chakra-ui/react';
-import { AppBar } from '../AppBar';
-import { SideNav } from '../SideNav';
+import { AppBar } from '@/components/AppBar';
+import { SideNav } from '@/components/SideNav';
 
 export function Layout() {
   const { getButtonProps, isOpen: open } = useDisclosure({

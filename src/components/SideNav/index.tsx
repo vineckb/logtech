@@ -1,5 +1,5 @@
-import { CollapsibleLogo } from '../CollapsibleLogo';
-import { SideMenu } from '../SideMenu';
+import { CollapsibleLogo } from '@/components/CollapsibleLogo';
+import { SideMenu } from '@/components/SideMenu';
 import { Wrapper } from './styles';
 
 interface Props {
