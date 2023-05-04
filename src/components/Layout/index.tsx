@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 import { AppBar } from '../AppBar';
 import { SideNav } from '../SideNav';
