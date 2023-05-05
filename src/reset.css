@@ -9,3 +9,8 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+img,
+svg {
+  max-width: 100%;
+}

@@ -8,7 +8,7 @@ interface Props {
 export function AppBar({ open, buttonProps }: Props) {
   return (
     <div className="appBar">
-      <button {...buttonProps} style={{ float: 'right' }}>
+      <button {...buttonProps}>
         <MenuIcon toggled={open} />
       </button>
     </div>

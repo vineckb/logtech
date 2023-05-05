@@ -9,7 +9,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const storedToken = localStorage.getItem('@App:token');
   const storedUser = localStorage.getItem('@App:user');
 
-  const [signed, setSigned] = useState<boolean>(true);
+  const [signed, setSigned] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string>('');
 

@@ -38,10 +38,12 @@ export const MenuLink = styled(Link)`
   flex-grow: 1;
   align-items: center;
   padding: 10px;
+  transition: color 0.2s linear;
 
-  &:hover {
+  &:hover,
+  &.active {
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.2);
+    color: #ede5e5;
   }
 `;
 
