@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   & svg {
     width: auto;
     height: 48px;
+    max-width: none;
   }
 
   &.collapsed {
