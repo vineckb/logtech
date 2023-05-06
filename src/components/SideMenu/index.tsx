@@ -92,14 +92,6 @@ export function SideMenu({ open }: Props) {
             </LinkText>
           </MenuLink>
         </MenuItem>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/auditoria">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Auditoria</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
       </Menu>
     </Wrapper>
   );
