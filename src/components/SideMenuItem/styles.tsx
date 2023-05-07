@@ -3,6 +3,13 @@ import { ListIcon, ListItem, Link } from '@chakra-ui/react';
 
 export const MenuItem = styled(ListItem)`
   display: flex;
+  transition: color 0.2s linear;
+  flex-direction: column;
+
+  &.active > a,
+  &:hover > a {
+    color: #ede5e5;
+  }
 `;
 
 export const MenuLink = styled(Link)`
@@ -10,12 +17,10 @@ export const MenuLink = styled(Link)`
   flex-grow: 1;
   align-items: center;
   padding: 10px;
-  transition: color 0.2s linear;
+  outline: none;
 
-  &:hover,
-  &.active {
+  &:hover {
     text-decoration: none;
-    color: #ede5e5;
   }
 `;
 

@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: 'settings',
+            path: 'configuracao',
             element: <Settings />,
           },
           dashboardRouter,
