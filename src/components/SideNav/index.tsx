@@ -1,12 +1,10 @@
 import { CollapsibleLogo } from '@/components/CollapsibleLogo';
 import { SideMenu } from '@/components/SideMenu';
 import { Wrapper } from './styles';
+import { useSideNav } from '@/hooks/useSideNav';
 
-interface Props {
-  open: boolean;
-}
-
-export function SideNav({ open }: Props) {
+export function SideNav() {
+  const { open } = useSideNav();
   const initialOverflow = window.document.body.style.overflowX;
 
   return (
@@ -21,7 +19,7 @@ export function SideNav({ open }: Props) {
     >
       <CollapsibleLogo collapsed={!open} />
 
-      <SideMenu open={open} />
+      <SideMenu />
     </Wrapper>
   );
 }

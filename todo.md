@@ -1,0 +1,2 @@
+- [ ] - add subitems to sidemenu
+- [ ] - review old code & collect relevant things

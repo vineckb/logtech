@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { SignInForm, SignInFormValues } from './Form';
 import { FormWrapper, Page, SideImage } from './styles';
-import { useAuth } from '@/hooks';
-import { User } from '@/contexts/auth';
+import { useAuth } from '@/hooks/useAuth';
+import { User } from '@/contexts/Auth';
 
 export function SignIn() {
   const navigate = useNavigate();

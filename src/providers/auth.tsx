@@ -1,4 +1,4 @@
-import AuthContext, { User } from '@/contexts/auth';
+import { AuthContext, User } from '@/contexts/Auth';
 import { ReactElement, useEffect, useState } from 'react';
 
 interface AuthProviderProps {

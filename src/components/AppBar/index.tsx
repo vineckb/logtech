@@ -1,16 +1,15 @@
 import MenuIcon from 'hamburger-react';
+import { Wrapper } from './styles';
+import { useSideNav } from '@/hooks/useSideNav';
 
-interface Props {
-  open: boolean;
-  buttonProps: object;
-}
+export function AppBar() {
+  const { open, buttonProps } = useSideNav();
 
-export function AppBar({ open, buttonProps }: Props) {
   return (
-    <div className="appBar">
+    <Wrapper>
       <button {...buttonProps}>
         <MenuIcon toggled={open} />
       </button>
-    </div>
+    </Wrapper>
   );
 }

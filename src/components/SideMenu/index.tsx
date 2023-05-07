@@ -1,97 +1,70 @@
-import { Link as ReachLink } from 'react-router-dom';
+import { Menu, MenuTitle, Wrapper } from './styles';
+import { MenuItemProps, SideMenuItem } from '../SideMenuItem';
 import { MdSettings } from 'react-icons/md';
-import {
-  LinkText,
-  Menu,
-  MenuIcon,
-  MenuItem,
-  MenuLink,
-  MenuTitle,
-  Wrapper,
-} from './styles';
+import { useSideNav } from '@/hooks/useSideNav';
 
 interface Props {
   open: boolean;
 }
 
-export function SideMenu({ open }: Props) {
+const menuItems: MenuItemProps[] = [
+  {
+    to: '/settings',
+    title: 'Configuração da Aplicação',
+    icon: MdSettings,
+  },
+  {
+    to: '/dashboard',
+    title: 'Painel de Controle',
+    icon: MdSettings,
+  },
+  {
+    to: '/entradas',
+    title: 'Entradas',
+    icon: MdSettings,
+  },
+  {
+    to: '/expedicoes',
+    title: 'Expedições',
+    icon: MdSettings,
+  },
+  {
+    to: '/gestao',
+    title: 'Gestão',
+    icon: MdSettings,
+  },
+  {
+    to: '/auditoria',
+    title: 'Auditoria',
+    icon: MdSettings,
+  },
+  {
+    to: '/cadastro',
+    title: 'Cadastro',
+    icon: MdSettings,
+  },
+  {
+    to: '/consulta',
+    title: 'Consulta',
+    icon: MdSettings,
+  },
+  {
+    to: '/recepcao',
+    title: 'Recepção',
+    icon: MdSettings,
+  },
+];
+
+export function SideMenu() {
+  const { open } = useSideNav();
   return (
     <Wrapper>
       <MenuTitle className={open ? '' : 'hidden'}>Menu</MenuTitle>
 
       <Menu>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/settings">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Configuração da Aplicação</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/dashboard">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Painel de Controle</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/entradas">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Entradas</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/expedicoes">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Expedições</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/gestao">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Gestão</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/auditoria">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Auditoria</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/cadastro">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Cadastro</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/consulta">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Consulta</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
-        <MenuItem>
-          <MenuLink as={ReachLink} to="/recepcao">
-            <MenuIcon as={MdSettings} fontSize={30} />
-            <LinkText className={open ? '' : 'collapsed'}>
-              <span>Recepção</span>
-            </LinkText>
-          </MenuLink>
-        </MenuItem>
+        {menuItems.map((item, index) => (
+          <SideMenuItem key={index} {...item} />
+        ))}
       </Menu>
     </Wrapper>
   );

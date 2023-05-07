@@ -15,6 +15,6 @@ export interface AuthContextType {
   signOut: () => void;
 }
 
-const AuthContext = createContext<AuthContextType>({} as AuthContextType);
-
-export default AuthContext;
+export const AuthContext = createContext<AuthContextType>(
+  {} as AuthContextType
+);
