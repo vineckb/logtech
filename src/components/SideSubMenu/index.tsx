@@ -1,5 +1,5 @@
-import { SubMenuItem, Wrapper } from './styles';
-import { Link as RouterLink } from 'react-router-dom';
+import { SideSubMenuItem } from '../SideSubMenuItem';
+import { Wrapper } from './styles';
 
 interface Prop {
   items: Array<{
@@ -14,10 +14,8 @@ export function SideSubMenu({ items, open }: Prop) {
 
   return (
     <Wrapper className={open ? 'open' : ''}>
-      {items.map(({ to, title }) => (
-        <SubMenuItem as={RouterLink} to={to}>
-          {title}
-        </SubMenuItem>
+      {items.map((item, index) => (
+        <SideSubMenuItem {...item} key={index} />
       ))}
     </Wrapper>
   );
