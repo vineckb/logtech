@@ -29,7 +29,7 @@ export function SideMenuItem({ title, to, icon, childrens }: MenuItemProps) {
             <span>{title}</span>
           </LinkText>
         </MenuLink>
-        {childrens && <SideSubMenu open={active} items={childrens} />}
+        {childrens && open && <SideSubMenu open={active} items={childrens} />}
       </MenuItem>
     </>
   );
