@@ -54,3 +54,10 @@ export const FormInput = styled(Input)`
     }
   }
 `;
+
+export const ErrorMessage = styled.p`
+  text-align: center;
+  color: #f1e3e3;
+  font-size: 14px;
+  padding-top: 15px;
+`;
