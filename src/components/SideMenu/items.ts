@@ -1,5 +1,13 @@
-import { MdSettings } from 'react-icons/md';
 import { MenuItemProps } from '../SideMenuItem';
+import {
+  FaChartLine,
+  FaChartPie,
+  FaIndustry,
+  FaRegEdit,
+  FaRegSun,
+  FaShippingFast,
+  FaRegCheckSquare,
+} from 'react-icons/fa';
 
 const childrens = [
   {
@@ -28,55 +36,43 @@ export const menuItems: MenuItemProps[] = [
   {
     to: '/configuracao',
     title: 'Configuração da Aplicação',
-    icon: MdSettings,
+    icon: FaRegSun,
     childrens,
   },
   {
     to: '/painel',
     title: 'Painel de Controle',
-    icon: MdSettings,
+    icon: FaChartLine,
     childrens,
   },
   {
     to: '/entradas',
     title: 'Entradas',
-    icon: MdSettings,
+    icon: FaChartPie,
+    childrens,
+  },
+  {
+    to: '/movimentacoes',
+    title: 'Movimentações',
+    icon: FaShippingFast,
     childrens,
   },
   {
     to: '/expedicoes',
     title: 'Expedições',
-    icon: MdSettings,
+    icon: FaRegCheckSquare,
     childrens,
   },
   {
     to: '/gestao',
     title: 'Gestão',
-    icon: MdSettings,
+    icon: FaIndustry,
     childrens,
   },
   {
     to: '/auditoria',
     title: 'Auditoria',
-    icon: MdSettings,
-    childrens,
-  },
-  {
-    to: '/cadastro',
-    title: 'Cadastro',
-    icon: MdSettings,
-    childrens,
-  },
-  {
-    to: '/consulta',
-    title: 'Consulta',
-    icon: MdSettings,
-    childrens,
-  },
-  {
-    to: '/recepcao',
-    title: 'Recepção',
-    icon: MdSettings,
+    icon: FaRegEdit,
     childrens,
   },
 ];

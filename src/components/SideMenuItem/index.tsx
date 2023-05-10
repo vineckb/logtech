@@ -24,7 +24,7 @@ export function SideMenuItem({ title, to, icon, childrens }: MenuItemProps) {
     <>
       <MenuItem className={active ? 'active' : ''}>
         <MenuLink as={ReachLink} to={to}>
-          <MenuIcon as={icon} fontSize={30} />
+          <MenuIcon as={icon} fontSize={22} />
           <LinkText className={open ? '' : 'collapsed'}>
             <span>{title}</span>
           </LinkText>
