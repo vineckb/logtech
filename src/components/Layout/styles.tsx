@@ -7,4 +7,5 @@ export const Wrapper = styled.div`
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 `;

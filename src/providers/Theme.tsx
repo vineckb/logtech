@@ -7,6 +7,13 @@ const theme = extendTheme({
       fontFamily: 'Inter, sans-serif',
       background: '#f8f8fb',
     },
+
+    img: {
+      maxWidth: '100%',
+    },
+    svg: {
+      maxWidth: '100%',
+    },
   },
   components: {
     Drawer: {

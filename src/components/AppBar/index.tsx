@@ -8,7 +8,7 @@ export function AppBar() {
   return (
     <Wrapper>
       <button {...buttonProps}>
-        <MenuIcon toggled={open} />
+        <MenuIcon toggled={open} size={20} />
       </button>
     </Wrapper>
   );
