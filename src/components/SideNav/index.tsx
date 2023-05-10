@@ -11,7 +11,7 @@ export function SideNav() {
     <Wrapper
       hidden={false}
       initial={false}
-      animate={{ minWidth: open ? 250 : 87 }}
+      animate={{ width: open ? 250 : 87 }}
       onAnimationStart={() => (window.document.body.style.overflowX = 'hidden')}
       onAnimationEnd={() =>
         (window.document.body.style.overflowX = initialOverflow)
