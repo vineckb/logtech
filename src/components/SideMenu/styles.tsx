@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { List, ListIcon, ListItem, Link } from '@chakra-ui/react';
+import { List } from '@chakra-ui/react';
 
 export const Wrapper = styled.div`
   display: flex;
