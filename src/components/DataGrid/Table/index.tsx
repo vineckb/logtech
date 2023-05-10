@@ -2,9 +2,10 @@ import { ChangeEvent, useState } from 'react';
 import { Checkbox, Tbody, Td, Th, Tr } from '@chakra-ui/react';
 import { TableHeading, TableElement } from './styles';
 import { useDataGrid } from '@/hooks/useDataGrid';
+import { ResponseType } from '../types';
 
 interface Props {
-  items: any;
+  idKey: string;
   headers: {
     key: string;
     title: string;
@@ -15,16 +16,20 @@ interface Props {
   handleRowClick: (id: string) => void;
 }
 
-export function Table({
+export function Table<DataType>({
   selectable = true,
-  deletable = true,
-  editable = true,
-  items,
   headers,
   handleRowClick,
+  idKey,
 }: Props) {
   const [allSelected, setAllSelected] = useState<boolean>(false);
-  const { selecteds, setSelecteds } = useDataGrid();
+  const { selecteds, setSelecteds, queryResult } = useDataGrid();
+
+  if (!queryResult.data) return null;
+
+  const {
+    data: { content: items },
+  } = queryResult.data as ResponseType<DataType>;
 
   function _handleRowClick(id: string) {
     if (!handleRowClick || typeof handleRowClick !== 'function') return;
@@ -38,7 +43,9 @@ export function Table({
       setSelecteds([]);
       setAllSelected(false);
     } else {
-      setSelecteds(items.map(({ id }: { id: string }) => id));
+      setSelecteds(
+        items.map((item) => item[idKey as keyof DataType] as string)
+      );
       setAllSelected(true);
     }
   }
@@ -73,23 +80,30 @@ export function Table({
           {headers.map(({ title }, index) => (
             <Th key={index}>{title}</Th>
           ))}
-
-          {(deletable || editable) && <Th>&nbsp;</Th>}
         </Tr>
       </TableHeading>
       <Tbody>
-        {items.map((item: any, row: string) => (
-          <Tr key={row} onClick={_handleRowClick(item.id)}>
+        {items.map((item: DataType, row: number) => (
+          <Tr
+            key={row}
+            onClick={_handleRowClick(item[idKey as keyof DataType] as string)}
+          >
             {selectable && (
               <Td>
                 <Checkbox
-                  isChecked={!!selecteds.find((id) => item.id === id)}
-                  onChange={toggleItem(item.id)}
+                  isChecked={
+                    !!selecteds.find(
+                      (id) => item[idKey as keyof DataType] === id
+                    )
+                  }
+                  onChange={toggleItem(item[idKey as keyof DataType] as string)}
                 />
               </Td>
             )}
             {headers.map(({ key }, column) => (
-              <Td key={`${row}-${column}`}>{item[key] as string}</Td>
+              <Td key={`${row}-${column}`}>
+                {item[key as keyof DataType] as string}
+              </Td>
             ))}
           </Tr>
         ))}

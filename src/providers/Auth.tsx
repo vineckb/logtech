@@ -33,9 +33,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   useEffect(() => {
+    console.log('effect');
     api.interceptors.request.use(function (config) {
-      const token = localStorage.getItem('token');
-      config.headers.Authorization = token ? `Bearer ${token}` : '';
+      const token = localStorage.getItem('@App:token');
+      console.log(token);
+      config.headers['X-API-Key'] = token ? `Bearer ${token}` : '';
       return config;
     });
   }, [token]);

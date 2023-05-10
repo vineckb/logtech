@@ -1,4 +1,4 @@
-import { DataGridProvider } from '@/providers/DataGrid';
+import { DataGridProvider, QueryParams } from '@/providers/DataGrid';
 import { Paper } from '../Paper';
 import { Box } from '@chakra-ui/react';
 import { SearchField } from './SearchField';
@@ -6,29 +6,30 @@ import { DeleteButton } from './DeleteButton';
 import { PrimaryButton } from '../PrimaryButton';
 import { MdAdd } from 'react-icons/md';
 import { Table } from './Table';
+import { Pagination } from './Pagination';
+import { AxiosResponse } from 'axios';
 
 interface Props {
-  items: any[];
+  idKey?: string;
   headers: { key: string; title: string }[];
+
+  query: (params?: QueryParams) => Promise<AxiosResponse>;
 
   onOpen: (id: string) => void;
   onRemove: (items: string[]) => void;
   onAdd: () => void;
-  onSearch: (q: string) => void;
-  onPaginate: (page: number) => void;
 }
 
-export function DataGrid({
-  items,
+export function DataGrid<DataType>({
+  query,
   headers,
   onOpen,
   onRemove,
   onAdd,
-  onSearch,
-  onPaginate,
+  idKey = 'id',
 }: Props) {
   return (
-    <DataGridProvider>
+    <DataGridProvider query={query}>
       <Paper p={5}>
         <Box
           display="flex"
@@ -36,7 +37,7 @@ export function DataGrid({
           mb={5}
           justifyContent="space-between"
         >
-          <SearchField onSubmit={onSearch} />
+          <SearchField />
 
           <DeleteButton onConfirm={onRemove} />
 
@@ -45,7 +46,12 @@ export function DataGrid({
             Adicionar uma rota
           </PrimaryButton>
         </Box>
-        <Table headers={headers} items={items} handleRowClick={onOpen} />
+        <Table<DataType>
+          idKey={idKey}
+          headers={headers}
+          handleRowClick={onOpen}
+        />
+        <Pagination<DataType> />
       </Paper>
     </DataGridProvider>
   );
