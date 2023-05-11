@@ -1,5 +1,5 @@
 import { MouseEvent, ChangeEvent, useState } from 'react';
-import { Checkbox, Tbody, Td, Th, Tr } from '@chakra-ui/react';
+import { Checkbox, Tbody, Td, Text, Th, Tr } from '@chakra-ui/react';
 import { TableHeading, TableElement } from './styles';
 import { useDataGrid } from '@/hooks/useDataGrid';
 import { ResponseType } from '../types';
@@ -98,30 +98,42 @@ export function Table<DataType>({
         </Tr>
       </TableHeading>
       <Tbody>
-        {items.map((item: DataType, row: number) => (
-          <Tr
-            key={row}
-            onClick={_handleRowClick(item[idKey as keyof DataType] as string)}
-          >
-            {selectable && (
-              <Td onClick={(e) => e.stopPropagation()}>
-                <Checkbox
-                  isChecked={
-                    !!selecteds.find(
-                      (id) => item[idKey as keyof DataType] === id
-                    )
-                  }
-                  onChange={toggleItem(item[idKey as keyof DataType] as string)}
-                />
-              </Td>
-            )}
-            {headers.map(({ key }, column) => (
-              <Td key={`${row}-${column}`}>
-                {item[key as keyof DataType] as string}
-              </Td>
-            ))}
+        {!items.length && (
+          <Tr>
+            <Td colSpan={headers.length + 1}>
+              <Text p={10} textAlign="center">
+                Nenhum item para exibir
+              </Text>
+            </Td>
           </Tr>
-        ))}
+        )}
+        {!!items.length &&
+          items.map((item: DataType, row: number) => (
+            <Tr
+              key={row}
+              onClick={_handleRowClick(item[idKey as keyof DataType] as string)}
+            >
+              {selectable && (
+                <Td onClick={(e) => e.stopPropagation()}>
+                  <Checkbox
+                    isChecked={
+                      !!selecteds.find(
+                        (id) => item[idKey as keyof DataType] === id
+                      )
+                    }
+                    onChange={toggleItem(
+                      item[idKey as keyof DataType] as string
+                    )}
+                  />
+                </Td>
+              )}
+              {headers.map(({ key }, column) => (
+                <Td key={`${row}-${column}`}>
+                  {item[key as keyof DataType] as string}
+                </Td>
+              ))}
+            </Tr>
+          ))}
       </Tbody>
     </TableElement>
   );
