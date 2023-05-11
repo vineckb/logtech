@@ -43,7 +43,32 @@ export const menuItems: MenuItemProps[] = [
     to: '/painel',
     title: 'Painel de Controle',
     icon: FaChartLine,
-    childrens,
+    childrens: [
+      {
+        to: '/painel/cadastro-de-depositos',
+        title: 'Cadastro de Depósito',
+      },
+      {
+        to: '/painel/cadastro-de-estacoes',
+        title: 'Cadastro de Estação',
+      },
+      {
+        to: '/painel/cadastro-de-enderecos',
+        title: 'Cadastro de Endereço',
+      },
+      {
+        to: '/painel/cadastro-de-usuarios',
+        title: 'Cadastro de Usuário',
+      },
+      {
+        to: '/painel/cadastro-de-motivos',
+        title: 'Cadastro de Motivos',
+      },
+      {
+        to: '/painel/consulta-de-usuarios-logados',
+        title: 'Consulta de Usuários Logados',
+      },
+    ],
   },
   {
     to: '/entradas',

@@ -12,19 +12,25 @@ import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
 
 const headers = [
-  { key: 'idcliente', title: 'ID' },
-  { key: 'nome', title: 'Nome' },
+  { key: 'rua', title: 'Rua' },
+  { key: 'predio', title: 'Prédio' },
+  { key: 'andar', title: 'Andar' },
+  { key: 'apto', title: 'Apartamento' },
+  { key: 'direcao', title: 'Direção' },
+  { key: 'ativo', title: 'Ativo' },
 ];
 
 interface DataType {
-  idcliente: string;
-  nome: string;
-  nomecidade: string;
-  email: string;
-  ativo: string;
+  idendereco: number;
+  rua: string;
+  predio: number;
+  andar: number;
+  apto: string;
+  direcao: string;
+  ativo: number;
 }
 
-export function PainelIndex() {
+export function PainelEndereco() {
   function handleOpen(id: string) {
     console.log(`opening item #${id}`);
   }
@@ -40,22 +46,22 @@ export function PainelIndex() {
     console.log('opening form to add new item');
   }
 
-  const query = () => api.get('/clientes');
+  const query = () => api.get('/enderecos');
 
   return (
     <Box p={5}>
-      <PageTitle>Page Title</PageTitle>
-      <DataGrid query={query}>
+      <PageTitle>Cadastro de endereços</PageTitle>
+      <DataGrid query={['enderecos', query]}>
         <Header>
           <SearchField />
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd} />
+          <ButtonAdd onClick={handleAdd}>Adicionar Endereço</ButtonAdd>
         </Header>
 
         <Table<DataType>
-          idKey="idcliente"
+          idKey="idendereco"
           headers={headers}
           onRowClick={handleOpen}
         />

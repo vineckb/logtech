@@ -14,6 +14,7 @@ export interface QueryParams {
 interface DataGridProviderProps {
   children?: ReactElement;
   query: (params: QueryParams) => Promise<AxiosResponse>;
+  queryName: string;
 }
 
 interface ResponseType {
@@ -23,7 +24,11 @@ interface ResponseType {
   pageNumber: number;
 }
 
-export function DataGridProvider({ children, query }: DataGridProviderProps) {
+export function DataGridProvider({
+  queryName,
+  children,
+  query,
+}: DataGridProviderProps) {
   const [selecteds, setSelecteds] = useState<string[]>([]);
   const [page, setPage] = useState<number>(2);
   const [totalCount, setTotalCount] = useState<number>(90);
@@ -31,7 +36,7 @@ export function DataGridProvider({ children, query }: DataGridProviderProps) {
   const [search, setSearch] = useState<string>('');
 
   const queryResult: UseQueryResult<ResponseType> = useQuery({
-    queryKey: ['test', page, totalCount, perPage, search],
+    queryKey: [queryName, page, totalCount, perPage, search],
 
     queryFn: (): Promise<AxiosResponse<ResponseType>> =>
       query({ page, totalCount, perPage, search }),

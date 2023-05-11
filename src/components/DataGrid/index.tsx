@@ -3,13 +3,13 @@ import { Paper } from '@/components/Paper';
 import { AxiosResponse } from 'axios';
 
 interface Props {
-  query: (params?: QueryParams) => Promise<AxiosResponse>;
+  query: [string, (params?: QueryParams) => Promise<AxiosResponse>];
   children: React.ReactElement | React.ReactElement[];
 }
 
-export function DataGrid({ query, children }: Props) {
+export function DataGrid({ query: [queryName, query], children }: Props) {
   return (
-    <DataGridProvider query={query}>
+    <DataGridProvider queryName={queryName} query={query}>
       <Paper p={5}>{children}</Paper>
     </DataGridProvider>
   );

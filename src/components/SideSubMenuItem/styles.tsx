@@ -4,6 +4,7 @@ import { Link } from '@chakra-ui/react';
 export const SubMenuItem = styled(Link)`
   transition: color 0.3s linear;
   display: flex;
+  white-space: break-spaces;
 
   &:hover,
   &.active {
