@@ -17,6 +17,10 @@ export function SearchField() {
     }
   }
 
+  function handleBlur() {
+    setSearch(value);
+  }
+
   return (
     <InputGroup w="auto" mr={3}>
       <InputLeftElement pointerEvents="none">
@@ -27,6 +31,7 @@ export function SearchField() {
         value={value}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
+        onBlur={handleBlur}
       />
     </InputGroup>
   );
