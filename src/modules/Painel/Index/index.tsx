@@ -23,6 +23,9 @@ export function PainelIndex() {
 
   function handleRemove(items: string[]) {
     console.log('removing items:', items);
+    return new Promise<void>((resolve) => {
+      window.setTimeout(resolve, 1000);
+    });
   }
 
   function handleAdd() {
