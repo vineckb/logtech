@@ -3,16 +3,23 @@ import { AuthProvider } from '@/providers/Auth';
 import { ThemeProvider } from '@/providers/Theme';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+    },
+  },
+});
 
 export function Root() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
           <Outlet />
-        </ThemeProvider>
-      </AuthProvider>
-    </QueryClientProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
