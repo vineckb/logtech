@@ -15,11 +15,9 @@ export function SignIn() {
     doSignIn(credentials, {
       onError: (e) => {
         setError('Algo deu errado! Tente novamente mais tarde.');
-        console.log('error', e);
       },
       onSuccess(response) {
         if (!response) {
-          console.log('err');
           setError('Usuário ou senha incorretos');
           return;
         }
