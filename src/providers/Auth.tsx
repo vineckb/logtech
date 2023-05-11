@@ -1,7 +1,6 @@
 import { AuthContext, User } from '@/contexts/Auth';
 import { api } from '@/services/api';
 import { ReactElement, useEffect, useState } from 'react';
-import { redirect } from 'react-router-dom';
 
 interface AuthProviderProps {
   children?: ReactElement;
@@ -18,25 +17,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [token, setToken] = useState<string>(storedToken || '');
 
   useEffect(() => {
-    api.interceptors.response.use(
-      function (response) {
-        return response;
-      },
-      function (error) {
-        if (401 === error.response.status) {
-          redirect('/signin');
-        } else {
-          return Promise.reject(error);
-        }
-      }
-    );
-  }, []);
-
-  useEffect(() => {
-    console.log('effect');
     api.interceptors.request.use(function (config) {
-      const token = localStorage.getItem('@App:token');
-      console.log(token);
       config.headers['X-API-Key'] = token ? `Bearer ${token}` : '';
       return config;
     });
