@@ -5,8 +5,7 @@ import { Box } from '@chakra-ui/react';
 
 const headers = [
   { key: 'idcliente', title: 'ID' },
-  { key: 'name', title: 'Nome' },
-  { key: 'email', title: 'E-mail' },
+  { key: 'nome', title: 'Nome' },
 ];
 
 interface DataType {
