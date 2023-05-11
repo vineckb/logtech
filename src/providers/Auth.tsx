@@ -1,3 +1,4 @@
+import { useMemo, useCallback } from 'react';
 import { AuthContext, User } from '@/contexts/Auth';
 import { api } from '@/services/api';
 import { ReactElement, useEffect, useState } from 'react';
@@ -23,25 +24,28 @@ export function AuthProvider({ children }: AuthProviderProps) {
     });
   }, [token]);
 
-  function signIn(user: User, token: string) {
+  const signIn = useCallback((user: User, token: string) => {
     setUser(user);
     setToken(token);
     setSigned(true);
 
     localStorage.setItem('@App:user', JSON.stringify(user));
     localStorage.setItem('@App:token', token);
-  }
+  }, []);
 
-  function signOut() {
+  const signOut = useCallback(() => {
     setUser(null);
     setToken('');
     setSigned(false);
 
     localStorage.removeItem('@App:user');
     localStorage.removeItem('@App:token');
-  }
+  }, []);
 
-  const context = { signed, user, token, signIn, signOut };
+  const context = useMemo(
+    () => ({ signed, user, token, signIn, signOut }),
+    [signed, user, token, signIn, signOut]
+  );
 
   return (
     <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
