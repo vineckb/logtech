@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { MouseEvent, ChangeEvent, useState } from 'react';
 import { Checkbox, Tbody, Td, Th, Tr } from '@chakra-ui/react';
 import { TableHeading, TableElement } from './styles';
 import { useDataGrid } from '@/hooks/useDataGrid';
@@ -55,7 +55,7 @@ export function Table<DataType>({
   }
 
   function toggleItem(id: string) {
-    return (e: any) => {
+    return () => {
       if (selecteds.find((_id) => id === _id)) {
         setSelecteds(selecteds.filter((_id) => id !== _id));
       } else {
@@ -77,8 +77,14 @@ export function Table<DataType>({
       <TableHeading>
         <Tr>
           {selectable && (
-            <Th>
-              <Checkbox isChecked={allSelected} onChange={toggleSelectAll} />
+            <Th width={10}>
+              <Checkbox
+                isIndeterminate={
+                  !!selecteds.length && selecteds.length < items.length
+                }
+                isChecked={selecteds.length === items.length}
+                onChange={toggleSelectAll}
+              />
             </Th>
           )}
           {headers.map(({ title }, index) => (
