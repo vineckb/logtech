@@ -77,7 +77,7 @@ export function DeleteButton({ onConfirm }: Props) {
               mr={3}
               onClick={handleCancel}
             >
-              Close
+              Cancelar
             </Button>
             <Button
               colorScheme="red"
