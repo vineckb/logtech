@@ -16,7 +16,9 @@ api.interceptors.response.use(
     return response;
   },
   function (error) {
-    if (401 === error.response.status) {
+    if ([401, 403].includes(error.response.status)) {
+      localStorage.removeItem('@App:user');
+      localStorage.removeItem('@App:token');
       redirect('/signin');
     } else {
       return Promise.reject(error);
