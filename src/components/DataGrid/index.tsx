@@ -3,11 +3,10 @@ import { Paper } from '../Paper';
 import { Box } from '@chakra-ui/react';
 import { SearchField } from './SearchField';
 import { DeleteButton } from './DeleteButton';
-import { PrimaryButton } from '../PrimaryButton';
-import { MdAdd } from 'react-icons/md';
 import { Table } from './Table';
 import { Pagination } from './Pagination';
 import { AxiosResponse } from 'axios';
+import { ButtonAdd } from './ButtonAdd';
 
 interface Props {
   idKey?: string;
@@ -41,10 +40,7 @@ export function DataGrid<DataType>({
 
           <DeleteButton onConfirm={onRemove} />
 
-          <PrimaryButton onClick={onAdd}>
-            <MdAdd fontSize={18} style={{ marginRight: '5px' }} />
-            Adicionar uma rota
-          </PrimaryButton>
+          <ButtonAdd onClick={onAdd} />
         </Box>
         <Table<DataType>
           idKey={idKey}
