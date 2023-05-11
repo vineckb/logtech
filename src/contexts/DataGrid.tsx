@@ -6,6 +6,7 @@ interface DataGridContextType {
   page: number;
   totalCount: number;
   perPage: number;
+  search: string;
 
   queryResult: UseQueryResult;
 
@@ -13,6 +14,7 @@ interface DataGridContextType {
   setPage: (page: number) => void;
   setTotalCount: (page: number) => void;
   setPerPage: (page: number) => void;
+  setSearch: (q: string) => void;
 }
 
 export const DataGridContext = createContext<DataGridContextType>(

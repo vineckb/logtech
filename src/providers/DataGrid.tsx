@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DataGridContext } from '@/contexts/DataGrid';
 import { ReactElement } from 'react';
 import { AxiosResponse } from 'axios';
@@ -8,6 +8,7 @@ export interface QueryParams {
   page: number;
   totalCount: number;
   perPage: number;
+  search: string;
 }
 
 interface DataGridProviderProps {
@@ -27,6 +28,7 @@ export function DataGridProvider({ children, query }: DataGridProviderProps) {
   const [page, setPage] = useState<number>(2);
   const [totalCount, setTotalCount] = useState<number>(90);
   const [perPage, setPerPage] = useState<number>(10);
+  const [search, setSearch] = useState<string>('');
 
   const queryResult: UseQueryResult<ResponseType> = useQuery({
     queryKey: ['test'],
@@ -40,10 +42,12 @@ export function DataGridProvider({ children, query }: DataGridProviderProps) {
     page,
     totalCount,
     perPage,
+    search,
     setSelecteds,
     setPage,
     setTotalCount,
     setPerPage,
+    setSearch,
   };
   return (
     <DataGridContext.Provider value={context}>
