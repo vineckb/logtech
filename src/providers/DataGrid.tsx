@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { DataGridContext } from '@/contexts/DataGrid';
 import { ReactElement } from 'react';
 import { AxiosResponse } from 'axios';
@@ -31,9 +31,10 @@ export function DataGridProvider({ children, query }: DataGridProviderProps) {
   const [search, setSearch] = useState<string>('');
 
   const queryResult: UseQueryResult<ResponseType> = useQuery({
-    queryKey: ['test'],
+    queryKey: ['test', page, totalCount, perPage, search],
+
     queryFn: (): Promise<AxiosResponse<ResponseType>> =>
-      query({ page, totalCount, perPage }),
+      query({ page, totalCount, perPage, search }),
   });
 
   const context = {
