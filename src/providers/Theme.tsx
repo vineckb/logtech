@@ -3,16 +3,15 @@ import { PropsWithChildren } from 'react';
 
 const theme = extendTheme({
   styles: {
-    body: {
-      fontFamily: 'Inter, sans-serif',
-      background: '#f8f8fb',
-    },
+    global: {
+      body: {
+        fontFamily: 'Inter, sans-serif',
+        background: '#f8f8fb',
+      },
 
-    img: {
-      maxWidth: '100%',
-    },
-    svg: {
-      maxWidth: '100%',
+      'img, svg': {
+        maxWidth: '100%',
+      },
     },
   },
   components: {
