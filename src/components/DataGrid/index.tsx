@@ -1,54 +1,23 @@
 import { DataGridProvider, QueryParams } from '@/providers/DataGrid';
-import { Paper } from '../Paper';
-import { Box } from '@chakra-ui/react';
-import { SearchField } from './SearchField';
-import { DeleteButton } from './DeleteButton';
-import { Table } from './Table';
-import { Pagination } from './Pagination';
+import { Paper } from '@/components/Paper';
 import { AxiosResponse } from 'axios';
-import { ButtonAdd } from './ButtonAdd';
 
 interface Props {
-  idKey?: string;
-  headers: { key: string; title: string }[];
-
   query: (params?: QueryParams) => Promise<AxiosResponse>;
-
-  onOpen: (id: string) => void;
-  onRemove: (items: string[]) => void;
-  onAdd: () => void;
+  children: React.ReactElement | React.ReactElement[];
 }
 
-export function DataGrid<DataType>({
-  query,
-  headers,
-  onOpen,
-  onRemove,
-  onAdd,
-  idKey = 'id',
-}: Props) {
+export function DataGrid({ query, children }: Props) {
   return (
     <DataGridProvider query={query}>
-      <Paper p={5}>
-        <Box
-          display="flex"
-          flexDirection="row"
-          mb={5}
-          justifyContent="space-between"
-        >
-          <SearchField />
-
-          <DeleteButton onConfirm={onRemove} />
-
-          <ButtonAdd onClick={onAdd} />
-        </Box>
-        <Table<DataType>
-          idKey={idKey}
-          headers={headers}
-          handleRowClick={onOpen}
-        />
-        <Pagination<DataType> />
-      </Paper>
+      <Paper p={5}>{children}</Paper>
     </DataGridProvider>
   );
 }
+
+export { ButtonAdd } from './ButtonAdd';
+export { DeleteButton } from './DeleteButton';
+export { Header } from './Header';
+export { Pagination } from './Pagination';
+export { SearchField } from './SearchField';
+export { Table } from './Table';

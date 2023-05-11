@@ -1,4 +1,4 @@
-export interface ResponseType<T> {
+export interface ResponseType<T = any> {
   data: {
     content: T[];
     totalElements: number;

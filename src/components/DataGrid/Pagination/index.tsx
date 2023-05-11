@@ -3,14 +3,14 @@ import { Button, ButtonGroup } from '@chakra-ui/react';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { ResponseType } from '../types';
 
-export function Pagination<DataType>() {
+export function Pagination() {
   const { page, perPage, setPage, queryResult } = useDataGrid();
 
-  if (!queryResult.data) return null;
+  if (!queryResult || !queryResult.data) return null;
 
   const {
     data: { totalElements: totalCount },
-  } = queryResult.data as ResponseType<DataType>;
+  } = queryResult.data as ResponseType;
 
   const pages = Math.ceil(totalCount / perPage);
 

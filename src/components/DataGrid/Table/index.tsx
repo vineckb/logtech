@@ -14,19 +14,19 @@ interface Props {
   selectable?: boolean;
   deletable?: boolean;
   editable?: boolean;
-  handleRowClick: (id: string) => void;
+  onRowClick: (id: string) => void;
 }
 
 export function Table<DataType>({
   selectable = true,
   headers,
-  handleRowClick,
+  onRowClick,
   idKey,
 }: Props) {
   const [allSelected, setAllSelected] = useState<boolean>(false);
   const { selecteds, setSelecteds, queryResult } = useDataGrid();
 
-  if (queryResult.isLoading || queryResult.isRefetching) {
+  if (!queryResult || queryResult.isLoading) {
     return <TableSkeleton />;
   }
 
@@ -36,13 +36,13 @@ export function Table<DataType>({
     data: { content: items },
   } = queryResult.data as ResponseType<DataType>;
 
-  function _handleRowClick(id: string) {
-    if (!handleRowClick || typeof handleRowClick !== 'function') return;
+  function _onRowClick(id: string) {
+    if (!onRowClick || typeof onRowClick !== 'function') return;
 
     return (e: MouseEvent<HTMLElement>) => {
       if (e.currentTarget.nodeName !== 'TR') return;
 
-      handleRowClick(id);
+      onRowClick(id);
     };
   }
 
@@ -111,7 +111,7 @@ export function Table<DataType>({
           items.map((item: DataType, row: number) => (
             <Tr
               key={row}
-              onClick={_handleRowClick(item[idKey as keyof DataType] as string)}
+              onClick={_onRowClick(item[idKey as keyof DataType] as string)}
             >
               {selectable && (
                 <Td onClick={(e) => e.stopPropagation()}>

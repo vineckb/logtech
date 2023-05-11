@@ -1,4 +1,12 @@
-import { DataGrid } from '@/components/DataGrid';
+import {
+  DataGrid,
+  ButtonAdd,
+  DeleteButton,
+  Header,
+  Pagination,
+  SearchField,
+  Table,
+} from '@/components/DataGrid';
 import { PageTitle } from '@/components/PageTitle';
 import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
@@ -37,14 +45,23 @@ export function PainelIndex() {
   return (
     <Box p={5}>
       <PageTitle>Page Title</PageTitle>
-      <DataGrid<DataType>
-        idKey="idcliente"
-        query={query}
-        headers={headers}
-        onOpen={handleOpen}
-        onRemove={handleRemove}
-        onAdd={handleAdd}
-      />
+      <DataGrid query={query}>
+        <Header>
+          <SearchField />
+
+          <DeleteButton onConfirm={handleRemove} />
+
+          <ButtonAdd onClick={handleAdd} />
+        </Header>
+
+        <Table<DataType>
+          idKey="idcliente"
+          headers={headers}
+          onRowClick={handleOpen}
+        />
+
+        <Pagination />
+      </DataGrid>
     </Box>
   );
 }
