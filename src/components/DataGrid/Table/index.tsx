@@ -34,7 +34,11 @@ export function Table<DataType>({
   function _handleRowClick(id: string) {
     if (!handleRowClick || typeof handleRowClick !== 'function') return;
 
-    return () => handleRowClick(id);
+    return (e: MouseEvent<HTMLElement>) => {
+      if (e.currentTarget.nodeName !== 'TR') return;
+
+      handleRowClick(id);
+    };
   }
 
   function toggleSelectAll(e: ChangeEvent<HTMLInputElement>) {
@@ -89,7 +93,7 @@ export function Table<DataType>({
             onClick={_handleRowClick(item[idKey as keyof DataType] as string)}
           >
             {selectable && (
-              <Td>
+              <Td onClick={(e) => e.stopPropagation()}>
                 <Checkbox
                   isChecked={
                     !!selecteds.find(
