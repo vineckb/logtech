@@ -3,6 +3,7 @@ import { Checkbox, Tbody, Td, Th, Tr } from '@chakra-ui/react';
 import { TableHeading, TableElement } from './styles';
 import { useDataGrid } from '@/hooks/useDataGrid';
 import { ResponseType } from '../types';
+import { TableSkeleton } from './TableSkeleton';
 
 interface Props {
   idKey: string;
@@ -24,6 +25,10 @@ export function Table<DataType>({
 }: Props) {
   const [allSelected, setAllSelected] = useState<boolean>(false);
   const { selecteds, setSelecteds, queryResult } = useDataGrid();
+
+  if (queryResult.isLoading || queryResult.isRefetching) {
+    return <TableSkeleton />;
+  }
 
   if (!queryResult.data) return null;
 
