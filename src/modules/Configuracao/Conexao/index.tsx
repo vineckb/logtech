@@ -12,16 +12,27 @@ import { QueryParams } from '@/providers/DataGrid';
 import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
 
+const idKey = 'idconexao';
+
 const headers = [
-  { key: 'idmotivo', title: 'ID' },
-  { key: 'status', title: 'Status' },
-  { key: 'bloqestoque', title: 'Bloqueio de estoque' },
+  { key: 'nomedb', title: 'Nome do Banco de Dados' },
+  { key: 'servidor', title: 'Servidor' },
+  { key: 'usuario', title: 'Usuário' },
+  { key: 'senha', title: 'Senha' },
+  { key: 'iderp', title: 'ID ERP' },
+  { key: 'tipo', title: 'Tipo' },
+  { key: 'ativo', title: 'Status' },
 ];
 
 interface DataType {
-  idmotivo: number;
-  status: string;
-  bloqestoque: string;
+  idconexao: number;
+  nomedb: string;
+  servidor: string;
+  usuario: number;
+  senha: string;
+  iderp: number;
+  tipo: string;
+  ativo: number;
 }
 
 export function ConfiguracaoConexao() {
@@ -40,22 +51,22 @@ export function ConfiguracaoConexao() {
     console.log('opening form to add new item');
   }
 
-  const query = ({ search, page }: QueryParams) => api.get('/motivos');
+  const query = ({ search, page }: QueryParams) => api.get('/conexaocliente');
 
   return (
     <Box p={5}>
-      <PageTitle>Cadastro de Motivos</PageTitle>
-      <DataGrid query={['motivos', query]}>
+      <PageTitle>Conexão Cliente</PageTitle>
+      <DataGrid query={['conexaocliente', query]}>
         <Header>
           <SearchField />
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd}>Adicionar Motivo</ButtonAdd>
+          <ButtonAdd onClick={handleAdd}>Adicionar Conexão</ButtonAdd>
         </Header>
 
         <Table<DataType>
-          idKey="idmotivo"
+          idKey={idKey}
           headers={headers}
           onRowClick={handleOpen}
         />
