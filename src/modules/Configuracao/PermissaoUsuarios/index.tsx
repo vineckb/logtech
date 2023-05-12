@@ -12,16 +12,23 @@ import { QueryParams } from '@/providers/DataGrid';
 import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
 
+const idKey = 'idpermissao';
+
 const headers = [
-  { key: 'idmotivo', title: 'ID' },
-  { key: 'status', title: 'Status' },
-  { key: 'bloqestoque', title: 'Bloqueio de estoque' },
+  { key: 'idrotina', title: 'Rotina' },
+  { key: 'idfuncionalidade', title: 'Funcionalidade' },
+  { key: 'idusuario', title: 'Usuário' },
+  { key: 'dataliberacao', title: 'Data da liberação' },
+  { key: 'ativo', title: 'Avito' },
 ];
 
 interface DataType {
-  idmotivo: number;
-  status: string;
-  bloqestoque: string;
+  idpermissao: number;
+  idrotina: number;
+  idfuncionalidade: number;
+  idusuario: number;
+  dataliberacao: string;
+  ativo: string;
 }
 
 export function ConfiguracaoPermissaoUsuarios() {
@@ -40,22 +47,22 @@ export function ConfiguracaoPermissaoUsuarios() {
     console.log('opening form to add new item');
   }
 
-  const query = ({ search, page }: QueryParams) => api.get('/motivos');
+  const query = ({ search, page }: QueryParams) => api.get('/permissao');
 
   return (
     <Box p={5}>
-      <PageTitle>Cadastro de Motivos</PageTitle>
-      <DataGrid query={['motivos', query]}>
+      <PageTitle>Permissão de Usuários</PageTitle>
+      <DataGrid query={['permissao-usuarios', query]}>
         <Header>
           <SearchField />
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd}>Adicionar Motivo</ButtonAdd>
+          <ButtonAdd onClick={handleAdd} />
         </Header>
 
         <Table<DataType>
-          idKey="idmotivo"
+          idKey={idKey}
           headers={headers}
           onRowClick={handleOpen}
         />
