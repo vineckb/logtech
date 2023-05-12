@@ -13,19 +13,19 @@ export const EntradasModule = {
     childrens: [
       {
         to: '/entradas/consulta-de-fornecedores',
-        title: 'Consulta de Fornecedores',
+        title: 'Fornecedores',
       },
       {
         to: '/entradas/consulta-de-grupos',
-        title: 'Consulta de Grupos',
+        title: 'Grupos',
       },
       {
         to: '/entradas/consulta-de-subgrupos',
-        title: 'Consulta de Subgrupos',
+        title: 'Subgrupos',
       },
       {
         to: '/entradas/consulta-de-produtos',
-        title: 'Consulta de Produtos',
+        title: 'Produtos',
       },
     ],
   },

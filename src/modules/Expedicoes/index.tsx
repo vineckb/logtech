@@ -14,28 +14,28 @@ export const ExpedicoesModule = {
     icon: FaRegCheckSquare,
     childrens: [
       {
-        to: '/expedicoes/consulta-de-regiao',
-        title: 'Consulta de Região',
+        to: '/expedicoes/consulta-de-regioes',
+        title: 'Regiões',
       },
       {
-        to: '/expedicoes/consulta-de-rota',
-        title: 'Consulta de Rota',
+        to: '/expedicoes/consulta-de-rotas',
+        title: 'Rotas',
       },
       {
-        to: '/expedicoes/consulta-de-cliente',
-        title: 'Consulta de Cliente',
+        to: '/expedicoes/consulta-de-clientes',
+        title: 'Clientes',
       },
       {
-        to: '/expedicoes/consulta-de-vendedor',
-        title: 'Consulta de Vendedor',
+        to: '/expedicoes/consulta-de-vendedores',
+        title: 'Vendedores',
       },
       {
-        to: '/expedicoes/consulta-de-transportadora',
-        title: 'Consulta de Transportadora',
+        to: '/expedicoes/consulta-de-transportadoras',
+        title: 'Transportadoras',
       },
       {
-        to: '/expedicoes/consulta-de-veiculo-de-transportadora',
-        title: 'Consulta de Veículo Transportadora',
+        to: '/expedicoes/consulta-de-veiculos-de-transportadoras',
+        title: 'Veículos de Transportadoras',
       },
     ],
   },
@@ -47,27 +47,27 @@ export const ExpedicoesModule = {
     },
 
     {
-      path: 'expedicoes/consulta-de-regiao',
+      path: 'expedicoes/consulta-de-regioes',
       element: <ExpedicoesRegiao />,
     },
     {
-      path: 'expedicoes/consulta-de-rota',
+      path: 'expedicoes/consulta-de-rotas',
       element: <ExpedicoesRota />,
     },
     {
-      path: 'expedicoes/consulta-de-cliente',
+      path: 'expedicoes/consulta-de-clientes',
       element: <ExpedicoesCliente />,
     },
     {
-      path: 'expedicoes/consulta-de-vendedor',
+      path: 'expedicoes/consulta-de-vendedores',
       element: <ExpedicoesVendedor />,
     },
     {
-      path: 'expedicoes/consulta-de-transportadora',
+      path: 'expedicoes/consulta-de-transportadoras',
       element: <ExpedicoesTransportadora />,
     },
     {
-      path: 'expedicoes/consulta-de-veiculo-de-transportadora',
+      path: 'expedicoes/consulta-de-veiculos-de-transportadoras',
       element: <ExpedicoesVeiculoDeTransportadora />,
     },
   ],

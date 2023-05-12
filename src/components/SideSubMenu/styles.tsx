@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin: 0 50px;
+  margin: 0 35px;
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.3s ease-out;

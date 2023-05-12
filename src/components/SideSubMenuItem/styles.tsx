@@ -5,6 +5,7 @@ export const SubMenuItem = styled(Link)`
   transition: color 0.3s linear;
   display: flex;
   white-space: break-spaces;
+  align-items: center;
 
   &:hover,
   &.active {

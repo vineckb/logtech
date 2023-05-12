@@ -5,6 +5,7 @@ import { ConfiguracaoLicencas } from './Licencas';
 import { ConfiguracaoPermissaoFiliais } from './PermissaoFiliais';
 import { ConfiguracaoPermissaoUsuarios } from './PermissaoUsuarios';
 import { ConfiguracaoRotinas } from './Rotinas';
+import { MdOutlinePlaylistAdd, MdPlaylistAdd } from 'react-icons/md';
 
 export const ConfiguracaoModule = {
   menuItem: {
@@ -15,6 +16,7 @@ export const ConfiguracaoModule = {
       {
         to: '/configuracao/definicao-de-licencas',
         title: 'Definição de Licenças',
+        icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/configuracao/conexao-cliente',
@@ -23,14 +25,17 @@ export const ConfiguracaoModule = {
       {
         to: '/configuracao/liberacao-de-rotinas',
         title: 'Liberação de Rotinas',
+        icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/configuracao/permissao-de-usuarios',
         title: 'Permissão de Usuários',
+        icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/configuracao/permissao-de-filiais',
         title: 'Permissão de Filiais',
+        icon: MdPlaylistAdd,
       },
     ],
   },

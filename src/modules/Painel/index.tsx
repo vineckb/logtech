@@ -6,6 +6,7 @@ import { PainelEstacao } from './Estacao';
 import { PainelMotivo } from './Motivo';
 import { PainelUsuario } from './Usuario';
 import { PainelUsuariosLogados } from './UsuariosLogados';
+import { MdOutlinePlaylistAdd, MdOutlineViewList } from 'react-icons/md';
 
 export const PainelModule = {
   menuItem: {
@@ -15,27 +16,32 @@ export const PainelModule = {
     childrens: [
       {
         to: '/painel/cadastro-de-depositos',
-        title: 'Cadastro de Depósito',
+        title: 'Depósitos',
+        icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/cadastro-de-estacoes',
-        title: 'Cadastro de Estação',
+        title: 'Estações',
+        icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/cadastro-de-enderecos',
-        title: 'Cadastro de Endereço',
+        title: 'Endereços',
+        icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/cadastro-de-usuarios',
-        title: 'Cadastro de Usuário',
+        title: 'Usuários',
+        icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/cadastro-de-motivos',
-        title: 'Cadastro de Motivos',
+        title: 'Motivos',
+        icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/consulta-de-usuarios-logados',
-        title: 'Consulta de Usuários Logados',
+        title: 'Usuários Logados',
       },
     ],
   },
