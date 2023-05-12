@@ -3,7 +3,7 @@ import { Paper } from '@/components/Paper';
 import { AxiosResponse } from 'axios';
 
 interface Props {
-  query: [string, (params?: QueryParams) => Promise<AxiosResponse>];
+  query: [string, (params: QueryParams) => Promise<AxiosResponse>];
   children: React.ReactElement | React.ReactElement[];
 }
 

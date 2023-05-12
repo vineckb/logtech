@@ -1,10 +1,17 @@
+import { FaIndustry } from 'react-icons/fa';
 import { GestaoIndex } from './Index/index';
 
-const routes = [
-  {
-    path: 'gestao',
-    element: <GestaoIndex />,
+export const GestaoModule = {
+  menuItem: {
+    to: '/gestao',
+    title: 'Gestão',
+    icon: FaIndustry,
   },
-];
 
-export default routes;
+  routes: [
+    {
+      path: 'gestao',
+      element: <GestaoIndex />,
+    },
+  ],
+};

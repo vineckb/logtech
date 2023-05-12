@@ -1,10 +1,17 @@
+import { FaRegEdit } from 'react-icons/fa';
 import { AuditoriaIndex } from './Index/index';
 
-const routes = [
-  {
-    path: 'auditoria',
-    element: <AuditoriaIndex />,
+export const AuditoriaModule = {
+  menuItem: {
+    to: '/auditoria',
+    title: 'Auditoria',
+    icon: FaRegEdit,
   },
-];
 
-export default routes;
+  routes: [
+    {
+      path: 'auditoria',
+      element: <AuditoriaIndex />,
+    },
+  ],
+};

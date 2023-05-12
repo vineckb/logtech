@@ -61,7 +61,7 @@ export function PainelUsuario() {
         </Header>
 
         <Table<DataType>
-          idKey="idcliente"
+          idKey="idusuario"
           headers={headers}
           onRowClick={handleOpen}
         />

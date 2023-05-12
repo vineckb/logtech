@@ -24,7 +24,7 @@ interface DataType {
   bloqestoque: string;
 }
 
-export function PainelMotivo() {
+export function ExpedicoesVendedor() {
   function handleOpen(id: string) {
     console.log(`opening item #${id}`);
   }

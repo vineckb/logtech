@@ -6,15 +6,13 @@ import { SignIn } from '@/modules/SignIn';
 import { ProtectedRoute } from './ProtectedRoute';
 
 // modules
-import auditoriaRoutes from '@/modules/Auditoria';
-import cadastroRoutes from '@/modules/Cadastro';
-import configuracaoRoutes from '@/modules/Configuracao';
-import consultaRoutes from '@/modules/Consulta';
-import entradasRoutes from '@/modules/Entradas';
-import expedicoesRoutes from '@/modules/Expedicoes';
-import gestaoRoutes from '@/modules/Gestao';
-import painelRoutes from '@/modules/Painel';
-import recepcaoRoutes from '@/modules/Recepcao';
+import { AuditoriaModule } from '@/modules/Auditoria';
+import { ConfiguracaoModule } from '@/modules/Configuracao';
+import { EntradasModule } from '@/modules/Entradas';
+import { ExpedicoesModule } from '@/modules/Expedicoes';
+import { GestaoModule } from '@/modules/Gestao';
+import { PainelModule } from '@/modules/Painel';
+import { MovimentacoesModule } from '@/modules/Movimentacoes';
 
 export const router = createBrowserRouter([
   {
@@ -30,16 +28,13 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         children: [
-          ...painelRoutes,
-          ...auditoriaRoutes,
-          ...cadastroRoutes,
-          ...configuracaoRoutes,
-          ...consultaRoutes,
-          ...entradasRoutes,
-          ...expedicoesRoutes,
-          ...gestaoRoutes,
-          ...painelRoutes,
-          ...recepcaoRoutes,
+          ...PainelModule.routes,
+          ...AuditoriaModule.routes,
+          ...ConfiguracaoModule.routes,
+          ...EntradasModule.routes,
+          ...ExpedicoesModule.routes,
+          ...GestaoModule.routes,
+          ...MovimentacoesModule.routes,
         ],
       },
       {
