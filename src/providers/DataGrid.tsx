@@ -30,7 +30,7 @@ export function DataGridProvider({
   query,
 }: DataGridProviderProps) {
   const [selecteds, setSelecteds] = useState<string[]>([]);
-  const [page, setPage] = useState<number>(2);
+  const [page, setPage] = useState<number>(1);
   const [totalCount, setTotalCount] = useState<number>(90);
   const [perPage, setPerPage] = useState<number>(10);
   const [search, setSearch] = useState<string>('');
