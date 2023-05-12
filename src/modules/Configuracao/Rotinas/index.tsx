@@ -12,16 +12,19 @@ import { QueryParams } from '@/providers/DataGrid';
 import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
 
+const idKey = 'idrotina';
+
 const headers = [
-  { key: 'idmotivo', title: 'ID' },
-  { key: 'status', title: 'Status' },
-  { key: 'bloqestoque', title: 'Bloqueio de estoque' },
+  { key: 'nomerotina', title: 'Nome da Rotina' },
+  { key: 'ordem', title: 'Ordem' },
+  { key: 'ativo', title: 'Ativo' },
 ];
 
 interface DataType {
-  idmotivo: number;
-  status: string;
-  bloqestoque: string;
+  idrotina: number;
+  nomerotina: string;
+  ordem: string;
+  ativo: string;
 }
 
 export function ConfiguracaoRotinas() {
@@ -40,22 +43,22 @@ export function ConfiguracaoRotinas() {
     console.log('opening form to add new item');
   }
 
-  const query = ({ search, page }: QueryParams) => api.get('/motivos');
+  const query = ({ search, page }: QueryParams) => api.get('/rotinas');
 
   return (
     <Box p={5}>
-      <PageTitle>Cadastro de Motivos</PageTitle>
-      <DataGrid query={['motivos', query]}>
+      <PageTitle>Liberação de Rotinas</PageTitle>
+      <DataGrid query={['rotinas', query]}>
         <Header>
           <SearchField />
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd}>Adicionar Motivo</ButtonAdd>
+          <ButtonAdd onClick={handleAdd}>Adicionar Rotina</ButtonAdd>
         </Header>
 
         <Table<DataType>
-          idKey="idmotivo"
+          idKey={idKey}
           headers={headers}
           onRowClick={handleOpen}
         />
