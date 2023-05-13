@@ -14,11 +14,11 @@ import {
 } from '@chakra-ui/react';
 import { FaTrash } from 'react-icons/fa';
 
-interface Props {
-  onConfirm: (items: string[]) => void;
+interface Props<IDType> {
+  onConfirm: (id: IDType) => void;
 }
 
-export function DeleteButton({ onConfirm }: Props) {
+export function DeleteButton<IDType = number>({ onConfirm }: Props<IDType>) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { queryResult, selecteds } = useDataGrid();
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,7 +29,9 @@ export function DeleteButton({ onConfirm }: Props) {
 
   async function handleConfirm() {
     setLoading(true);
-    await onConfirm(selecteds);
+    await Promise.all(
+      await selecteds.map(async (id) => onConfirm(id as IDType))
+    );
     await queryResult.refetch();
     setLoading(false);
     onClose();
