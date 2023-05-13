@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { redirect } from 'react-router';
+import { redirect } from 'react-router-dom';
 
 export const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,

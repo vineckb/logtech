@@ -11,6 +11,7 @@ import { PageTitle } from '@/components/PageTitle';
 import { QueryParams } from '@/providers/DataGrid';
 import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
+import { Outlet } from 'react-router-dom';
 
 const idKey = 'idconexao';
 
@@ -73,6 +74,7 @@ export function ConfiguracaoConexao() {
 
         <Pagination />
       </DataGrid>
+      <Outlet />
     </Box>
   );
 }

@@ -6,6 +6,7 @@ import { ConfiguracaoPermissaoFiliais } from './PermissaoFiliais';
 import { ConfiguracaoPermissaoUsuarios } from './PermissaoUsuarios';
 import { ConfiguracaoRotinas } from './Rotinas';
 import { MdOutlinePlaylistAdd, MdPlaylistAdd } from 'react-icons/md';
+import { ConfiguracaoConexaoOverview } from './Conexao/Overview';
 
 export const ConfiguracaoModule = {
   menuItem: {
@@ -52,6 +53,7 @@ export const ConfiguracaoModule = {
     {
       path: 'configuracao/conexao-cliente',
       element: <ConfiguracaoConexao />,
+      children: [{ path: ':id', element: <ConfiguracaoConexaoOverview /> }],
     },
     {
       path: 'configuracao/liberacao-de-rotinas',
