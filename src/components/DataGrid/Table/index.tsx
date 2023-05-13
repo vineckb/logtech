@@ -6,7 +6,7 @@ import { ResponseType } from '../types';
 import { TableSkeleton } from './TableSkeleton';
 
 interface Props {
-  idKey: string;
+  idKey?: string;
   headers: {
     key: string;
     title: string;
@@ -21,7 +21,7 @@ export function Table<DataType>({
   selectable = true,
   headers,
   onRowClick,
-  idKey,
+  idKey = 'id',
 }: Props) {
   const [allSelected, setAllSelected] = useState<boolean>(false);
   const { selecteds, setSelecteds, queryResult } = useDataGrid();

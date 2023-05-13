@@ -1,7 +1,5 @@
 import {
   DataGrid,
-  ButtonAdd,
-  DeleteButton,
   Header,
   Pagination,
   SearchField,
@@ -13,15 +11,15 @@ import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
 
 const headers = [
-  { key: 'idmotivo', title: 'ID' },
-  { key: 'status', title: 'Status' },
-  { key: 'bloqestoque', title: 'Bloqueio de estoque' },
+  { key: 'idproduto', title: 'ID Produto' },
+  { key: 'nome', title: 'Nome' },
+  { key: 'cp_fornecedores', title: 'Fornecedor' },
 ];
 
 interface DataType {
-  idmotivo: number;
-  status: string;
-  bloqestoque: string;
+  idproduto: number;
+  nome: string;
+  cp_fornecedores: string;
 }
 
 export function EntradasProdutos() {
@@ -29,33 +27,18 @@ export function EntradasProdutos() {
     console.log(`opening item #${id}`);
   }
 
-  function handleRemove(items: string[]) {
-    console.log('removing items:', items);
-    return new Promise<void>((resolve) => {
-      window.setTimeout(resolve, 1000);
-    });
-  }
-
-  function handleAdd() {
-    console.log('opening form to add new item');
-  }
-
-  const query = ({ search, page }: QueryParams) => api.get('/motivos');
+  const query = ({ search, page }: QueryParams) => api.get('/produtos');
 
   return (
     <Box p={5}>
-      <PageTitle>Cadastro de Motivos</PageTitle>
-      <DataGrid query={['motivos', query]}>
+      <PageTitle>Consulta de Produtos</PageTitle>
+      <DataGrid query={['produtos', query]}>
         <Header>
           <SearchField />
-
-          <DeleteButton onConfirm={handleRemove} />
-
-          <ButtonAdd onClick={handleAdd}>Adicionar Motivo</ButtonAdd>
         </Header>
 
         <Table<DataType>
-          idKey="idmotivo"
+          selectable={false}
           headers={headers}
           onRowClick={handleOpen}
         />

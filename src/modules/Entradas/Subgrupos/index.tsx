@@ -1,7 +1,5 @@
 import {
   DataGrid,
-  ButtonAdd,
-  DeleteButton,
   Header,
   Pagination,
   SearchField,
@@ -13,15 +11,18 @@ import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
 
 const headers = [
-  { key: 'idmotivo', title: 'ID' },
-  { key: 'status', title: 'Status' },
-  { key: 'bloqestoque', title: 'Bloqueio de estoque' },
+  { key: 'idsubgrupo', title: 'ID Subgrupo' },
+  { key: 'nome', title: 'Nome' },
+  { key: 'grupo', title: 'Grupo' },
+  { key: 'ativo', title: 'Ativo' },
 ];
 
 interface DataType {
-  idmotivo: number;
-  status: string;
-  bloqestoque: string;
+  idsubgrupo: string;
+  nome: string;
+  ativo: string;
+  grupo: string;
+  cp_grupos: number;
 }
 
 export function EntradasSubgrupos() {
@@ -29,33 +30,18 @@ export function EntradasSubgrupos() {
     console.log(`opening item #${id}`);
   }
 
-  function handleRemove(items: string[]) {
-    console.log('removing items:', items);
-    return new Promise<void>((resolve) => {
-      window.setTimeout(resolve, 1000);
-    });
-  }
-
-  function handleAdd() {
-    console.log('opening form to add new item');
-  }
-
-  const query = ({ search, page }: QueryParams) => api.get('/motivos');
+  const query = ({ search, page }: QueryParams) => api.get('/subgrupos');
 
   return (
     <Box p={5}>
-      <PageTitle>Cadastro de Motivos</PageTitle>
-      <DataGrid query={['motivos', query]}>
+      <PageTitle>Consulta de Grupos</PageTitle>
+      <DataGrid query={['subgrupos', query]}>
         <Header>
           <SearchField />
-
-          <DeleteButton onConfirm={handleRemove} />
-
-          <ButtonAdd onClick={handleAdd}>Adicionar Motivo</ButtonAdd>
         </Header>
 
         <Table<DataType>
-          idKey="idmotivo"
+          selectable={false}
           headers={headers}
           onRowClick={handleOpen}
         />

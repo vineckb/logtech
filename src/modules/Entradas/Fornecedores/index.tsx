@@ -1,7 +1,5 @@
 import {
   DataGrid,
-  ButtonAdd,
-  DeleteButton,
   Header,
   Pagination,
   SearchField,
@@ -13,15 +11,32 @@ import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
 
 const headers = [
-  { key: 'idmotivo', title: 'ID' },
-  { key: 'status', title: 'Status' },
-  { key: 'bloqestoque', title: 'Bloqueio de estoque' },
+  { key: 'idfornecedor', title: 'ID Fornecedor' },
+  { key: 'nome', title: 'Nome' },
+  { key: 'cpf', title: 'CPF' },
+  { key: 'ie', title: 'IE' },
+  { key: 'uf', title: 'UF' },
+  { key: 'cidade', title: 'Cidade' },
+  { key: 'logradouro', title: 'Logradouro' },
+  { key: 'numero', title: 'Número' },
+  { key: 'bairro', title: 'Bairro' },
+  { key: 'telefone', title: 'Telefone' },
 ];
 
 interface DataType {
-  idmotivo: number;
-  status: string;
-  bloqestoque: string;
+  idfornecedor: string;
+  idatividade: number;
+  nome: string;
+  nomefantasia: string;
+  cpf: string;
+  ie: string;
+  estado: string;
+  codcidade: string;
+  bairro: string;
+  endereco: string;
+  numero: number;
+  telefone: string;
+  cp_fornecedores: number;
 }
 
 export function EntradasFornecedores() {
@@ -29,33 +44,18 @@ export function EntradasFornecedores() {
     console.log(`opening item #${id}`);
   }
 
-  function handleRemove(items: string[]) {
-    console.log('removing items:', items);
-    return new Promise<void>((resolve) => {
-      window.setTimeout(resolve, 1000);
-    });
-  }
-
-  function handleAdd() {
-    console.log('opening form to add new item');
-  }
-
-  const query = ({ search, page }: QueryParams) => api.get('/motivos');
+  const query = ({ search, page }: QueryParams) => api.get('/fornecedores');
 
   return (
     <Box p={5}>
-      <PageTitle>Cadastro de Motivos</PageTitle>
-      <DataGrid query={['motivos', query]}>
+      <PageTitle>Consulta de Fornecedores</PageTitle>
+      <DataGrid query={['fornecedores', query]}>
         <Header>
           <SearchField />
-
-          <DeleteButton onConfirm={handleRemove} />
-
-          <ButtonAdd onClick={handleAdd}>Adicionar Motivo</ButtonAdd>
         </Header>
 
         <Table<DataType>
-          idKey="idmotivo"
+          selectable={false}
           headers={headers}
           onRowClick={handleOpen}
         />
