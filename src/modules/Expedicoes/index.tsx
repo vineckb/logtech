@@ -1,11 +1,11 @@
 import { FaRegCheckSquare } from 'react-icons/fa';
 import { ExpedicoesDashboard } from './Dashboard';
-import { ExpedicoesRegiao } from './Regiao';
-import { ExpedicoesRota } from './Rota';
-import { ExpedicoesCliente } from './Cliente';
-import { ExpedicoesVendedor } from './Vendedor';
-import { ExpedicoesTransportadora } from './Transportadora';
-import { ExpedicoesVeiculoDeTransportadora } from './VeiculoDeTransportadora';
+import { ExpedicoesRegioes } from './Regioes';
+import { ExpedicoesRotas } from './Rotas';
+import { ExpedicoesClientes } from './Clientes';
+import { ExpedicoesVendedores } from './Vendedores';
+import { ExpedicoesTransportadoras } from './Transportadoras';
+import { ExpedicoesVeiculosDeTransportadoras } from './VeiculosDeTransportadoras';
 
 export const ExpedicoesModule = {
   menuItem: {
@@ -35,7 +35,7 @@ export const ExpedicoesModule = {
       },
       {
         to: '/expedicoes/consulta-de-veiculos-de-transportadoras',
-        title: 'Veículos de Transportadoras',
+        title: 'Veículo Transportadora',
       },
     ],
   },
@@ -48,27 +48,27 @@ export const ExpedicoesModule = {
 
     {
       path: 'expedicoes/consulta-de-regioes',
-      element: <ExpedicoesRegiao />,
+      element: <ExpedicoesRegioes />,
     },
     {
       path: 'expedicoes/consulta-de-rotas',
-      element: <ExpedicoesRota />,
+      element: <ExpedicoesRotas />,
     },
     {
       path: 'expedicoes/consulta-de-clientes',
-      element: <ExpedicoesCliente />,
+      element: <ExpedicoesClientes />,
     },
     {
       path: 'expedicoes/consulta-de-vendedores',
-      element: <ExpedicoesVendedor />,
+      element: <ExpedicoesVendedores />,
     },
     {
       path: 'expedicoes/consulta-de-transportadoras',
-      element: <ExpedicoesTransportadora />,
+      element: <ExpedicoesTransportadoras />,
     },
     {
       path: 'expedicoes/consulta-de-veiculos-de-transportadoras',
-      element: <ExpedicoesVeiculoDeTransportadora />,
+      element: <ExpedicoesVeiculosDeTransportadoras />,
     },
   ],
 };
