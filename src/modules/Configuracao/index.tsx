@@ -1,12 +1,13 @@
 import { FaRegSun } from 'react-icons/fa';
-import { ConfiguracaoConexao } from './Conexao';
+import { ConfiguracaoConexaoList } from './Conexao/List';
 import { ConfiguracaoDashboard } from './Dashboard/index';
 import { ConfiguracaoLicencas } from './Licencas';
 import { ConfiguracaoPermissaoFiliais } from './PermissaoFiliais';
 import { ConfiguracaoPermissaoUsuarios } from './PermissaoUsuarios';
 import { ConfiguracaoRotinas } from './Rotinas';
 import { MdOutlinePlaylistAdd, MdPlaylistAdd } from 'react-icons/md';
-import { ConfiguracaoConexaoOverview } from './Conexao/Overview';
+import { ConfiguracaoConexaoItem } from './Conexao/Item';
+import { ConfiguracaoConexaoEdit } from './Conexao/Edit';
 
 export const ConfiguracaoModule = {
   menuItem: {
@@ -52,8 +53,11 @@ export const ConfiguracaoModule = {
     },
     {
       path: 'configuracao/conexao-cliente',
-      element: <ConfiguracaoConexao />,
-      children: [{ path: ':id', element: <ConfiguracaoConexaoOverview /> }],
+      element: <ConfiguracaoConexaoList />,
+      children: [
+        { path: ':id', element: <ConfiguracaoConexaoItem /> },
+        { path: ':id/editar', element: <ConfiguracaoConexaoEdit /> },
+      ],
     },
     {
       path: 'configuracao/liberacao-de-rotinas',

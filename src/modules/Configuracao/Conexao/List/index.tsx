@@ -11,7 +11,7 @@ import { PageTitle } from '@/components/PageTitle';
 import { QueryParams } from '@/providers/DataGrid';
 import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const idKey = 'idconexao';
 
@@ -36,9 +36,11 @@ interface DataType {
   ativo: number;
 }
 
-export function ConfiguracaoConexao() {
+export function ConfiguracaoConexaoList() {
+  const navigate = useNavigate();
+
   function handleOpen(id: string) {
-    console.log(`opening item #${id}`);
+    navigate(`${id}`);
   }
 
   function handleRemove(items: string[]) {
@@ -63,7 +65,7 @@ export function ConfiguracaoConexao() {
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd}>Adicionar Conexão</ButtonAdd>
+          <ButtonAdd onClick={handleAdd} />
         </Header>
 
         <Table<DataType>

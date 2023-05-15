@@ -1,14 +1,12 @@
 import { createContext, useContext } from 'react';
 
-interface OverviewModalContextType {
-  handleClose: () => void;
-}
+interface OverviewModalContextType {}
 
 export const OverviewModalContext = createContext<OverviewModalContextType>(
   {} as OverviewModalContextType
 );
 
-export function useOverviewContext() {
+export function useOverviewModalContext() {
   const context = useContext(OverviewModalContext);
 
   return context;
