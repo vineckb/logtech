@@ -1,12 +1,17 @@
-import { OverviewContent } from '@/components/OverviewModal';
 import { api } from '@/services/api';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 
 import { AxiosResponse } from 'axios';
 import { ContentSkeleton } from './Skeleton';
-import { FormLabel, Input, FormControl, Box } from '@chakra-ui/react';
-import { Resource } from '../types';
+import {
+  FormLabel,
+  Input,
+  FormControl,
+  Box,
+  ModalBody,
+} from '@chakra-ui/react';
+import { Resource } from '../../types';
 
 export function ConfiguracaoConexaoEditForm() {
   const { id } = useParams();
@@ -27,7 +32,7 @@ export function ConfiguracaoConexaoEditForm() {
   const resource = data?.data;
 
   return (
-    <OverviewContent>
+    <ModalBody>
       <Box display="flex" flexDirection="column" gap={5}>
         <FormControl>
           <FormLabel>Ativo</FormLabel>
@@ -159,6 +164,6 @@ export function ConfiguracaoConexaoEditForm() {
           <Input defaultValue={resource?.usuario} />
         </FormControl>
       </Box>
-    </OverviewContent>
+    </ModalBody>
   );
 }

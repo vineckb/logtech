@@ -7,7 +7,8 @@ import { ConfiguracaoPermissaoUsuarios } from './PermissaoUsuarios';
 import { ConfiguracaoRotinas } from './Rotinas';
 import { MdOutlinePlaylistAdd, MdPlaylistAdd } from 'react-icons/md';
 import { ConfiguracaoConexaoItem } from './Conexao/Item';
-import { ConfiguracaoConexaoEdit } from './Conexao/Edit';
+import { ConfiguracaoConexaoItemEdit } from './Conexao/Item/Edit';
+import { ConfiguracaoConexaoItemDetails } from './Conexao/Item/Details';
 
 export const ConfiguracaoModule = {
   menuItem: {
@@ -55,8 +56,14 @@ export const ConfiguracaoModule = {
       path: 'configuracao/conexao-cliente',
       element: <ConfiguracaoConexaoList />,
       children: [
-        { path: ':id', element: <ConfiguracaoConexaoItem /> },
-        { path: ':id/editar', element: <ConfiguracaoConexaoEdit /> },
+        {
+          path: ':id',
+          element: <ConfiguracaoConexaoItem />,
+          children: [
+            { path: '', element: <ConfiguracaoConexaoItemDetails /> },
+            { path: 'editar', element: <ConfiguracaoConexaoItemEdit /> },
+          ],
+        },
       ],
     },
     {

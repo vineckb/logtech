@@ -1,30 +1,33 @@
-import {
-  OverviewFooter,
-  OverviewHeader,
-  OverviewModal,
-} from '@/components/OverviewModal';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Box, Button, Icon, ModalCloseButton, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Icon,
+  ModalCloseButton,
+  ModalFooter,
+  ModalHeader,
+  Text,
+} from '@chakra-ui/react';
 import { MdCheck } from 'react-icons/md';
 import { ConfiguracaoConexaoEditForm } from './Form';
 
-export function ConfiguracaoConexaoEdit() {
+export function ConfiguracaoConexaoItemEdit() {
   const { id } = useParams();
   const navigate = useNavigate();
 
   function handleClose() {
-    navigate('/configuracao/conexao-cliente');
+    navigate('..');
   }
 
   function handleCancel() {
-    navigate(`/configuracao/conexao-cliente/${id}`);
+    navigate('../');
   }
 
   function handleSave() {}
 
   return (
-    <OverviewModal onClose={handleClose}>
-      <OverviewHeader>
+    <>
+      <ModalHeader>
         <Text as="h3" mb={5}>
           Conexão Cliente #{id}
         </Text>
@@ -39,9 +42,9 @@ export function ConfiguracaoConexaoEdit() {
           </Button>
         </Box>
         <ModalCloseButton onClick={handleClose} />
-      </OverviewHeader>
+      </ModalHeader>
       <ConfiguracaoConexaoEditForm />
-      <OverviewFooter>
+      <ModalFooter>
         <Button variant="link" onClick={handleCancel}>
           Cancelar edição
         </Button>
@@ -49,7 +52,7 @@ export function ConfiguracaoConexaoEdit() {
           <Icon as={MdCheck} mr={3} />
           Salvar
         </Button>
-      </OverviewFooter>
-    </OverviewModal>
+      </ModalFooter>
+    </>
   );
 }
