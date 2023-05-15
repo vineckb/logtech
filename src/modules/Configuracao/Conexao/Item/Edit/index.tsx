@@ -1,58 +1,32 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import {
-  Box,
-  Button,
-  Icon,
-  ModalCloseButton,
-  ModalFooter,
-  ModalHeader,
-  Text,
-} from '@chakra-ui/react';
-import { MdCheck } from 'react-icons/md';
+import { useParams } from 'react-router-dom';
 import { ConfiguracaoConexaoEditForm } from './Form';
+import { EditSkeleton } from './Skeleton';
+import { Resource } from '../../types';
+import { AxiosResponse } from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import { api } from '@/services/api';
 
 export function ConfiguracaoConexaoItemEdit() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
-  function handleClose() {
-    navigate('..');
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['conexao-overview'],
+    queryFn: (): Promise<AxiosResponse<Resource>> =>
+      api.get(`/conexaocliente/${id}`),
+  });
+
+  if (isLoading) return <EditSkeleton />;
+
+  if (error) {
+    console.error(error);
+    return <p>Error</p>;
   }
 
-  function handleCancel() {
-    navigate('../');
-  }
-
-  function handleSave() {}
+  const resource = data?.data;
 
   return (
     <>
-      <ModalHeader>
-        <Text as="h3" mb={5}>
-          Conexão Cliente #{id}
-        </Text>
-
-        <Box display="flex" flexDir="row" gap={5} justifyContent="flex-end">
-          <Button variant="link" onClick={handleCancel}>
-            Cancelar edição
-          </Button>
-          <Button colorScheme="green" onClick={handleSave}>
-            <Icon as={MdCheck} mr={3} />
-            Salvar
-          </Button>
-        </Box>
-        <ModalCloseButton onClick={handleClose} />
-      </ModalHeader>
-      <ConfiguracaoConexaoEditForm />
-      <ModalFooter>
-        <Button variant="link" onClick={handleCancel}>
-          Cancelar edição
-        </Button>
-        <Button colorScheme="green" onClick={handleSave}>
-          <Icon as={MdCheck} mr={3} />
-          Salvar
-        </Button>
-      </ModalFooter>
+      <ConfiguracaoConexaoEditForm defaultValues={resource as Resource} />
     </>
   );
 }

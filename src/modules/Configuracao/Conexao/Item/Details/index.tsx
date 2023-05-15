@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { AxiosResponse } from 'axios';
-import { ContentSkeleton } from '../Skeleton';
+import { DetailsSkeleton } from './Skeleton';
 import { Resource } from '../../types';
 import {
   Box,
@@ -32,7 +32,7 @@ export function ConfiguracaoConexaoItemDetails() {
     navigate('./');
   }
 
-  if (isLoading) return <ContentSkeleton />;
+  if (isLoading) return <DetailsSkeleton />;
 
   if (error) {
     console.error(error);

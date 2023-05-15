@@ -1,6 +1,6 @@
 import { Skeleton, Stack } from '@chakra-ui/react';
 
-export function ContentSkeleton() {
+export function EditSkeleton() {
   return (
     <Stack m={6}>
       <Skeleton h={30} />
