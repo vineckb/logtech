@@ -40,7 +40,7 @@ export function ConfiguracaoConexaoList() {
   const navigate = useNavigate();
 
   function handleOpen(id: string) {
-    navigate(`${id}`);
+    navigate(`${id}/editar`);
   }
 
   function handleRemove(items: string[]) {
