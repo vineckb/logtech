@@ -16,13 +16,18 @@ import { Outlet, useNavigate } from 'react-router-dom';
 const idKey = 'idconexao';
 
 const headers = [
-  { key: 'nomedb', title: 'Nome do Banco de Dados' },
+  { key: 'idconexao', title: 'ID' },
+  { key: 'nomebd', title: 'Nome do Banco' },
   { key: 'servidor', title: 'Servidor' },
   { key: 'usuario', title: 'Usuário' },
   { key: 'senha', title: 'Senha' },
   { key: 'iderp', title: 'ID ERP' },
   { key: 'tipo', title: 'Tipo' },
-  { key: 'ativo', title: 'Status' },
+  {
+    key: 'ativo',
+    title: 'Ativo',
+    filter: (value: any): string => (value >= 1 ? 'Sim' : 'Não'),
+  },
 ];
 
 interface DataType {

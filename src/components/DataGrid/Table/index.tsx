@@ -10,6 +10,7 @@ interface Props {
   headers: {
     key: string;
     title: string;
+    filter?: (value: any) => string;
   }[];
   selectable?: boolean;
   deletable?: boolean;
@@ -77,6 +78,17 @@ export function Table<DataType>({
     };
   }
 
+  function applyFilter(
+    filter: undefined | ((v: any) => string),
+    value: any
+  ): string {
+    if (typeof filter === 'function') {
+      return filter(value);
+    }
+
+    return value;
+  }
+
   return (
     <TableElement>
       <TableHeading>
@@ -129,7 +141,10 @@ export function Table<DataType>({
               )}
               {headers.map(({ key }, column) => (
                 <Td key={`${row}-${column}`}>
-                  {item[key as keyof DataType] as string}
+                  {applyFilter(
+                    headers[column].filter,
+                    item[key as keyof DataType]
+                  )}
                 </Td>
               ))}
             </Tr>
