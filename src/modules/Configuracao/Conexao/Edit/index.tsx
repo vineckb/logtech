@@ -1,6 +1,5 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ConfiguracaoConexaoEditForm } from './Form';
-import { EditSkeleton } from './Skeleton';
 import { Resource } from '../types';
 import { AxiosResponse } from 'axios';
 import { useQuery } from '@tanstack/react-query';
@@ -17,8 +16,6 @@ export function ConfiguracaoConexaoItemEdit() {
       api.get(`/conexaocliente/${id}`),
   });
 
-  if (isLoading) return <EditSkeleton />;
-
   if (error) {
     console.error(error);
     return <p>Error</p>;
@@ -34,6 +31,7 @@ export function ConfiguracaoConexaoItemEdit() {
         </Text>
       }
       onCloseURL="/configuracao/conexao-cliente"
+      isLoading={isLoading}
     >
       <ConfiguracaoConexaoEditForm defaultValues={resource as Resource} />
     </EditModal>

@@ -7,15 +7,18 @@ import {
   ModalOverlay,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import { EditModalSkeleton } from './Skeleton';
 
 interface Props {
   children: React.ReactNode;
   title: React.ReactNode;
   onCloseURL: string;
+  isLoading: boolean;
   width?: number | string;
 }
 
 export function EditModal({
+  isLoading,
   children,
   title,
   onCloseURL,
@@ -34,7 +37,7 @@ export function EditModal({
 
           <ModalCloseButton onClick={handleClose} />
         </ModalHeader>
-        <ModalBody>{children}</ModalBody>
+        <ModalBody>{isLoading ? <EditModalSkeleton /> : children}</ModalBody>
       </ModalContent>
     </Modal>
   );
