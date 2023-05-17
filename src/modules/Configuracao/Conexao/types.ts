@@ -1,27 +1,7 @@
 export interface Resource {
-  ativo: number;
-  idbd: number;
-  int_transportadorasveiculos: number;
+  ativo: boolean;
   idconexao: number;
   iderp: number;
-  int_carga: string;
-  int_carregamento: string;
-  int_clientes: string;
-  int_clientesregioes: string;
-  int_clientesrotas: string;
-  int_filiais: string;
-  int_fornecedores: string;
-  int_grupos: string;
-  int_itensnfentrada: string;
-  int_itenspedidos: string;
-  int_motorista: string;
-  int_nfentrada: string;
-  int_pedidos: string;
-  int_produtos: string;
-  int_produtosembalagem: string;
-  int_subgrupos: string;
-  int_transportadoras: string;
-  int_vendedores: string;
   nomebd: string;
   senha: string;
   servidor: string;

@@ -2,26 +2,43 @@ import { useParams } from 'react-router-dom';
 import { ConfiguracaoConexaoEditForm } from './Form';
 import { Resource } from '../types';
 import { AxiosResponse } from 'axios';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { api } from '@/services/api';
 import { Text } from '@chakra-ui/react';
 import { EditModal } from '@/components/EditModal';
+import { queryClient } from '@/App';
 
 export function ConfiguracaoConexaoItemEdit() {
   const { id } = useParams();
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['conexao-overview'],
+    queryKey: ['conexaocliente'],
     queryFn: (): Promise<AxiosResponse<Resource>> =>
       api.get(`/conexaocliente/${id}`),
   });
+
+  const { mutateAsync } = useMutation({
+    mutationKey: ['conexao-edit'],
+    mutationFn: (values: Resource) => api.post(`/conexaocliente/${id}`, values),
+    onSuccess: (data, variables) => {
+      queryClient.invalidateQueries(['conexaocliente']);
+    },
+  });
+
+  async function handleSave(values: any) {
+    const data = { ...values, ativo: values.ativo ? 1 : 0 };
+    await mutateAsync({ ...resource, ...data });
+  }
 
   if (error) {
     console.error(error);
     return <p>Error</p>;
   }
 
-  const resource = data?.data;
+  const resource = {
+    ...data?.data,
+    ativo: Number(data?.data.ativo) === 1,
+  };
 
   return (
     <EditModal
@@ -33,7 +50,10 @@ export function ConfiguracaoConexaoItemEdit() {
       onCloseURL="/configuracao/conexao-cliente"
       isLoading={isLoading}
     >
-      <ConfiguracaoConexaoEditForm defaultValues={resource as Resource} />
+      <ConfiguracaoConexaoEditForm
+        defaultValues={resource as Resource}
+        handleSave={handleSave}
+      />
     </EditModal>
   );
 }
