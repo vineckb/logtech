@@ -20,7 +20,7 @@ export function Layout() {
 function Page() {
   const { open } = useSideNav();
   return (
-    <PageContainer animate={{ maxWidth: `calc(100% - ${open ? 250 : 87}px)` }}>
+    <PageContainer animate={{ marginLeft: `${open ? 250 : 87}px` }}>
       <AppBar />
       <Outlet />
     </PageContainer>
