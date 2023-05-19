@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { ConfiguracaoConexaoEditForm } from './Form';
+import { ConfiguracaoLicencasEditForm } from './Form';
 import { Resource } from '../types';
 import { AxiosResponse } from 'axios';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -8,7 +8,7 @@ import { Text } from '@chakra-ui/react';
 import { EditModal } from '@/components/EditModal';
 import { queryClient } from '@/App';
 
-export function ConfiguracaoConexaoEdit() {
+export function ConfiguracaoLicencasEdit() {
   const { id } = useParams();
 
   const { data, isLoading, error } = useQuery({
@@ -26,7 +26,7 @@ export function ConfiguracaoConexaoEdit() {
   });
 
   async function handleSave(values: any) {
-    const data = { ...values, ativo: values.ativo ? 1 : 0 };
+    const data = { ...values, status: values.status ? 1 : 0 };
     await mutateAsync({ ...resource, ...data });
   }
 
@@ -37,20 +37,20 @@ export function ConfiguracaoConexaoEdit() {
 
   const resource = {
     ...data?.data,
-    ativo: Number(data?.data.ativo) === 1,
+    status: Number(data?.data.status) === 1,
   };
 
   return (
     <EditModal
       title={
         <Text as="h3" mb={5}>
-          Conexão Cliente #{id}
+          Definição de licença #{id}
         </Text>
       }
-      onCloseURL="/configuracao/conexao-cliente"
+      onCloseURL="/configuracao/definica-de-licencas"
       isLoading={isLoading}
     >
-      <ConfiguracaoConexaoEditForm
+      <ConfiguracaoLicencasEditForm
         defaultValues={resource as Resource}
         handleSave={handleSave}
       />

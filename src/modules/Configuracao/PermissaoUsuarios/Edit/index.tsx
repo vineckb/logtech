@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { ConfiguracaoConexaoEditForm } from './Form';
+import { ConfiguracaoPermissaoUsuariosEditForm } from './Form';
 import { Resource } from '../types';
 import { AxiosResponse } from 'axios';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -8,7 +8,7 @@ import { Text } from '@chakra-ui/react';
 import { EditModal } from '@/components/EditModal';
 import { queryClient } from '@/App';
 
-export function ConfiguracaoConexaoEdit() {
+export function ConfiguracaoPermissaoUsuariosEdit() {
   const { id } = useParams();
 
   const { data, isLoading, error } = useQuery({
@@ -50,7 +50,7 @@ export function ConfiguracaoConexaoEdit() {
       onCloseURL="/configuracao/conexao-cliente"
       isLoading={isLoading}
     >
-      <ConfiguracaoConexaoEditForm
+      <ConfiguracaoPermissaoUsuariosEditForm
         defaultValues={resource as Resource}
         handleSave={handleSave}
       />

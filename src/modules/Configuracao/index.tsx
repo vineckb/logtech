@@ -1,12 +1,16 @@
 import { FaRegSun } from 'react-icons/fa';
 import { ConfiguracaoConexaoList } from './Conexao/List';
-import { ConfiguracaoDashboard } from './Dashboard/index';
-import { ConfiguracaoLicencas } from './Licencas';
-import { ConfiguracaoPermissaoFiliais } from './PermissaoFiliais';
-import { ConfiguracaoPermissaoUsuarios } from './PermissaoUsuarios';
-import { ConfiguracaoRotinas } from './Rotinas';
 import { MdOutlinePlaylistAdd, MdPlaylistAdd } from 'react-icons/md';
-import { ConfiguracaoConexaoItemEdit } from './Conexao/Edit';
+import { ConfiguracaoDashboard } from './Dashboard/index';
+import { ConfiguracaoConexaoEdit } from './Conexao/Edit';
+import { ConfiguracaoLicencasEdit } from './Licencas/Edit';
+import { ConfiguracaoLicencasList } from './Licencas/List';
+import { ConfiguracaoRotinasList } from './Rotinas/List';
+import { ConfiguracaoRotinasEdit } from './Rotinas/Edit';
+import { ConfiguracaoPermissaoUsuariosList } from './PermissaoUsuarios/List';
+import { ConfiguracaoPermissaoUsuariosEdit } from './PermissaoUsuarios/Edit';
+import { ConfiguracaoPermissaoFiliaisList } from './PermissaoFiliais/List';
+import { ConfiguracaoPermissaoFiliaisEdit } from './PermissaoFiliais/Edit';
 
 export const ConfiguracaoModule = {
   menuItem: {
@@ -48,7 +52,13 @@ export const ConfiguracaoModule = {
     },
     {
       path: 'configuracao/definicao-de-licencas',
-      element: <ConfiguracaoLicencas />,
+      element: <ConfiguracaoLicencasList />,
+      children: [
+        {
+          path: ':id/editar',
+          element: <ConfiguracaoLicencasEdit />,
+        },
+      ],
     },
     {
       path: 'configuracao/conexao-cliente',
@@ -56,21 +66,42 @@ export const ConfiguracaoModule = {
       children: [
         {
           path: ':id/editar',
-          element: <ConfiguracaoConexaoItemEdit />,
+          element: <ConfiguracaoConexaoEdit />,
         },
       ],
     },
     {
       path: 'configuracao/liberacao-de-rotinas',
-      element: <ConfiguracaoRotinas />,
+
+      element: <ConfiguracaoRotinasList />,
+      children: [
+        {
+          path: ':id/editar',
+          element: <ConfiguracaoRotinasEdit />,
+        },
+      ],
     },
     {
       path: 'configuracao/permissao-de-usuarios',
-      element: <ConfiguracaoPermissaoUsuarios />,
+
+      element: <ConfiguracaoPermissaoUsuariosList />,
+      children: [
+        {
+          path: ':id/editar',
+          element: <ConfiguracaoPermissaoUsuariosEdit />,
+        },
+      ],
     },
     {
       path: 'configuracao/permissao-de-filiais',
-      element: <ConfiguracaoPermissaoFiliais />,
+
+      element: <ConfiguracaoPermissaoFiliaisList />,
+      children: [
+        {
+          path: ':id/editar',
+          element: <ConfiguracaoPermissaoFiliaisEdit />,
+        },
+      ],
     },
   ],
 };

@@ -11,6 +11,7 @@ import { PageTitle } from '@/components/PageTitle';
 import { QueryParams } from '@/providers/DataGrid';
 import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const idKey = 'idlicenca';
 
@@ -31,9 +32,11 @@ interface DataType {
   status: string;
 }
 
-export function ConfiguracaoLicencas() {
+export function ConfiguracaoRotinasList() {
+  const navigate = useNavigate();
+
   function handleOpen(id: string) {
-    console.log(`opening item #${id}`);
+    navigate(`${id}/editar`);
   }
 
   function handleRemove(items: string[]) {
@@ -58,7 +61,7 @@ export function ConfiguracaoLicencas() {
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd}>Adicionar Licença</ButtonAdd>
+          <ButtonAdd onClick={handleAdd} />
         </Header>
 
         <Table<DataType>
