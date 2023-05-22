@@ -4,6 +4,7 @@ import { TableHeading, TableElement } from './styles';
 import { useDataGrid } from '@/hooks/useDataGrid';
 import { ResponseType } from '../types';
 import { TableSkeleton } from './TableSkeleton';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   idKey?: string;
@@ -15,17 +16,16 @@ interface Props {
   selectable?: boolean;
   deletable?: boolean;
   editable?: boolean;
-  onRowClick: (id: string) => void;
 }
 
 export function Table<DataType>({
   selectable = true,
   headers,
-  onRowClick,
   idKey = 'id',
 }: Props) {
   const [allSelected, setAllSelected] = useState<boolean>(false);
   const { selecteds, setSelecteds, queryResult } = useDataGrid();
+  const navigate = useNavigate();
 
   if (!queryResult || queryResult.isLoading) {
     return <TableSkeleton />;
@@ -37,13 +37,11 @@ export function Table<DataType>({
     data: { content: items },
   } = queryResult.data as ResponseType<DataType>;
 
-  function _onRowClick(id: string) {
-    if (!onRowClick || typeof onRowClick !== 'function') return;
-
+  function onRowClick(id: string) {
     return (e: MouseEvent<HTMLElement>) => {
       if (e.currentTarget.nodeName !== 'TR') return;
 
-      onRowClick(id);
+      navigate(`${id}`);
     };
   }
 
@@ -123,7 +121,7 @@ export function Table<DataType>({
           items.map((item: DataType, row: number) => (
             <Tr
               key={row}
-              onClick={_onRowClick(item[idKey as keyof DataType] as string)}
+              onClick={onRowClick(item[idKey as keyof DataType] as string)}
             >
               {selectable && (
                 <Td onClick={(e) => e.stopPropagation()}>

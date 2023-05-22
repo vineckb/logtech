@@ -25,10 +25,6 @@ interface DataType {
 }
 
 export function ExpedicoesRotas() {
-  function handleOpen(id: string) {
-    console.log(`opening item #${id}`);
-  }
-
   // @todo: update path
   const query = ({ search, page }: QueryParams) => api.get('/grupos');
 
@@ -40,11 +36,7 @@ export function ExpedicoesRotas() {
           <SearchField />
         </Header>
 
-        <Table<DataType>
-          selectable={false}
-          headers={headers}
-          onRowClick={handleOpen}
-        />
+        <Table<DataType> selectable={false} headers={headers} />
 
         <Pagination />
       </DataGrid>

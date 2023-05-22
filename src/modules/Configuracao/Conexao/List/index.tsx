@@ -11,7 +11,7 @@ import { PageTitle } from '@/components/PageTitle';
 import { QueryParams } from '@/providers/DataGrid';
 import { api } from '@/services/api';
 import { Box } from '@chakra-ui/react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const idKey = 'idconexao';
 
@@ -42,21 +42,11 @@ interface DataType {
 }
 
 export function ConfiguracaoConexaoList() {
-  const navigate = useNavigate();
-
-  function handleOpen(id: string) {
-    navigate(`${id}/editar`);
-  }
-
   function handleRemove(items: string[]) {
     console.log('removing items:', items);
     return new Promise<void>((resolve) => {
       window.setTimeout(resolve, 1000);
     });
-  }
-
-  function handleAdd() {
-    console.log('opening form to add new item');
   }
 
   const query = ({ search, page }: QueryParams) => api.get('/conexaocliente');
@@ -70,14 +60,10 @@ export function ConfiguracaoConexaoList() {
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd} />
+          <ButtonAdd />
         </Header>
 
-        <Table<DataType>
-          idKey={idKey}
-          headers={headers}
-          onRowClick={handleOpen}
-        />
+        <Table<DataType> idKey={idKey} headers={headers} />
 
         <Pagination />
       </DataGrid>

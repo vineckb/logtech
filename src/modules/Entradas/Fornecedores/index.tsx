@@ -40,10 +40,6 @@ interface DataType {
 }
 
 export function EntradasFornecedores() {
-  function handleOpen(id: string) {
-    console.log(`opening item #${id}`);
-  }
-
   const query = ({ search, page }: QueryParams) => api.get('/fornecedores');
 
   return (
@@ -54,11 +50,7 @@ export function EntradasFornecedores() {
           <SearchField />
         </Header>
 
-        <Table<DataType>
-          selectable={false}
-          headers={headers}
-          onRowClick={handleOpen}
-        />
+        <Table<DataType> selectable={false} headers={headers} />
 
         <Pagination />
       </DataGrid>

@@ -3,7 +3,8 @@ import { ConfiguracaoConexaoList } from './Conexao/List';
 import { MdOutlinePlaylistAdd, MdPlaylistAdd } from 'react-icons/md';
 import { ConfiguracaoDashboard } from './Dashboard/index';
 import { ConfiguracaoConexaoEdit } from './Conexao/Edit';
-import { ConfiguracaoLicencasEdit } from './Licencas/Edit';
+import { LicencasEdit } from './Licencas/Edit';
+import { LicencasCreate } from './Licencas/Create';
 import { ConfiguracaoLicencasList } from './Licencas/List';
 import { ConfiguracaoRotinasList } from './Rotinas/List';
 import { ConfiguracaoRotinasEdit } from './Rotinas/Edit';
@@ -53,12 +54,14 @@ const Module = {
     {
       path: 'configuracao/definicao-de-licencas',
       element: <ConfiguracaoLicencasList />,
-      children: [
-        {
-          path: ':id/editar',
-          element: <ConfiguracaoLicencasEdit />,
-        },
-      ],
+    },
+    {
+      path: 'configuracao/definicao-de-licencas/:id',
+      element: <LicencasEdit />,
+    },
+    {
+      path: 'configuracao/definicao-de-licencas/novo',
+      element: <LicencasCreate />,
     },
     {
       path: 'configuracao/conexao-cliente',

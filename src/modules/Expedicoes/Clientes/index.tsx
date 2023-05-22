@@ -27,10 +27,6 @@ interface DataType {
 }
 
 export function ExpedicoesClientes() {
-  function handleOpen(id: string) {
-    console.log(`opening item #${id}`);
-  }
-
   const query = ({ search, page }: QueryParams) => api.get('/clientes');
 
   return (
@@ -41,11 +37,7 @@ export function ExpedicoesClientes() {
           <SearchField />
         </Header>
 
-        <Table<DataType>
-          selectable={false}
-          headers={headers}
-          onRowClick={handleOpen}
-        />
+        <Table<DataType> selectable={false} headers={headers} />
 
         <Pagination />
       </DataGrid>

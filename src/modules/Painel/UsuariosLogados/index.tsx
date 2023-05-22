@@ -25,19 +25,11 @@ interface DataType {
 }
 
 export function PainelUsuariosLogados() {
-  function handleOpen(id: string) {
-    console.log(`opening item #${id}`);
-  }
-
   function handleRemove(items: string[]) {
     console.log('removing items:', items);
     return new Promise<void>((resolve) => {
       window.setTimeout(resolve, 1000);
     });
-  }
-
-  function handleAdd() {
-    console.log('opening form to add new item');
   }
 
   // @todo: set api endpoint
@@ -54,14 +46,10 @@ export function PainelUsuariosLogados() {
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd} />
+          <ButtonAdd />
         </Header>
 
-        <Table<DataType>
-          idKey="idcliente"
-          headers={headers}
-          onRowClick={handleOpen}
-        />
+        <Table<DataType> idKey="idcliente" headers={headers} />
 
         <Pagination />
       </DataGrid>

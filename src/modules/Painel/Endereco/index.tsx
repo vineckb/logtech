@@ -31,19 +31,11 @@ interface DataType {
 }
 
 export function PainelEndereco() {
-  function handleOpen(id: string) {
-    console.log(`opening item #${id}`);
-  }
-
   function handleRemove(items: string[]) {
     console.log('removing items:', items);
     return new Promise<void>((resolve) => {
       window.setTimeout(resolve, 1000);
     });
-  }
-
-  function handleAdd() {
-    console.log('opening form to add new item');
   }
 
   const query = () => api.get('/enderecos');
@@ -57,14 +49,10 @@ export function PainelEndereco() {
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd}>Adicionar Endereço</ButtonAdd>
+          <ButtonAdd />
         </Header>
 
-        <Table<DataType>
-          idKey="idendereco"
-          headers={headers}
-          onRowClick={handleOpen}
-        />
+        <Table<DataType> idKey="idendereco" headers={headers} />
 
         <Pagination />
       </DataGrid>

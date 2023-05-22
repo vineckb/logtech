@@ -3,7 +3,6 @@ import {
   Input,
   FormControl,
   Box,
-  ModalFooter,
   Button,
   Icon,
   FormErrorMessage,
@@ -12,20 +11,29 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { MdCheck } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useSave } from '../service';
-import { LicencaFormValues, licencaSchema } from '../model';
+import { useSave } from './service';
+import { LicencaFormValues, licencaSchema } from './model';
+
+const baseurl = '/configuracao/definicao-de-licencas';
 
 interface Props {
-  defaultValues: LicencaFormValues | undefined;
+  defaultValues?: LicencaFormValues | undefined;
 }
 
-export function ConfiguracaoLicencasEditForm({ defaultValues }: Props) {
+export function LicencasForm({ defaultValues }: Props) {
   const { id } = useParams();
   const navigate = useNavigate();
   const { mutateAsync } = useSave(id);
 
+  async function handleSave(values: LicencaFormValues) {
+    const response = await mutateAsync(values);
+    if (!id) {
+      navigate(`${baseurl}/${response.data.idlicenca}`);
+    }
+  }
+
   function handleCancel() {
-    navigate('../');
+    navigate(baseurl);
   }
 
   const {
@@ -43,7 +51,7 @@ export function ConfiguracaoLicencasEditForm({ defaultValues }: Props) {
       display="flex"
       flexDirection="column"
       gap={5}
-      onSubmit={handleSubmit(mutateAsync as any)}
+      onSubmit={handleSubmit(handleSave)}
     >
       <FormControl isInvalid={!!errors.cnpj}>
         <FormLabel>CNPJ:</FormLabel>
@@ -54,7 +62,7 @@ export function ConfiguracaoLicencasEditForm({ defaultValues }: Props) {
         </FormErrorMessage>
       </FormControl>
 
-      <ModalFooter gap={5}>
+      <Box>
         <Button variant="link" onClick={handleCancel}>
           Fechar
         </Button>
@@ -62,7 +70,7 @@ export function ConfiguracaoLicencasEditForm({ defaultValues }: Props) {
           <Icon as={MdCheck} mr={3} />
           Salvar
         </Button>
-      </ModalFooter>
+      </Box>
     </Box>
   );
 }

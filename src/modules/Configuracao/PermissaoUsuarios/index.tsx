@@ -32,19 +32,11 @@ interface DataType {
 }
 
 export function ConfiguracaoPermissaoUsuarios() {
-  function handleOpen(id: string) {
-    console.log(`opening item #${id}`);
-  }
-
   function handleRemove(items: string[]) {
     console.log('removing items:', items);
     return new Promise<void>((resolve) => {
       window.setTimeout(resolve, 1000);
     });
-  }
-
-  function handleAdd() {
-    console.log('opening form to add new item');
   }
 
   const query = ({ search, page }: QueryParams) => api.get('/permissao');
@@ -58,14 +50,10 @@ export function ConfiguracaoPermissaoUsuarios() {
 
           <DeleteButton onConfirm={handleRemove} />
 
-          <ButtonAdd onClick={handleAdd} />
+          <ButtonAdd />
         </Header>
 
-        <Table<DataType>
-          idKey={idKey}
-          headers={headers}
-          onRowClick={handleOpen}
-        />
+        <Table<DataType> idKey={idKey} headers={headers} />
 
         <Pagination />
       </DataGrid>

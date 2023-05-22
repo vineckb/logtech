@@ -25,10 +25,6 @@ interface DataType {
 }
 
 export function ExpedicoesVeiculosDeTransportadoras() {
-  function handleOpen(id: string) {
-    console.log(`opening item #${id}`);
-  }
-
   const query = ({ search, page }: QueryParams) =>
     api.get('/transportadorasveiculos');
 
@@ -40,11 +36,7 @@ export function ExpedicoesVeiculosDeTransportadoras() {
           <SearchField />
         </Header>
 
-        <Table<DataType>
-          selectable={false}
-          headers={headers}
-          onRowClick={handleOpen}
-        />
+        <Table<DataType> selectable={false} headers={headers} />
 
         <Pagination />
       </DataGrid>
