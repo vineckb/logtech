@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useFetchItem, useSave } from './service';
-import { LicencasForm } from './Form';
+import { LicencaForm } from './Form';
 import { Box } from '@chakra-ui/react';
 import { PageTitle } from '@/components/PageTitle';
 
@@ -13,7 +13,7 @@ export function LicencasEdit() {
   return (
     <Box p={5}>
       <PageTitle>Editar Licença #{id}</PageTitle>
-      <LicencasForm defaultValues={data} handleSave={handleSave} />
+      <LicencaForm defaultValues={data} handleSave={handleSave} />
     </Box>
   );
 }

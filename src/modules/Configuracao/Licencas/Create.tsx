@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
-import { LicencasForm } from './Form';
+import { LicencaForm } from './Form';
 import { useSave } from './service';
 import { useNavigate } from 'react-router-dom';
 import { LicencaFormValues } from './model';
@@ -9,14 +9,16 @@ export function LicencasCreate() {
   const { mutateAsync } = useSave();
 
   async function handleSave(values: LicencaFormValues) {
-    const response = await mutateAsync(values);
-    navigate(`${response.data.idlicenca}`);
+    try {
+      const response = await mutateAsync(values);
+      navigate(`${response.data.idlicenca}`);
+    } catch (e) {}
   }
 
   return (
     <Box>
       <Text>Adicionar nova licença</Text>
-      <LicencasForm handleSave={handleSave} />
+      <LicencaForm handleSave={handleSave} />
     </Box>
   );
 }

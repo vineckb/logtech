@@ -35,7 +35,7 @@ export function useFetchItem(id: number | string) {
       api.get(`/licenca/${id}`),
     select: React.useCallback(
       (data: AxiosResponse<LicencaResource>): LicencaFormValues =>
-        resourceToFormValues(data.data),
+        (data.data ? resourceToFormValues(data.data) : {}) as LicencaFormValues,
       []
     ),
   });

@@ -2,64 +2,38 @@ import {
   FormLabel,
   Input,
   FormControl,
-  Box,
-  Button,
-  Icon,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { MdCheck } from 'react-icons/md';
 import { LicencaFormValues, licencaSchema } from './model';
-import { useNavigate } from 'react-router-dom';
+import { UpsertForm } from '@/components/UpsertForm';
 
 interface Props {
-  defaultValues?: LicencaFormValues | undefined;
+  defaultValues?: { [x: string]: any };
   handleSave: (values: LicencaFormValues) => Promise<any>;
 }
 
-export function LicencasForm({ defaultValues, handleSave }: Props) {
-  const navigate = useNavigate();
-
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<LicencaFormValues>({
-    resolver: zodResolver(licencaSchema),
-    defaultValues,
-  });
-
-  function handleCancel() {
-    navigate('..');
-  }
-
+export function LicencaForm(props: Props) {
   return (
-    <Box
-      as="form"
+    <UpsertForm<LicencaFormValues>
+      resolver={zodResolver(licencaSchema)}
+      {...props}
       display="flex"
       flexDirection="column"
       gap={5}
-      onSubmit={handleSubmit(handleSave)}
     >
-      <FormControl isInvalid={!!errors.cnpj}>
-        <FormLabel>CNPJ:</FormLabel>
-        <Input {...register('cnpj')} />
+      {(register, errors) => (
+        <>
+          <FormControl isInvalid={!!errors.chave}>
+            <FormLabel>Chave:</FormLabel>
+            <Input {...register('chave')} />
 
-        <FormErrorMessage>
-          {errors.cnpj && errors.cnpj.message}
-        </FormErrorMessage>
-      </FormControl>
-
-      <Box>
-        <Button variant="link" onClick={handleCancel}>
-          Fechar
-        </Button>
-        <Button colorScheme="green" type="submit" isLoading={isSubmitting}>
-          <Icon as={MdCheck} mr={3} />
-          Salvar
-        </Button>
-      </Box>
-    </Box>
+            <FormErrorMessage>
+              {errors.chave && errors.chave.message}
+            </FormErrorMessage>
+          </FormControl>
+        </>
+      )}
+    </UpsertForm>
   );
 }
