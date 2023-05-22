@@ -12,6 +12,7 @@ import { ConfiguracaoPermissaoUsuariosList } from './PermissaoUsuarios/List';
 import { ConfiguracaoPermissaoUsuariosEdit } from './PermissaoUsuarios/Edit';
 import { ConfiguracaoPermissaoFiliaisList } from './PermissaoFiliais/List';
 import { ConfiguracaoPermissaoFiliaisEdit } from './PermissaoFiliais/Edit';
+import { Outlet } from 'react-router-dom';
 
 const Module = {
   navigation: {
@@ -53,15 +54,21 @@ const Module = {
     },
     {
       path: 'configuracao/definicao-de-licencas',
-      element: <ConfiguracaoLicencasList />,
-    },
-    {
-      path: 'configuracao/definicao-de-licencas/:id',
-      element: <LicencasEdit />,
-    },
-    {
-      path: 'configuracao/definicao-de-licencas/novo',
-      element: <LicencasCreate />,
+      children: [
+        {
+          path: '',
+          element: <ConfiguracaoLicencasList />,
+        },
+        {
+          path: ':id',
+          element: <LicencasEdit />,
+        },
+        {
+          path: 'novo',
+          element: <LicencasCreate />,
+        },
+      ],
+      element: <Outlet />,
     },
     {
       path: 'configuracao/conexao-cliente',

@@ -10,31 +10,16 @@ import {
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { MdCheck } from 'react-icons/md';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useSave } from './service';
 import { LicencaFormValues, licencaSchema } from './model';
-
-const baseurl = '/configuracao/definicao-de-licencas';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   defaultValues?: LicencaFormValues | undefined;
+  handleSave: (values: LicencaFormValues) => Promise<any>;
 }
 
-export function LicencasForm({ defaultValues }: Props) {
-  const { id } = useParams();
+export function LicencasForm({ defaultValues, handleSave }: Props) {
   const navigate = useNavigate();
-  const { mutateAsync } = useSave(id);
-
-  async function handleSave(values: LicencaFormValues) {
-    const response = await mutateAsync(values);
-    if (!id) {
-      navigate(`${baseurl}/${response.data.idlicenca}`);
-    }
-  }
-
-  function handleCancel() {
-    navigate(baseurl);
-  }
 
   const {
     handleSubmit,
@@ -44,6 +29,10 @@ export function LicencasForm({ defaultValues }: Props) {
     resolver: zodResolver(licencaSchema),
     defaultValues,
   });
+
+  function handleCancel() {
+    navigate('..');
+  }
 
   return (
     <Box
