@@ -3,7 +3,7 @@ import { SideMenuItem } from '../SideMenuItem';
 import { useSideNav } from '@/hooks/useSideNav';
 
 // modules
-import { ConfiguracaoModule } from '@/modules/Configuracao';
+import ConfiguracaoModule from '@/modules/Configuracao';
 import { PainelModule } from '@/modules/Painel';
 import { EntradasModule } from '@/modules/Entradas';
 import { MovimentacoesModule } from '@/modules/Movimentacoes';
@@ -12,7 +12,7 @@ import { GestaoModule } from '@/modules/Gestao';
 import { AuditoriaModule } from '@/modules/Auditoria';
 
 const menuItems = [
-  ConfiguracaoModule.menuItem,
+  ConfiguracaoModule.navigation,
   PainelModule.menuItem,
   EntradasModule.menuItem,
   MovimentacoesModule.menuItem,

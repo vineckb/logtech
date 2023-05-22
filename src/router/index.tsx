@@ -7,7 +7,7 @@ import { ProtectedRoute } from './ProtectedRoute';
 
 // modules
 import { AuditoriaModule } from '@/modules/Auditoria';
-import { ConfiguracaoModule } from '@/modules/Configuracao';
+import ConfiguracaoModule from '@/modules/Configuracao';
 import { EntradasModule } from '@/modules/Entradas';
 import { ExpedicoesModule } from '@/modules/Expedicoes';
 import { GestaoModule } from '@/modules/Gestao';

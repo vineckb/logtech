@@ -12,8 +12,8 @@ import { ConfiguracaoPermissaoUsuariosEdit } from './PermissaoUsuarios/Edit';
 import { ConfiguracaoPermissaoFiliaisList } from './PermissaoFiliais/List';
 import { ConfiguracaoPermissaoFiliaisEdit } from './PermissaoFiliais/Edit';
 
-export const ConfiguracaoModule = {
-  menuItem: {
+const Module = {
+  navigation: {
     to: '/configuracao',
     title: 'Configuração da Aplicação',
     icon: FaRegSun,
@@ -105,3 +105,5 @@ export const ConfiguracaoModule = {
     },
   ],
 };
+
+export default Module;

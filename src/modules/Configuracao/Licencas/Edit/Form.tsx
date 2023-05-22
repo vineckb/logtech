@@ -7,36 +7,22 @@ import {
   Button,
   Icon,
   FormErrorMessage,
-  Switch,
 } from '@chakra-ui/react';
-import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { MdCheck } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
-
-const schema = z.object({
-  ativo: z.boolean(),
-  idconexao: z.number(),
-  iderp: z.number(),
-  nomebd: z.string().min(1, 'Campo obrigatório'),
-  senha: z.string().min(1, 'Campo obrigatório'),
-  servidor: z.string().min(1, 'Campo obrigatório'),
-  usuario: z.string().min(1, 'Campo obrigatório'),
-});
-
-export type FormValues = z.infer<typeof schema>;
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSave } from '../service';
+import { LicencaFormValues, licencaSchema } from '../model';
 
 interface Props {
-  defaultValues: FormValues;
-  handleSave: (values: any) => Promise<void>;
+  defaultValues: LicencaFormValues | undefined;
 }
 
-export function ConfiguracaoLicencasEditForm({
-  defaultValues,
-  handleSave,
-}: Props) {
+export function ConfiguracaoLicencasEditForm({ defaultValues }: Props) {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const { mutateAsync } = useSave(id);
 
   function handleCancel() {
     navigate('../');
@@ -46,8 +32,8 @@ export function ConfiguracaoLicencasEditForm({
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<FormValues>({
-    resolver: zodResolver(schema),
+  } = useForm<LicencaFormValues>({
+    resolver: zodResolver(licencaSchema),
     defaultValues,
   });
 
@@ -57,48 +43,15 @@ export function ConfiguracaoLicencasEditForm({
       display="flex"
       flexDirection="column"
       gap={5}
-      onSubmit={handleSubmit(handleSave)}
+      onSubmit={handleSubmit(mutateAsync as any)}
     >
-      <FormControl isInvalid={!!errors.nomebd}>
-        <FormLabel>Nome do banco de dados:</FormLabel>
-        <Input {...register('nomebd')} />
+      <FormControl isInvalid={!!errors.cnpj}>
+        <FormLabel>CNPJ:</FormLabel>
+        <Input {...register('cnpj')} />
 
         <FormErrorMessage>
-          {errors.nomebd && errors.nomebd.message}
+          {errors.cnpj && errors.cnpj.message}
         </FormErrorMessage>
-      </FormControl>
-
-      <FormControl isInvalid={!!errors.servidor}>
-        <FormLabel>Servidor:</FormLabel>
-        <Input {...register('servidor')} />
-
-        <FormErrorMessage>
-          {errors.servidor && errors.servidor.message}
-        </FormErrorMessage>
-      </FormControl>
-
-      <FormControl isInvalid={!!errors.usuario}>
-        <FormLabel>usuario:</FormLabel>
-        <Input {...register('usuario')} />
-
-        <FormErrorMessage>
-          {errors.usuario && errors.usuario.message}
-        </FormErrorMessage>
-      </FormControl>
-      <FormControl isInvalid={!!errors.senha}>
-        <FormLabel>Senha:</FormLabel>
-        <Input {...register('senha')} />
-
-        <FormErrorMessage>
-          {errors.usuario && errors.usuario.message}
-        </FormErrorMessage>
-      </FormControl>
-
-      <FormControl display="flex" alignItems="center">
-        <FormLabel htmlFor="email-alerts" mb="0">
-          Ativo?
-        </FormLabel>
-        <Switch id="email-alerts" {...register('ativo')} />
       </FormControl>
 
       <ModalFooter gap={5}>
