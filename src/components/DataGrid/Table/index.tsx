@@ -27,11 +27,9 @@ export function Table<DataType>({
   const { selecteds, setSelecteds, queryResult } = useDataGrid();
   const navigate = useNavigate();
 
-  if (!queryResult || queryResult.isLoading) {
+  if (!queryResult || queryResult.isLoading || !queryResult.data) {
     return <TableSkeleton />;
   }
-
-  if (!queryResult.data) return null;
 
   const {
     data: { content: items },
