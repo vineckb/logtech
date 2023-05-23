@@ -1,12 +1,12 @@
 import { Box, Text } from '@chakra-ui/react';
-import { Form } from './Form';
-import { useSave } from './service';
 import { useNavigate } from 'react-router-dom';
-import { FormValues } from './model';
-import { resourceTitle } from './settings';
 import { PageTitle } from '@/components/PageTitle';
+import { resourceSingularTitle } from './settings';
+import { useSave } from './service';
+import { FormValues } from './model';
+import { Form } from './Form';
 
-export function ConexaoCreate() {
+export function LicencaCreate() {
   const navigate = useNavigate();
   const { mutateAsync } = useSave();
 
@@ -20,7 +20,7 @@ export function ConexaoCreate() {
   return (
     <Box p={5}>
       <PageTitle>
-        <Text>Adicionar {resourceTitle}</Text>
+        <Text>Adicionar {resourceSingularTitle}</Text>
       </PageTitle>
       <Form handleSave={handleSave} />
     </Box>

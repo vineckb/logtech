@@ -3,20 +3,23 @@ import {
   Input,
   FormControl,
   FormErrorMessage,
+  Switch,
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LicencaFormValues, licencaSchema } from './model';
+import { FormValues, schema } from './model';
 import { UpsertForm } from '@/components/UpsertForm';
 
 interface Props {
   defaultValues?: { [x: string]: any };
-  handleSave: (values: LicencaFormValues) => Promise<any>;
+  handleSave: (values: FormValues) => Promise<any>;
+  isLoading?: boolean;
 }
 
-export function LicencaForm(props: Props) {
+export function Form({ isLoading = false, ...props }: Props) {
   return (
-    <UpsertForm<LicencaFormValues>
-      resolver={zodResolver(licencaSchema)}
+    <UpsertForm<FormValues>
+      resolver={zodResolver(schema)}
+      isLoading={isLoading}
       {...props}
       display="flex"
       flexDirection="column"

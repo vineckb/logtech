@@ -7,9 +7,10 @@ import { ConexaoList } from './Conexao/List';
 import { ConexaoEdit } from './Conexao/Edit';
 import { ConexaoCreate } from './Conexao/Create';
 
-import { LicencasEdit } from './Licencas/Edit';
-import { LicencasCreate } from './Licencas/Create';
-import { ConfiguracaoLicencasList } from './Licencas/List';
+import { LicencaEdit } from './Licenca/Edit';
+import { LicencaCreate } from './Licenca/Create';
+import { LicencaList } from './Licenca/List';
+
 import { ConfiguracaoRotinasList } from './Rotinas/List';
 import { ConfiguracaoRotinasEdit } from './Rotinas/Edit';
 import { ConfiguracaoPermissaoUsuariosList } from './PermissaoUsuarios/List';
@@ -58,21 +59,12 @@ const Module = {
     },
     {
       path: 'configuracao/definicao-de-licencas',
-      children: [
-        {
-          path: '',
-          element: <ConfiguracaoLicencasList />,
-        },
-        {
-          path: ':id',
-          element: <LicencasEdit />,
-        },
-        {
-          path: 'novo',
-          element: <LicencasCreate />,
-        },
-      ],
       element: <Outlet />,
+      children: [
+        { path: '', element: <LicencaList /> },
+        { path: ':id', element: <LicencaEdit /> },
+        { path: 'novo', element: <LicencaCreate /> },
+      ],
     },
     {
       path: 'configuracao/conexao-cliente',
