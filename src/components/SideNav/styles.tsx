@@ -11,4 +11,5 @@ export const Wrapper = styled(motion.div)`
   flex-direction: column;
   position: fixed;
   max-width: 250px;
+  z-index: 999;
 `;
