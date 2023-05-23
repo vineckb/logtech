@@ -41,14 +41,19 @@ export function UpsertForm<T extends { [x: string]: any }>({
     navigate('..');
   }
 
+  async function _handleSave(data: T) {
+    try {
+      await handleSave(data);
+    } catch (e) {}
+  }
 
   if (isLoading) return <UpsertFormSkeleton />;
 
   return (
-    <Box as="form" {...props} onSubmit={handleSubmit(handleSave)}>
+    <Box as="form" {...props} onSubmit={handleSubmit(_handleSave)}>
       {children(register, errors)}
 
-      <Box>
+      <Box gap={10} pt={5} pb={5} display="flex" justifyContent="end">
         <Button variant="link" onClick={handleCancel}>
           Fechar
         </Button>
