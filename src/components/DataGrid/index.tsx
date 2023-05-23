@@ -1,15 +1,15 @@
 import { DataGridProvider, QueryParams } from '@/providers/DataGrid';
 import { Paper } from '@/components/Paper';
-import { AxiosResponse } from 'axios';
+import { UseQueryResult } from '@tanstack/react-query';
 
 interface Props {
-  query: [string, (params: QueryParams) => Promise<AxiosResponse>];
+  query: (params: QueryParams) => UseQueryResult;
   children: React.ReactElement | React.ReactElement[];
 }
 
-export function DataGrid({ query: [queryName, query], children }: Props) {
+export function DataGrid({ query, children }: Props) {
   return (
-    <DataGridProvider queryName={queryName} query={query}>
+    <DataGridProvider query={query}>
       <Paper p={5}>{children}</Paper>
     </DataGridProvider>
   );
