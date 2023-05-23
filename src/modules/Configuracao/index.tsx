@@ -2,7 +2,11 @@ import { FaRegSun } from 'react-icons/fa';
 import { ConfiguracaoConexaoList } from './Conexao/List';
 import { MdOutlinePlaylistAdd, MdPlaylistAdd } from 'react-icons/md';
 import { ConfiguracaoDashboard } from './Dashboard/index';
-import { ConfiguracaoConexaoEdit } from './Conexao/Edit';
+
+import { ConexaoList } from './Conexao/List';
+import { ConexaoEdit } from './Conexao/Edit';
+import { ConexaoCreate } from './Conexao/Create';
+
 import { LicencasEdit } from './Licencas/Edit';
 import { LicencasCreate } from './Licencas/Create';
 import { ConfiguracaoLicencasList } from './Licencas/List';
@@ -72,12 +76,11 @@ const Module = {
     },
     {
       path: 'configuracao/conexao-cliente',
-      element: <ConfiguracaoConexaoList />,
+      element: <Outlet />,
       children: [
-        {
-          path: ':id/editar',
-          element: <ConfiguracaoConexaoEdit />,
-        },
+        { path: '', element: <ConexaoList /> },
+        { path: ':id', element: <ConexaoEdit /> },
+        { path: 'novo', element: <ConexaoCreate /> },
       ],
     },
     {
