@@ -49,6 +49,7 @@ export function DataGridProvider({ children, query }: DataGridProviderProps) {
     setPerPage,
     setSearch,
   };
+
   return (
     <DataGridContext.Provider value={context}>
       {children}

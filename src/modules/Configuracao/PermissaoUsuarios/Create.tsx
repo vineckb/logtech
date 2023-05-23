@@ -6,7 +6,7 @@ import { useSave } from './service';
 import { FormValues } from './model';
 import { Form } from './Form';
 
-export function PermissaoFiliaisCreate() {
+export function PermissaoUsuariosCreate() {
   const navigate = useNavigate();
   const { mutateAsync } = useSave();
 

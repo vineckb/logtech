@@ -5,7 +5,7 @@ import { Box } from '@chakra-ui/react';
 import { PageTitle } from '@/components/PageTitle';
 import { resourceSingularTitle } from './settings';
 
-export function PermissaoFiliaisEdit() {
+export function PermissaoUsuariosEdit() {
   const { id } = useParams();
   const { data, isLoading } = useFetchItem(Number(id));
   const { mutateAsync: handleSave } = useSave(id);

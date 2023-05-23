@@ -13,7 +13,7 @@ import { useFetchList, useRemove } from './service';
 import { Resource } from './model';
 import { headers, idKey, resourcePluralTitle } from './settings';
 
-export function PermissaoFiliaisList() {
+export function PermissaoUsuariosList() {
   const { mutateAsync: handleRemove } = useRemove();
 
   return (

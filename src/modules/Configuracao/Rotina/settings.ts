@@ -1,9 +1,9 @@
-export const resourceSingularTitle = 'Licença';
-export const resourcePluralTitle = 'Licenças';
+export const resourceSingularTitle = 'Liberação de Rotina';
+export const resourcePluralTitle = 'Liberações de Rotinas';
 
-export const resourceName = 'licenca';
+export const resourceName = 'rotinas';
 
-export const idKey = 'idlicenca';
+export const idKey = 'idrotina';
 
 export const headers = [
   { key: 'cnpj', title: 'CNPJ' },

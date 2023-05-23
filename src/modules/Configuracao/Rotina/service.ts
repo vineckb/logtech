@@ -24,7 +24,6 @@ export function useSave(id?: number | string | null) {
     transform: formValuesToResource,
   });
 }
-
 export function useFetchList(params: FetchListQueryParams) {
   return useGenericFetchList<Resource>(resourceName, params);
 }
