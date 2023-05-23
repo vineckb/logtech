@@ -7,9 +7,11 @@ import {
 } from 'react-hook-form';
 import { MdCheck } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import { UpsertFormSkeleton } from './Skeleton';
 
 interface Props<T extends { [x: string]: any }> {
   [x: string]: any;
+  isLoading: boolean;
   defaultValues?: { [x: string]: any };
   handleSave: (values: T) => Promise<any>;
   resolver: Resolver<T>;
@@ -17,6 +19,7 @@ interface Props<T extends { [x: string]: any }> {
 }
 
 export function UpsertForm<T extends { [x: string]: any }>({
+  isLoading,
   defaultValues,
   handleSave,
   resolver,
@@ -37,6 +40,9 @@ export function UpsertForm<T extends { [x: string]: any }>({
   function handleCancel() {
     navigate('..');
   }
+
+
+  if (isLoading) return <UpsertFormSkeleton />;
 
   return (
     <Box as="form" {...props} onSubmit={handleSubmit(handleSave)}>
