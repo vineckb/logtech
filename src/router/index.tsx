@@ -6,13 +6,13 @@ import { SignIn } from '@/modules/SignIn';
 import { ProtectedRoute } from './ProtectedRoute';
 
 // modules
-// import { AuditoriaModule } from '@/modules/Auditoria';
+import { AuditoriaModule } from '@/modules/Auditoria';
 import ConfiguracaoModule from '@/modules/Configuracao';
 // import { EntradasModule } from '@/modules/Entradas';
 // import { ExpedicoesModule } from '@/modules/Expedicoes';
-// import { GestaoModule } from '@/modules/Gestao';
-// import { PainelModule } from '@/modules/Painel';
-// import { MovimentacoesModule } from '@/modules/Movimentacoes';
+import { GestaoModule } from '@/modules/Gestao';
+import PainelModule from '@/modules/Painel';
+import { MovimentacoesModule } from '@/modules/Movimentacoes';
 
 export const router = createBrowserRouter([
   {
@@ -28,13 +28,13 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         children: [
-          // ...PainelModule.routes,
-          // ...AuditoriaModule.routes,
+          ...PainelModule.routes,
+          ...AuditoriaModule.routes,
           ...ConfiguracaoModule.routes,
           // ...EntradasModule.routes,
           // ...ExpedicoesModule.routes,
-          // ...GestaoModule.routes,
-          // ...MovimentacoesModule.routes,
+          ...GestaoModule.routes,
+          ...MovimentacoesModule.routes,
         ],
       },
       {
