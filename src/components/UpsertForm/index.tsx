@@ -34,7 +34,7 @@ export function UpsertForm<T extends { [x: string]: any }>({
     formState: { errors, isSubmitting },
   } = useForm<T>({
     resolver,
-    defaultValues: defaultValues as DeepPartial<T>,
+    values: defaultValues as T,
   });
 
   function handleCancel() {

@@ -33,7 +33,7 @@ export function useGenericFetchItem<Input, Output = unknown>({
   id: number | string;
 }) {
   return useQuery({
-    queryKey: [`${resourceName}-item`],
+    queryKey: [`${resourceName}-item`, id],
     queryFn: (): Promise<AxiosResponse<Input>> =>
       api.get(`/${resourceName}/${id}`),
 
