@@ -7,7 +7,7 @@ import { resourceSingularTitle } from './settings';
 
 export function PermissaoFiliaisEdit() {
   const { id } = useParams();
-  const { data, isLoading } = useFetchItem(Number(id));
+  const { data, isLoading } = useFetchItem(id || '');
   const { mutateAsync: handleSave } = useSave(id);
 
   return (

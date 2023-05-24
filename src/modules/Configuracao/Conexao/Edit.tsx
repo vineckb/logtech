@@ -7,7 +7,7 @@ import { resourceTitle } from './settings';
 
 export function ConexaoEdit() {
   const { id } = useParams();
-  const { data, isLoading } = useFetchItem(Number(id));
+  const { data, isLoading } = useFetchItem(id || '');
   const { mutateAsync: handleSave } = useSave(id);
 
   return (
