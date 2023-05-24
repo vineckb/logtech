@@ -1,7 +1,7 @@
 import { FaShippingFast } from 'react-icons/fa';
 import { MovimentacoesDashboard } from './Dashboard';
 
-export const MovimentacoesModule = {
+const Module = {
   menuItem: {
     to: '/movimentacoes',
     title: 'Movimentações',
@@ -14,3 +14,5 @@ export const MovimentacoesModule = {
     },
   ],
 };
+
+export default Module;

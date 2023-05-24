@@ -1,7 +1,7 @@
 import { FaIndustry } from 'react-icons/fa';
 import { GestaoIndex } from './Index/index';
 
-export const GestaoModule = {
+const Module = {
   menuItem: {
     to: '/gestao',
     title: 'Gestão',
@@ -15,3 +15,5 @@ export const GestaoModule = {
     },
   ],
 };
+
+export default Module;

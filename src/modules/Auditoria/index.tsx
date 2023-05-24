@@ -1,7 +1,7 @@
 import { FaRegEdit } from 'react-icons/fa';
 import { AuditoriaIndex } from './Index/index';
 
-export const AuditoriaModule = {
+const Module = {
   menuItem: {
     to: '/auditoria',
     title: 'Auditoria',
@@ -15,3 +15,5 @@ export const AuditoriaModule = {
     },
   ],
 };
+
+export default Module;

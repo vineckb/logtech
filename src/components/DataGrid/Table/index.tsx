@@ -20,6 +20,7 @@ interface Props {
 
 export function Table<DataType>({
   selectable = true,
+  editable = true,
   headers,
   idKey = 'id',
 }: Props) {
@@ -37,6 +38,7 @@ export function Table<DataType>({
 
   function onRowClick(id: string) {
     return (e: MouseEvent<HTMLElement>) => {
+      if (!editable) return null;
       if (e.currentTarget.nodeName !== 'TR') return;
 
       navigate(`${id}`);
