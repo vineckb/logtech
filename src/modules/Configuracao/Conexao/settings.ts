@@ -1,4 +1,4 @@
-export const resourceTitle = 'Conexão';
+export const resourceTitle = 'Conexão Cliente';
 
 export const resourceName = 'conexaocliente';
 
@@ -9,6 +9,9 @@ export const headers = [
   { key: 'nomebd', title: 'Nome do Banco' },
   { key: 'servidor', title: 'Servidor' },
   { key: 'usuario', title: 'Usuário' },
+  { key: 'senha', title: 'Senha' },
+  { key: 'iderp', title: 'ID ERP' },
+  { key: 'tipo', title: 'Tipo' },
   {
     key: 'ativo',
     title: 'Ativo',

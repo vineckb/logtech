@@ -11,6 +11,7 @@ export interface Resource {
 
 export const schema = z.object({
   ativo: z.boolean(),
+  iderp: z.string(),
   nomebd: z.string(),
   senha: z.string(),
   servidor: z.string(),
@@ -26,11 +27,13 @@ export function resourceToFormValues({
   return {
     ...values,
     ativo: ativo === 1,
+    iderp: '',
   };
 }
 
 export function formValuesToResource({
   ativo,
+  iderp,
   ...values
 }: FormValues): Resource {
   return {

@@ -4,6 +4,8 @@ import {
   FormControl,
   FormErrorMessage,
   Switch,
+  Grid,
+  GridItem,
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormValues, schema } from './model';
@@ -27,40 +29,71 @@ export function Form({ isLoading = false, ...props }: Props) {
     >
       {(register, errors) => (
         <>
-          <FormControl isInvalid={!!errors.nomebd}>
-            <FormLabel>Nome do banco de dados:</FormLabel>
-            <Input {...register('nomebd')} />
+          <Grid templateColumns="repeat(10, 1fr)" gap={5}>
+            <GridItem colSpan={3}>
+              <FormControl isInvalid={!!errors.nomebd}>
+                <FormLabel>Nome do banco de dados:</FormLabel>
+                <Input {...register('nomebd')} />
 
-            <FormErrorMessage>
-              {errors.nomebd && errors.nomebd.message}
-            </FormErrorMessage>
-          </FormControl>
+                <FormErrorMessage>
+                  {errors.nomebd && errors.nomebd.message}
+                </FormErrorMessage>
+              </FormControl>
+            </GridItem>
+            <GridItem colSpan={3}>
+              <FormControl isInvalid={!!errors.servidor}>
+                <FormLabel>Servidor:</FormLabel>
+                <Input {...register('servidor')} />
 
-          <FormControl isInvalid={!!errors.servidor}>
-            <FormLabel>Servidor:</FormLabel>
-            <Input {...register('servidor')} />
+                <FormErrorMessage>
+                  {errors.servidor && errors.servidor.message}
+                </FormErrorMessage>
+              </FormControl>
+            </GridItem>
+            <GridItem colSpan={4}>
+              <FormControl isInvalid={!!errors.usuario}>
+                <FormLabel>Usuário:</FormLabel>
+                <Input {...register('usuario')} />
 
-            <FormErrorMessage>
-              {errors.servidor && errors.servidor.message}
-            </FormErrorMessage>
-          </FormControl>
+                <FormErrorMessage>
+                  {errors.usuario && errors.usuario.message}
+                </FormErrorMessage>
+              </FormControl>
+            </GridItem>
+          </Grid>
 
-          <FormControl isInvalid={!!errors.usuario}>
-            <FormLabel>usuario:</FormLabel>
-            <Input {...register('usuario')} />
+          <Grid templateColumns="repeat(12, 1fr)" gap={5}>
+            <GridItem colSpan={5}>
+              <FormControl isInvalid={!!errors.senha}>
+                <FormLabel>Senha:</FormLabel>
+                <Input {...register('senha')} />
 
-            <FormErrorMessage>
-              {errors.usuario && errors.usuario.message}
-            </FormErrorMessage>
-          </FormControl>
-          <FormControl isInvalid={!!errors.senha}>
-            <FormLabel>Senha:</FormLabel>
-            <Input {...register('senha')} />
+                <FormErrorMessage>
+                  {errors.senha && errors.senha.message}
+                </FormErrorMessage>
+              </FormControl>
+            </GridItem>
+            <GridItem colSpan={2}>
+              <FormControl isInvalid={!!errors.iderp}>
+                <FormLabel>ID ERP:</FormLabel>
+                <Input {...register('iderp')} />
 
-            <FormErrorMessage>
-              {errors.usuario && errors.usuario.message}
-            </FormErrorMessage>
-          </FormControl>
+                <FormErrorMessage>
+                  {errors.iderp && errors.iderp.message}
+                </FormErrorMessage>
+              </FormControl>
+            </GridItem>
+            <GridItem colSpan={5}>
+              <FormControl isInvalid={!!errors.iderp}>
+                <FormLabel>ID ERP:</FormLabel>
+                <Input {...register('iderp')} />
+
+                <FormErrorMessage>
+                  {errors.iderp && errors.iderp.message}
+                </FormErrorMessage>
+              </FormControl>
+            </GridItem>
+          </Grid>
 
           <FormControl display="flex" alignItems="center">
             <FormLabel htmlFor="email-alerts" mb="0">
