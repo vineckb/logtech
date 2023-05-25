@@ -1,10 +1,5 @@
 import { Box, Button, Icon } from '@chakra-ui/react';
-import {
-  DeepPartial,
-  Resolver,
-  UseFormRegister,
-  useForm,
-} from 'react-hook-form';
+import { Resolver, UseFormRegister, useForm } from 'react-hook-form';
 import { MdCheck } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { UpsertFormSkeleton } from './Skeleton';

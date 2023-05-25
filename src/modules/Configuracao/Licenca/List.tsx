@@ -11,14 +11,14 @@ import { PageTitle } from '@/components/PageTitle';
 import { Box } from '@chakra-ui/react';
 import { useFetchList, useRemove } from './service';
 import { Resource } from './model';
-import { headers, idKey, resourcePluralTitle } from './settings';
+import { headers, idKey, resourceSingularTitle } from './settings';
 
 export function LicencaList() {
   const { mutateAsync: handleRemove } = useRemove();
 
   return (
     <Box p={5}>
-      <PageTitle>{resourcePluralTitle}</PageTitle>
+      <PageTitle>{resourceSingularTitle}</PageTitle>
       <DataGrid query={useFetchList}>
         <Header>
           <SearchField />

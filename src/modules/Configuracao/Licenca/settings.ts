@@ -1,5 +1,5 @@
-export const resourceSingularTitle = 'Licença';
-export const resourcePluralTitle = 'Licenças';
+export const resourceSingularTitle = 'Definição de Licença';
+export const resourcePluralTitle = 'Definições de Licenças';
 
 export const resourceName = 'licenca';
 
