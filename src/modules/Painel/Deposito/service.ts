@@ -11,27 +11,27 @@ import {
   useGenericRemove,
   useGenericSave,
 } from '@/hooks/useQuery';
-import { resourceName } from './settings';
+import { resourceKey } from './settings';
 
 export function useRemove() {
-  return useGenericRemove(resourceName);
+  return useGenericRemove(resourceKey);
 }
 
 export function useSave(id?: number | string | null) {
   return useGenericSave<FormValues, Resource>({
-    resourceName,
+    resourceKey,
     id,
     transform: formValuesToResource,
   });
 }
 
 export function useFetchList(params: FetchListQueryParams) {
-  return useGenericFetchList<Resource>(resourceName, params);
+  return useGenericFetchList<Resource>(resourceKey, params);
 }
 
 export function useFetchItem(id: number | string) {
   return useGenericFetchItem<Resource, FormValues>({
-    resourceName,
+    resourceKey,
     id,
     transform: resourceToFormValues,
   });

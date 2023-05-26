@@ -1,23 +1,51 @@
 import { z } from 'zod';
 
 export interface Resource {
-  chave: string;
+  ativo: string;
+  datacadastro: string;
+  email: string;
+  idsetor: number;
+  idturno: number;
+  idusuario: number;
+  login: string;
+  nome: string;
+  senha: string;
+  telefone: string;
 }
 
 export const schema = z.object({
-  chave: z.string().min(1, 'errr'),
+  idusuario: z.number(),
+  nome: z.string().min(1, 'Campo obrigatório'),
+  email: z.string().min(1, 'Campo obrigatório'),
+  login: z.string().min(1, 'Campo obrigatório'),
+  senha: z.string().min(1, 'Campo obrigatório'),
+  telefone: z.string(),
+  idsetor: z.number(),
+  idturno: z.number(),
+  datacadastro: z.string(),
+  cpf: z.string(),
+  ativo: z.boolean(),
 });
 
 export type FormValues = z.infer<typeof schema>;
 
-export function resourceToFormValues({ ...values }: Resource): FormValues {
+export function resourceToFormValues({
+  ativo,
+  ...values
+}: Resource): FormValues {
   return {
     ...values,
+    ativo: ativo === 's',
+    cpf: '000.000.000-00',
   };
 }
 
-export function formValuesToResource({ ...values }: FormValues): Resource {
+export function formValuesToResource({
+  ativo,
+  ...values
+}: FormValues): Resource {
   return {
     ...values,
+    ativo: ativo ? 's' : 'n',
   };
 }

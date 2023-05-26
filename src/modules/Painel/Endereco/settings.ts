@@ -1,7 +1,7 @@
-export const resourceSingularTitle = 'Endereço';
-export const resourcePluralTitle = 'Endereços';
+export const resourceTitle = 'Cadastro de Endereços';
+export const resourceName = 'Endereço';
 
-export const resourceName = 'enderecos';
+export const resourceKey = 'enderecos';
 
 export const idKey = 'idendereco';
 
@@ -11,5 +11,8 @@ export const headers = [
   { key: 'andar', title: 'Andar' },
   { key: 'apto', title: 'Apartamento' },
   { key: 'direcao', title: 'Direção' },
+  { key: 'tipo', title: 'Tipo' },
+  { key: 'estacao', title: 'Estação' },
+  { key: 'deposito', title: 'Depósito' },
   { key: 'ativo', title: 'Ativo' },
 ];

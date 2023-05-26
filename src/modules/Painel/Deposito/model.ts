@@ -1,11 +1,15 @@
 import { z } from 'zod';
 
 export interface Resource {
-  chave: string;
+  iderp: string;
+  nome: string;
 }
 
 export const schema = z.object({
-  chave: z.string().min(1, 'errr'),
+  iderp: z.string().min(1, 'Campo obrigatório'),
+  nome: z.string().min(1, 'Campo obrigatório'),
+  tipo: z.string().min(1, 'Campo obrigatório'),
+  status: z.boolean(),
 });
 
 export type FormValues = z.infer<typeof schema>;
@@ -13,6 +17,8 @@ export type FormValues = z.infer<typeof schema>;
 export function resourceToFormValues({ ...values }: Resource): FormValues {
   return {
     ...values,
+    tipo: 'Geral',
+    status: true,
   };
 }
 

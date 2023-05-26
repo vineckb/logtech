@@ -1,7 +1,5 @@
 import {
   DataGrid,
-  ButtonAdd,
-  DeleteButton,
   Header,
   Pagination,
   SearchField,
@@ -9,26 +7,25 @@ import {
 } from '@/components/DataGrid';
 import { PageTitle } from '@/components/PageTitle';
 import { Box } from '@chakra-ui/react';
-import { useFetchList, useRemove } from './service';
+import { useFetchList } from './service';
 import { Resource } from './model';
-import { headers, idKey, resourcePluralTitle } from './settings';
+import { headers, idKey, resourceTitle } from './settings';
 
 export function UsuarioLogadoList() {
-  const { mutateAsync: handleRemove } = useRemove();
-
   return (
     <Box p={5}>
-      <PageTitle>{resourcePluralTitle}</PageTitle>
+      <PageTitle>{resourceTitle}</PageTitle>
       <DataGrid query={useFetchList}>
         <Header>
           <SearchField />
-
-          <DeleteButton onConfirm={handleRemove} />
-
-          <ButtonAdd />
         </Header>
 
-        <Table<Resource> idKey={idKey} headers={headers} />
+        <Table<Resource>
+          selectable={false}
+          editable={false}
+          idKey={idKey}
+          headers={headers}
+        />
 
         <Pagination />
       </DataGrid>

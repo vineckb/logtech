@@ -3,6 +3,7 @@ import {
   Input,
   FormControl,
   FormErrorMessage,
+  Switch,
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormValues, schema } from './model';
@@ -26,13 +27,35 @@ export function Form({ isLoading = false, ...props }: Props) {
     >
       {(register, errors) => (
         <>
-          <FormControl isInvalid={!!errors.chave}>
-            <FormLabel>Chave:</FormLabel>
-            <Input {...register('chave')} />
+          <FormControl isInvalid={!!errors.nome}>
+            <FormLabel>Descrição:</FormLabel>
+            <Input {...register('nome')} />
 
             <FormErrorMessage>
-              {errors.chave && errors.chave.message}
+              {errors.nome && errors.nome.message}
             </FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={!!errors.idtipomotivo}>
+            <FormLabel>Tipo:</FormLabel>
+            <Input {...register('idtipomotivo')} />
+
+            <FormErrorMessage>
+              {errors.idtipomotivo && errors.idtipomotivo.message}
+            </FormErrorMessage>
+          </FormControl>
+
+          <FormControl>
+            <FormLabel htmlFor="email-alerts" mb="0">
+              Bloqueia estoque?
+            </FormLabel>
+            <Switch {...register('bloqestoque')} ml={2} />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel htmlFor="email-alerts" mb="0">
+              Ativo?
+            </FormLabel>
+            <Switch {...register('status')} ml={2} />
           </FormControl>
         </>
       )}

@@ -7,7 +7,11 @@ import { DepositoList } from './Deposito/List';
 import { DepositoEdit } from './Deposito/Edit';
 import { DepositoCreate } from './Deposito/Create';
 
+import { EstacaoList } from './Estacao/List';
+import { EstacaoEdit } from './Estacao/Edit';
+import { EstacaoCreate } from './Estacao/Create';
 import { EnderecoList } from './Endereco/List';
+
 import { EnderecoEdit } from './Endereco/Edit';
 import { EnderecoCreate } from './Endereco/Create';
 
@@ -20,8 +24,6 @@ import { MotivoEdit } from './Motivo/Edit';
 import { MotivoCreate } from './Motivo/Create';
 
 import { UsuarioLogadoList } from './UsuarioLogado/List';
-import { UsuarioLogadoEdit } from './UsuarioLogado/Edit';
-import { UsuarioLogadoCreate } from './UsuarioLogado/Create';
 
 const Module = {
   menuItem: {
@@ -78,9 +80,9 @@ const Module = {
       path: '/painel/cadastro-de-estacoes',
       element: <Outlet />,
       children: [
-        { path: '', element: <DepositoList /> },
-        { path: ':id', element: <DepositoEdit /> },
-        { path: 'novo', element: <DepositoCreate /> },
+        { path: '', element: <EstacaoList /> },
+        { path: ':id', element: <EstacaoEdit /> },
+        { path: 'novo', element: <EstacaoCreate /> },
       ],
     },
     {
@@ -112,12 +114,7 @@ const Module = {
     },
     {
       path: '/painel/consulta-de-usuarios-logados',
-      element: <Outlet />,
-      children: [
-        { path: '', element: <UsuarioLogadoList /> },
-        { path: ':id', element: <UsuarioLogadoEdit /> },
-        { path: 'novo', element: <UsuarioLogadoCreate /> },
-      ],
+      element: <UsuarioLogadoList />,
     },
   ],
 };

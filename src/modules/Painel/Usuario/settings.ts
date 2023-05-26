@@ -1,7 +1,7 @@
-export const resourceSingularTitle = 'Usuário';
-export const resourcePluralTitle = 'Usuários';
+export const resourceTitle = 'Cadastro de Usuários';
+export const resourceName = 'Usuário';
 
-export const resourceName = 'usuarios';
+export const resourceKey = 'usuarios';
 
 export const idKey = 'idusuario';
 

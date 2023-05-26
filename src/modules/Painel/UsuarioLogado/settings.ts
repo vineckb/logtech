@@ -1,11 +1,12 @@
-export const resourceSingularTitle = 'Usuário Logado';
-export const resourcePluralTitle = 'Usuários Logados';
+export const resourceTitle = 'Usuários Logados';
 
-export const resourceName = 'clientes';
+export const resourceKey = 'usuariosatividade';
 
 export const idKey = 'idcliente';
 
 export const headers = [
-  { key: 'idcliente', title: 'ID' },
   { key: 'nome', title: 'Nome' },
+  { key: 'login', title: 'Login' },
+  { key: 'loginDateTime', title: 'Data e Hora do Login' },
+  { key: 'logoffDateTime', title: 'Data e Hora do Logoff' },
 ];

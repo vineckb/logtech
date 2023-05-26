@@ -3,7 +3,7 @@ import { useFetchItem, useSave } from './service';
 import { Form } from './Form';
 import { Box } from '@chakra-ui/react';
 import { PageTitle } from '@/components/PageTitle';
-import { resourceSingularTitle } from './settings';
+import { resourceName } from './settings';
 
 export function EstacaoEdit() {
   const { id } = useParams();
@@ -13,7 +13,7 @@ export function EstacaoEdit() {
   return (
     <Box p={5}>
       <PageTitle>
-        Editar {resourceSingularTitle} #{id}
+        Editar {resourceName} #{id}
       </PageTitle>
       <Form
         defaultValues={data}
