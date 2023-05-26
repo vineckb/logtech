@@ -7,8 +7,8 @@ import {
 } from '@/components/DataGrid';
 import { PageTitle } from '@/components/PageTitle';
 import { Box } from '@chakra-ui/react';
-import { useFetchList } from './service';
 import { Resource } from './model';
+import { useFetchList } from './service';
 import { headers, idKey, resourceTitle } from './settings';
 
 export function RegioesList() {

@@ -1,8 +1,8 @@
-export const resourceTitle = 'Veículos de Transportadoras';
+export const resourceTitle = 'Consulta de Veículos Transportadoras';
 
 export const resourceKey = 'transportadorasveiculos';
 
-export const idKey = 'idfornecedor';
+export const idKey = 'idveiculo';
 
 export const headers = [
   { key: 'idveiculo', title: 'ID Veículo' },

@@ -1,13 +1,11 @@
-export const resourceTitle = 'Vendedores';
+export const resourceTitle = 'Consulta de Vendedores';
 
 // @todo: review endpoint
-export const resourceKey = 'grupos';
+export const resourceKey = 'vendedores';
 
-export const idKey = 'idgrupo';
+export const idKey = 'idvendedor';
 
 export const headers = [
-  { key: 'idrota', title: 'ID Rota' },
+  { key: 'idvendedor', title: 'ID Vendedor' },
   { key: 'nome', title: 'Nome' },
-  { key: 'regiao', title: 'Região' },
-  { key: 'ativo', title: 'Ativo' },
 ];

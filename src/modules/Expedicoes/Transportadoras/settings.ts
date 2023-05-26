@@ -1,13 +1,13 @@
-export const resourceTitle = 'Transportadoras';
+export const resourceTitle = 'Consulta de Transportadoras';
 
 // @todo: review endpoint
-export const resourceKey = 'grupos';
+export const resourceKey = 'transportadoras';
 
 export const idKey = 'idgrupo';
 
 export const headers = [
-  { key: 'idrota', title: 'ID Rota' },
+  { key: 'idrota', title: 'ID Transportadora' },
   { key: 'nome', title: 'Nome' },
-  { key: 'regiao', title: 'Região' },
-  { key: 'ativo', title: 'Ativo' },
+  { key: 'regiao', title: 'CPF ou CNPJ' },
+  { key: 'ativo', title: 'Status' },
 ];

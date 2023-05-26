@@ -1,4 +1,4 @@
-export const resourceTitle = 'Clientes';
+export const resourceTitle = 'Consulta de Clientes';
 
 export const resourceKey = 'clientes';
 
