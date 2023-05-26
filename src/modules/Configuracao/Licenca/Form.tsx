@@ -3,11 +3,9 @@ import {
   Input,
   FormControl,
   FormErrorMessage,
-  Box,
   Grid,
   GridItem,
   Switch,
-  Text,
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormValues, schema } from './model';
@@ -43,7 +41,6 @@ export function Form({ isLoading = false, ...props }: Props) {
               </FormControl>
             </GridItem>
             <GridItem>
-              {' '}
               <FormControl isInvalid={!!errors.cliente}>
                 <FormLabel>Cliente:</FormLabel>
                 <Input {...register('cliente')} />

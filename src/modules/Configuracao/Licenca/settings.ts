@@ -1,7 +1,7 @@
-export const resourceSingularTitle = 'Definição de Licença';
+export const resourceName = 'Definição de Licença';
 export const resourcePluralTitle = 'Definições de Licenças';
 
-export const resourceName = 'licenca';
+export const resourceKey = 'licenca';
 
 export const idKey = 'idlicenca';
 

@@ -1,7 +1,7 @@
-export const resourceSingularTitle = 'Liberação de Rotina';
+export const resourceName = 'Liberação de Rotina';
 export const resourcePluralTitle = 'Liberações de Rotinas';
 
-export const resourceName = 'rotinas';
+export const resourceKey = 'rotinas';
 
 export const idKey = 'idrotina';
 

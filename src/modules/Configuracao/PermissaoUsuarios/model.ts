@@ -5,7 +5,7 @@ export interface Resource {
 }
 
 export const schema = z.object({
-  chave: z.string().min(1, 'errr'),
+  chave: z.string().min(1, 'Campo obrigatório'),
 });
 
 export type FormValues = z.infer<typeof schema>;

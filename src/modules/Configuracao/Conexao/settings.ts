@@ -1,6 +1,6 @@
 export const resourceTitle = 'Conexão Cliente';
 
-export const resourceName = 'conexaocliente';
+export const resourceKey = 'conexaocliente';
 
 export const idKey = 'idconexao';
 

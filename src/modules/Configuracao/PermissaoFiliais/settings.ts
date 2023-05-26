@@ -1,7 +1,7 @@
-export const resourceSingularTitle = 'Permissão de Filial';
+export const resourceName = 'Permissão de Filial';
 export const resourcePluralTitle = 'Permissões de Filiais';
 
-export const resourceName = 'permissao';
+export const resourceKey = 'permissao';
 
 export const idKey = 'idpermissao';
 

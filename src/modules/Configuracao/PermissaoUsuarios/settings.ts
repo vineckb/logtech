@@ -1,7 +1,7 @@
-export const resourceSingularTitle = 'Permissão de usuário';
+export const resourceName = 'Permissão de usuário';
 export const resourcePluralTitle = 'Permissões de usuários';
 // @todo: review
-export const resourceName = 'permissao';
+export const resourceKey = 'permissao';
 
 export const idKey = 'idpermissao';
 
