@@ -1,6 +1,6 @@
 export const resourceTitle = 'Subgrupos';
 
-export const resourceName = 'subgrupos';
+export const resourceKey = 'subgrupos';
 
 export const idKey = 'idsubgrupo';
 

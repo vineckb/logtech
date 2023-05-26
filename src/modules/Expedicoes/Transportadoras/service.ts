@@ -4,12 +4,12 @@ import {
   useGenericFetchList,
   useGenericRemove,
 } from '@/hooks/useQuery';
-import { resourceName } from './settings';
+import { resourceKey } from './settings';
 
 export function useRemove() {
-  return useGenericRemove(resourceName);
+  return useGenericRemove(resourceKey);
 }
 
 export function useFetchList(params: FetchListQueryParams) {
-  return useGenericFetchList<Resource>(resourceName, params);
+  return useGenericFetchList<Resource>(resourceKey, params);
 }

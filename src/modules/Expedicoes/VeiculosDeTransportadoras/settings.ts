@@ -1,6 +1,6 @@
 export const resourceTitle = 'Veículos de Transportadoras';
 
-export const resourceName = 'transportadorasveiculos';
+export const resourceKey = 'transportadorasveiculos';
 
 export const idKey = 'idfornecedor';
 

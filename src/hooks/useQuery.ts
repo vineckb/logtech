@@ -12,30 +12,30 @@ export interface FetchListQueryParams {
 }
 
 export function useGenericFetchList<T>(
-  resourceName: string,
+  resourceKey: string,
   params: FetchListQueryParams
 ) {
   return useQuery({
-    queryKey: [`${resourceName}-list`, params],
+    queryKey: [`${resourceKey}-list`, params],
     queryFn: (): Promise<AxiosResponse<T>> =>
-      api.get(`/${resourceName}`, {
+      api.get(`/${resourceKey}`, {
         data: params,
       }),
   });
 }
 export function useGenericFetchItem<Input, Output = unknown>({
-  resourceName,
+  resourceKey,
   transform,
   id,
 }: {
-  resourceName: string;
+  resourceKey: string;
   transform?: (data: Input) => Output;
   id: number | string;
 }) {
   return useQuery({
-    queryKey: [`${resourceName}-item`, id],
+    queryKey: [`${resourceKey}-item`, id],
     queryFn: (): Promise<AxiosResponse<Input>> =>
-      api.get(`/${resourceName}/${id}`),
+      api.get(`/${resourceKey}/${id}`),
 
     select: React.useCallback(
       (data: AxiosResponse<Input>) => {
@@ -51,27 +51,27 @@ export function useGenericFetchItem<Input, Output = unknown>({
 }
 
 export function useGenericSave<Input, Output>({
-  resourceName,
+  resourceKey,
   id,
   transform,
 }: {
-  resourceName: string;
+  resourceKey: string;
   id?: number | string | null;
   transform: (data: Input) => Output;
 }) {
   const mutation = useMutation({
-    mutationKey: [`${resourceName}-save`],
+    mutationKey: [`${resourceKey}-save`],
     mutationFn: (values: Input) => {
       const body = typeof transform === 'function' ? transform(values) : values;
 
       return id
-        ? api.put(`/${resourceName}/${id}`, body)
-        : api.post(`/${resourceName}`, body);
+        ? api.put(`/${resourceKey}/${id}`, body)
+        : api.post(`/${resourceKey}`, body);
     },
     onSuccess: () => {
       queryClient.invalidateQueries([
-        `${resourceName}-list`,
-        `${resourceName}-item`,
+        `${resourceKey}-list`,
+        `${resourceKey}-item`,
       ]);
     },
   });
@@ -79,15 +79,15 @@ export function useGenericSave<Input, Output>({
   return mutation;
 }
 
-export function useGenericRemove(resourceName: string) {
+export function useGenericRemove(resourceKey: string) {
   return useMutation({
-    mutationKey: [`${resourceName}-remove`],
+    mutationKey: [`${resourceKey}-remove`],
     mutationFn: (id: string | number): Promise<AxiosResponse> =>
-      api.delete(`/${resourceName}/${id}`),
+      api.delete(`/${resourceKey}/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries([
-        `${resourceName}-list`,
-        `${resourceName}-item`,
+        `${resourceKey}-list`,
+        `${resourceKey}-item`,
       ]);
     },
   });

@@ -1,7 +1,7 @@
 export const resourceTitle = 'Transportadoras';
 
 // @todo: review endpoint
-export const resourceName = 'grupos';
+export const resourceKey = 'grupos';
 
 export const idKey = 'idgrupo';
 

@@ -1,6 +1,6 @@
 export const resourceTitle = 'Clientes';
 
-export const resourceName = 'clientes';
+export const resourceKey = 'clientes';
 
 export const idKey = 'idcliente';
 
