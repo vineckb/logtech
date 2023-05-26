@@ -1,4 +1,4 @@
-export const resourceTitle = 'Subgrupos';
+export const resourceTitle = 'Consulta de Subgrupos';
 
 export const resourceKey = 'subgrupos';
 

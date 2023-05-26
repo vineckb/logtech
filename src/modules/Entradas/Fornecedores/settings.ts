@@ -1,11 +1,11 @@
-export const resourceTitle = 'Fornecedores';
+export const resourceTitle = 'Consulta de Fornecedores';
 
 export const resourceKey = 'fornecedores';
 
 export const idKey = 'idfornecedor';
 
 export const headers = [
-  { key: 'idfornecedor', title: 'ID Fornecedor' },
+  { key: 'idfornecedor', title: 'ID' },
   { key: 'nome', title: 'Nome' },
   { key: 'cpf', title: 'CPF' },
   { key: 'ie', title: 'IE' },
