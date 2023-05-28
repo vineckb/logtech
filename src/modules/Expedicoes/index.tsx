@@ -1,11 +1,14 @@
 import { FaRegCheckSquare } from 'react-icons/fa';
+import { ClientesDetails } from './Clientes/Details';
+import { ClientesList } from './Clientes/List';
 import { ExpedicoesDashboard } from './Dashboard';
 import { RegioesList } from './Regioes/List';
 import { RotasList } from './Rotas/List';
-import { ClientesList } from './Clientes/List';
-import { VendedoresList } from './Vendedores/List';
+import { TransportadorasDetails } from './Transportadoras/Details';
 import { TransportadorasList } from './Transportadoras/List';
+import { VeiculoTransportadoraDetails } from './VeiculosDeTransportadoras/Details';
 import { VeiculosDeTrasnportadorasList } from './VeiculosDeTransportadoras/List';
+import { VendedoresList } from './Vendedores/List';
 
 const Module = {
   menuItem: {
@@ -57,6 +60,7 @@ const Module = {
     {
       path: 'expedicoes/consulta-de-clientes',
       element: <ClientesList />,
+      children: [{ path: ':id', element: <ClientesDetails /> }],
     },
     {
       path: 'expedicoes/consulta-de-vendedores',
@@ -65,10 +69,12 @@ const Module = {
     {
       path: 'expedicoes/consulta-de-transportadoras',
       element: <TransportadorasList />,
+      children: [{ path: ':id', element: <TransportadorasDetails /> }],
     },
     {
       path: 'expedicoes/consulta-de-veiculos-de-transportadoras',
       element: <VeiculosDeTrasnportadorasList />,
+      children: [{ path: ':id', element: <VeiculoTransportadoraDetails /> }],
     },
   ],
 };

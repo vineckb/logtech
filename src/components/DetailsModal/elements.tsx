@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 export const FieldLabel = styled.h2`
@@ -5,7 +6,7 @@ export const FieldLabel = styled.h2`
   white-space: nowrap;
 `;
 
-export const Field = styled.div`
+export const Field = styled(Box)`
   background: #f5f5f5;
   padding: 10px;
   border-radius: 5px;

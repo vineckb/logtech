@@ -39,9 +39,7 @@ export function useGenericFetchItem<Input, Output = Input>({
 
     select: React.useCallback(
       (data: AxiosResponse<Input>): Output => {
-        if (!data.data) return {} as Output;
-
-        if (!transform) return data.data as Output;
+        if (!transform) return (data.data || {}) as Output;
 
         return transform(data.data);
       },
