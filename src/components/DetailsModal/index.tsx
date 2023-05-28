@@ -11,6 +11,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DetailsModalSkeleton } from './Skeleton';
 
+export * from './elements';
+
 interface DetailsModalProps {
   children: React.ReactNode;
   title: React.ReactNode;

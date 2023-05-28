@@ -2,6 +2,7 @@ import { FaChartPie } from 'react-icons/fa';
 import { EntradasDashboard } from './Dashboard';
 import { FornecedoresList } from './Fornecedores/List';
 import { GruposList } from './Grupos/List';
+import { ProdutosDetails } from './Produtos/Details';
 import { ProdutosList } from './Produtos/List';
 import { SubgruposList } from './Subgrupos/List';
 
@@ -50,6 +51,7 @@ const Module = {
     {
       path: 'entradas/consulta-de-produtos',
       element: <ProdutosList />,
+      children: [{ path: ':id', element: <ProdutosDetails /> }],
     },
   ],
 };
