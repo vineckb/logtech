@@ -23,7 +23,7 @@ export function useGenericFetchList<T>(
       }),
   });
 }
-export function useGenericFetchItem<Input, Output = unknown>({
+export function useGenericFetchItem<Input, Output = Input>({
   resourceKey,
   transform,
   id,
@@ -38,10 +38,10 @@ export function useGenericFetchItem<Input, Output = unknown>({
       api.get(`/${resourceKey}/${id}`),
 
     select: React.useCallback(
-      (data: AxiosResponse<Input>) => {
-        if (!data.data) return {};
+      (data: AxiosResponse<Input>): Output => {
+        if (!data.data) return {} as Output;
 
-        if (!transform) return data.data;
+        if (!transform) return data.data as Output;
 
         return transform(data.data);
       },
