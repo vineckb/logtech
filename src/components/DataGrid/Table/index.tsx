@@ -1,10 +1,10 @@
-import { MouseEvent, ChangeEvent, useState } from 'react';
-import { Checkbox, Tbody, Td, Text, Th, Tr } from '@chakra-ui/react';
-import { TableHeading, TableElement } from './styles';
 import { useDataGrid } from '@/hooks/useDataGrid';
+import { Checkbox, Tbody, Td, Text, Th, Tr } from '@chakra-ui/react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ResponseType } from '../types';
 import { TableSkeleton } from './TableSkeleton';
-import { useNavigate } from 'react-router-dom';
+import { TableElement, TableHeading } from './styles';
 
 interface Props {
   idKey?: string;
@@ -16,6 +16,7 @@ interface Props {
   selectable?: boolean;
   deletable?: boolean;
   editable?: boolean;
+  canOpen?: boolean;
 }
 
 export function Table<DataType>({
@@ -23,6 +24,7 @@ export function Table<DataType>({
   editable = true,
   headers,
   idKey = 'id',
+  canOpen = false,
 }: Props) {
   const [allSelected, setAllSelected] = useState<boolean>(false);
   const { selecteds, setSelecteds, queryResult } = useDataGrid();
@@ -38,7 +40,7 @@ export function Table<DataType>({
 
   function onRowClick(id: string) {
     return (e: MouseEvent<HTMLElement>) => {
-      if (!editable) return null;
+      if (!editable && !canOpen) return null;
       if (e.currentTarget.nodeName !== 'TR') return;
 
       navigate(`${id}`);
