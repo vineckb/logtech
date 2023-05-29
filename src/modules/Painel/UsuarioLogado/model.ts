@@ -1,3 +1,6 @@
 export interface Resource {
-  chave: string;
+  nome: string;
+  login: string;
+  loginDateTime: string;
+  logoffDateTime: string;
 }

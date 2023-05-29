@@ -1,11 +1,21 @@
 import { z } from 'zod';
 
 export interface Resource {
+  idrotina: string;
+  idfuncionalidade: string;
+  idusuario: string;
+  dataliberacao: string;
+  ativo: boolean;
   chave: string;
 }
 
 export const schema = z.object({
-  chave: z.string().min(1, 'Campo obrigatório'),
+  idrotina: z.string(),
+  idfuncionalidade: z.string(),
+  idusuario: z.string(),
+  dataliberacao: z.string(),
+  ativo: z.boolean(),
+  chave: z.string(),
 });
 
 export type FormValues = z.infer<typeof schema>;

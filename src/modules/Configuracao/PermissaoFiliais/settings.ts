@@ -6,9 +6,9 @@ export const resourceKey = 'permissao';
 export const idKey = 'idpermissao';
 
 export const headers = [
-  { key: 'cnpj', title: 'CNPJ' },
-  { key: 'cliente', title: 'Cliente' },
-  { key: 'qtd_usuarios', title: 'Qtde usuários' },
-  { key: 'chave', title: 'Chave' },
-  { key: 'status', title: 'Status' },
+  { key: 'idrotina', title: 'Rotina' },
+  { key: 'idfuncionalidade', title: 'Funcionalidade' },
+  { key: 'idusuario', title: 'Usuário' },
+  { key: 'dataliberacao', title: 'Data da liberação' },
+  { key: 'ativo', title: 'Avito' },
 ];

@@ -7,6 +7,7 @@ export interface Resource {
   senha: string;
   servidor: string;
   usuario: string;
+  iderp: string;
 }
 
 export const schema = z.object({
@@ -27,13 +28,11 @@ export function resourceToFormValues({
   return {
     ...values,
     ativo: ativo === 1,
-    iderp: '',
   };
 }
 
 export function formValuesToResource({
   ativo,
-  iderp,
   ...values
 }: FormValues): Resource {
   return {

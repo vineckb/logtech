@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export interface Resource {
-  idmotivo: number;
+  idmotivo?: number;
   nome: string;
   idtipomotivo: number;
   bloqestoque: string;
@@ -9,7 +9,6 @@ export interface Resource {
 }
 
 export const schema = z.object({
-  idmotivo: z.number(),
   nome: z.string().min(1, 'Campo ogrigatório'),
   idtipomotivo: z.number().min(1, 'Campo ogrigatório'),
   bloqestoque: z.boolean(),

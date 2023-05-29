@@ -1,7 +1,5 @@
-export interface Resource extends NotImplementedYetResource {}
-
-interface NotImplementedYetResource {
-  idtipotransportadora: number;
+export interface Resource {
+  idtipotransportadora?: number;
   nome: string;
   cpfcnpj: string;
   idtransportadora: string;

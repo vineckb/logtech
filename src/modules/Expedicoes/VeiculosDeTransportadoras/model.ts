@@ -1,11 +1,8 @@
-export interface Resource extends NotImplementedYetResource {
+export interface Resource {
   idveiculo: number;
   name: string;
   transportadora: string;
   ativo: string;
-}
-
-interface NotImplementedYetResource {
   m3: string;
   profundidade: string;
   altura: string;

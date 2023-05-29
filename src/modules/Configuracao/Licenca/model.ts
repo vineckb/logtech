@@ -6,6 +6,8 @@ export interface Resource {
   cliente: string;
   dataliberacao: string;
   qtd_usuarios: number;
+  status: boolean;
+  cnpj: string;
 }
 
 export const schema = z.object({
@@ -22,19 +24,11 @@ export type FormValues = z.infer<typeof schema>;
 
 export function resourceToFormValues({ ...values }: Resource): FormValues {
   return {
-    // @todo: remove placeholder fields
-    status: true,
-    cnpj: '00000000-0000',
     ...values,
   };
 }
 
-// @todo: remove ignoring fields
-export function formValuesToResource({
-  status,
-  cnpj,
-  ...values
-}: FormValues): Resource {
+export function formValuesToResource({ ...values }: FormValues): Resource {
   return {
     ...values,
   };
