@@ -9,20 +9,35 @@ interface Props {
   isInvalid: boolean;
   errorMessage?: React.ReactNode;
   inputProps: any;
-  label: React.ReactNode;
 }
 
-export function FieldTipo({ isInvalid, errorMessage, inputProps }: Props) {
+export function FieldTipoDeposito({
+  isInvalid,
+  errorMessage,
+  inputProps,
+}: Props) {
   const { data: options, isLoading } = useQuery({
-    queryKey: ['tipo-options'],
-    queryFn: () => api.get('/tipos'),
-    select: (response: any) => response.data.content,
+    queryKey: ['tipodeposito'],
+    queryFn: () => api.get('/tipodeposito'),
+    select: (response: any) =>
+      response.data.content.map(
+        ({
+          idtipodeposito,
+          nome,
+        }: {
+          idtipodeposito: string;
+          nome: string;
+        }) => ({
+          value: idtipodeposito,
+          label: nome,
+        })
+      ),
   });
 
   return (
     <FormControl isInvalid={isInvalid}>
       <FormLabel>
-        Tipo
+        Tipo de Depósito
         <AddButton />
       </FormLabel>
 

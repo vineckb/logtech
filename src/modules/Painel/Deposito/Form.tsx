@@ -1,4 +1,4 @@
-import { FieldTipo } from '@/components/Fields/FieldTipo';
+import { FieldTipoDeposito } from '@/components/Fields/TipoDeposito';
 import { UpsertForm } from '@/components/UpsertForm';
 import {
   FormControl,
@@ -53,7 +53,7 @@ export function Form({ isLoading = false, ...props }: Props) {
             </GridItem>
           </Grid>
 
-          <FieldTipo
+          <FieldTipoDeposito
             inputProps={register('tipo')}
             isInvalid={!!errors.tipo}
             errorMessage={errors.tipo && errors.tipo.message}
