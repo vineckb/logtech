@@ -2,6 +2,7 @@ import { Box, Button, Icon } from '@chakra-ui/react';
 import { Resolver, UseFormRegister, useForm } from 'react-hook-form';
 import { MdCheck } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import { Paper } from '../Paper';
 import { UpsertFormSkeleton } from './Skeleton';
 
 interface Props<T extends { [x: string]: any }> {
@@ -45,7 +46,7 @@ export function UpsertForm<T extends { [x: string]: any }>({
   if (isLoading) return <UpsertFormSkeleton />;
 
   return (
-    <Box as="form" {...props} onSubmit={handleSubmit(_handleSave)}>
+    <Paper as="form" {...props} onSubmit={handleSubmit(_handleSave)} p={7}>
       {children(register, errors)}
 
       <Box gap={10} pt={5} pb={5} display="flex" justifyContent="end">
@@ -57,6 +58,6 @@ export function UpsertForm<T extends { [x: string]: any }>({
           Salvar
         </Button>
       </Box>
-    </Box>
+    </Paper>
   );
 }
