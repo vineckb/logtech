@@ -11,27 +11,33 @@ interface Props {
   inputProps: any;
 }
 
-export function FieldTipoEstacao({
+export function FieldTipoEndereco({
   isInvalid,
   errorMessage,
   inputProps,
 }: Props) {
   const { data: options, isLoading } = useQuery({
-    queryKey: ['tipoestacao'],
-    queryFn: () => api.get('/tipoestacao'),
+    queryKey: ['tipoendereco'],
+    queryFn: () => api.get('/tipoendereco'),
     select: (response: any) =>
       response.data.content.map(
-        ({ idtipoestacao, nome }: { idtipoestacao: string; nome: string }) => ({
-          value: idtipoestacao,
+        ({
+          idtipoendereco,
+          nome,
+        }: {
+          idtipoendereco: string;
+          nome: string;
+        }) => ({
+          value: idtipoendereco,
           label: nome,
         })
       ),
   });
 
   return (
-    <FormControl isInvalid={isInvalid} mb="0.40rem">
-      <FormLabel>
-        Tipo de Estação
+    <FormControl isInvalid={isInvalid}>
+      <FormLabel mb="0.40rem">
+        Tipo de Endereço
         <AddButton />
       </FormLabel>
 

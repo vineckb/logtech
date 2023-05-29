@@ -1,15 +1,17 @@
+import { FieldEstacaoSelect } from '@/components/Fields/EstacaoSelect';
+import { FieldTipoEndereco } from '@/components/Fields/TipoEndereco';
+import { UpsertForm } from '@/components/UpsertForm';
 import {
-  FormLabel,
-  Input,
   FormControl,
   FormErrorMessage,
+  FormLabel,
   Grid,
   GridItem,
+  Input,
   Switch,
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormValues, schema } from './model';
-import { UpsertForm } from '@/components/UpsertForm';
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -140,24 +142,18 @@ export function Form({ isLoading = false, ...props }: Props) {
           </Grid>
           <Grid templateColumns="repeat(3, 1fr)" gap={5}>
             <GridItem>
-              <FormControl isInvalid={!!errors.idtipoendereco}>
-                <FormLabel>Tipo:</FormLabel>
-                <Input {...register('idtipoendereco')} />
-
-                <FormErrorMessage>
-                  {errors.idtipoendereco && errors.idtipoendereco.message}
-                </FormErrorMessage>
-              </FormControl>
+              <FieldTipoEndereco
+                isInvalid={!!errors.idtipoendereco}
+                errorMessage={errors.idtipoendereco?.message}
+                inputProps={register('idtipoendereco')}
+              />
             </GridItem>
             <GridItem>
-              <FormControl isInvalid={!!errors.idestacao}>
-                <FormLabel>Estação:</FormLabel>
-                <Input {...register('idestacao')} />
-
-                <FormErrorMessage>
-                  {errors.idestacao && errors.idestacao.message}
-                </FormErrorMessage>
-              </FormControl>
+              <FieldEstacaoSelect
+                isInvalid={!!errors.idestacao}
+                errorMessage={errors.idestacao?.message}
+                inputProps={register('idestacao')}
+              />
             </GridItem>
             <GridItem>
               <FormControl isInvalid={!!errors.iddeposito}>
