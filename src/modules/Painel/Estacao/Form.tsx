@@ -1,15 +1,16 @@
+import { FieldTipoEstacao } from '@/components/Fields/TipoEstacao';
+import { UpsertForm } from '@/components/UpsertForm';
 import {
-  FormLabel,
-  Input,
   FormControl,
   FormErrorMessage,
+  FormLabel,
   Grid,
   GridItem,
+  Input,
   Switch,
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormValues, schema } from './model';
-import { UpsertForm } from '@/components/UpsertForm';
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -51,14 +52,13 @@ export function Form({ isLoading = false, ...props }: Props) {
               </FormControl>
             </GridItem>
             <GridItem colSpan={4}>
-              <FormControl isInvalid={!!errors.tiposeparacao}>
-                <FormLabel>Tipo Separação:</FormLabel>
-                <Input {...register('tiposeparacao')} />
-
-                <FormErrorMessage>
-                  {errors.tiposeparacao && errors.tiposeparacao.message}
-                </FormErrorMessage>
-              </FormControl>
+              <FieldTipoEstacao
+                isInvalid={!!errors.tiposeparacao}
+                inputProps={register('tiposeparacao')}
+                errorMessage={
+                  errors.tiposeparacao && errors.tiposeparacao.message
+                }
+              />
             </GridItem>
           </Grid>
           <Grid templateColumns="repeat(10, 1fr)" gap={5}>

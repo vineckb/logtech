@@ -16,9 +16,9 @@ interface Props {
 
 export function AddModal({ isOpen, onClose }: Props) {
   async function handleSave(data: FormType) {
-    await api.post('/tipodeposito', data);
+    await api.post('/tipoestacao', data);
     onClose();
-    queryClient.invalidateQueries(['tipodeposito']);
+    queryClient.invalidateQueries(['tipoestacao']);
   }
 
   return (
@@ -26,7 +26,7 @@ export function AddModal({ isOpen, onClose }: Props) {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
-          Adicionar Tipo de Depósito
+          Adicionar Tipo
           <ModalCloseButton />
         </ModalHeader>
         <AddForm handleSave={handleSave} handleCancel={onClose} />
