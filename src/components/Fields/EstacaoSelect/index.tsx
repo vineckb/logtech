@@ -3,28 +3,39 @@ import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Select from 'react-select';
-import { AddButton } from './AddButton';
 
 interface Props {
   isInvalid: boolean;
   errorMessage?: React.ReactNode;
   inputProps: any;
-  label: React.ReactNode;
 }
 
-export function FieldTipo({ isInvalid, errorMessage, inputProps }: Props) {
+export function FieldEstacaoSelect({
+  isInvalid,
+  errorMessage,
+  inputProps,
+}: Props) {
   const { data: options, isLoading } = useQuery({
-    queryKey: ['tipo-options'],
-    queryFn: () => api.get('/tipos'),
-    select: (response: any) => response.data.content,
+    queryKey: ['enderecosestacao'],
+    queryFn: () => api.get('/enderecosestacao'),
+    select: (response: any) =>
+      response.data.content.map(
+        ({
+          idenderecosestacao,
+          nome,
+        }: {
+          idenderecosestacao: string;
+          nome: string;
+        }) => ({
+          value: idenderecosestacao,
+          label: nome,
+        })
+      ),
   });
 
   return (
-    <FormControl isInvalid={isInvalid} mb="0.40rem">
-      <FormLabel>
-        Tipo
-        <AddButton />
-      </FormLabel>
+    <FormControl isInvalid={isInvalid}>
+      <FormLabel>Estação</FormLabel>
 
       <Select
         isLoading={isLoading}

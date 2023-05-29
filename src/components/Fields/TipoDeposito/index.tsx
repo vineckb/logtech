@@ -35,7 +35,7 @@ export function FieldTipoDeposito({
   });
 
   return (
-    <FormControl isInvalid={isInvalid}>
+    <FormControl isInvalid={isInvalid} mb="0.40rem">
       <FormLabel>
         Tipo de Depósito
         <AddButton />
