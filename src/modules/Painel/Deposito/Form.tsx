@@ -1,15 +1,16 @@
+import { FieldTipo } from '@/components/Fields/FieldTipo';
+import { UpsertForm } from '@/components/UpsertForm';
 import {
-  FormLabel,
-  Input,
   FormControl,
   FormErrorMessage,
+  FormLabel,
   Grid,
   GridItem,
+  Input,
   Switch,
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormValues, schema } from './model';
-import { UpsertForm } from '@/components/UpsertForm';
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -51,14 +52,13 @@ export function Form({ isLoading = false, ...props }: Props) {
               </FormControl>
             </GridItem>
           </Grid>
-          <FormControl isInvalid={!!errors.tipo}>
-            <FormLabel>Tipo:</FormLabel>
-            <Input {...register('tipo')} />
 
-            <FormErrorMessage>
-              {errors.tipo && errors.tipo.message}
-            </FormErrorMessage>
-          </FormControl>
+          <FieldTipo
+            inputProps={register('tipo')}
+            isInvalid={!!errors.tipo}
+            errorMessage={errors.tipo && errors.tipo.message}
+          />
+
           <FormControl isInvalid={!!errors.status}>
             <FormLabel htmlFor="email-alerts" mb="0">
               Ativo?
