@@ -1,27 +1,27 @@
-import { Outlet } from 'react-router-dom';
 import { FaChartLine } from 'react-icons/fa';
 import { MdOutlinePlaylistAdd } from 'react-icons/md';
+import { Outlet } from 'react-router-dom';
 import { PainelDashboard } from './Dashboard';
 
-import { DepositoList } from './Deposito/List';
-import { DepositoEdit } from './Deposito/Edit';
 import { DepositoCreate } from './Deposito/Create';
+import { DepositoEdit } from './Deposito/Edit';
+import { DepositoList } from './Deposito/List';
 
-import { EstacaoList } from './Estacao/List';
-import { EstacaoEdit } from './Estacao/Edit';
-import { EstacaoCreate } from './Estacao/Create';
 import { EnderecoList } from './Endereco/List';
+import { EstacaoCreate } from './Estacao/Create';
+import { EstacaoEdit } from './Estacao/Edit';
+import { EstacaoList } from './Estacao/List';
 
-import { EnderecoEdit } from './Endereco/Edit';
 import { EnderecoCreate } from './Endereco/Create';
+import { EnderecoEdit } from './Endereco/Edit';
 
-import { UsuarioList } from './Usuario/List';
-import { UsuarioEdit } from './Usuario/Edit';
 import { UsuarioCreate } from './Usuario/Create';
+import { UsuarioEdit } from './Usuario/Edit';
+import { UsuarioList } from './Usuario/List';
 
-import { MotivoList } from './Motivo/List';
-import { MotivoEdit } from './Motivo/Edit';
 import { MotivoCreate } from './Motivo/Create';
+import { MotivoEdit } from './Motivo/Edit';
+import { MotivoList } from './Motivo/List';
 
 import { UsuarioLogadoList } from './UsuarioLogado/List';
 
@@ -34,31 +34,37 @@ const Module = {
       {
         to: '/painel/cadastro-de-depositos',
         title: 'Depósitos',
+        fullTitle: 'Cadastro de Depósitos',
         icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/cadastro-de-estacoes',
         title: 'Estações',
+        fullTitle: 'Cadastro de Estações',
         icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/cadastro-de-enderecos',
         title: 'Endereços',
+        fullTitle: 'Cadastro de Endereços',
         icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/cadastro-de-usuarios',
         title: 'Usuários',
+        fullTitle: 'Cadastro de Usuários',
         icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/cadastro-de-motivos',
         title: 'Motivos',
+        fullTitle: 'Cadastro de Motivos',
         icon: MdOutlinePlaylistAdd,
       },
       {
         to: '/painel/consulta-de-usuarios-logados',
         title: 'Usuários Logados',
+        fullTitle: 'Consulta de Usuários Logados',
       },
     ],
   },

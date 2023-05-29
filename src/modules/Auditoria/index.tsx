@@ -1,5 +1,6 @@
+import { PageTitle } from '@/components/PageTitle';
+import { Box } from '@chakra-ui/react';
 import { FaRegEdit } from 'react-icons/fa';
-import { AuditoriaIndex } from './Index/index';
 
 const Module = {
   menuItem: {
@@ -11,7 +12,11 @@ const Module = {
   routes: [
     {
       path: 'auditoria',
-      element: <AuditoriaIndex />,
+      element: (
+        <Box p={5}>
+          <PageTitle>Auditoria</PageTitle>
+        </Box>
+      ),
     },
   ],
 };

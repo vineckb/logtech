@@ -1,6 +1,6 @@
 import {
-  DataGrid,
   ButtonAdd,
+  DataGrid,
   DeleteButton,
   Header,
   Pagination,
@@ -8,9 +8,15 @@ import {
   Table,
 } from '@/components/DataGrid';
 import { PageTitle } from '@/components/PageTitle';
-import { Box } from '@chakra-ui/react';
-import { useFetchList, useRemove } from './service';
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+} from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { Resource } from './model';
+import { useFetchList, useRemove } from './service';
 import { headers, idKey, resourceTitle } from './settings';
 
 export function EstacaoList() {
@@ -18,7 +24,20 @@ export function EstacaoList() {
 
   return (
     <Box p={5}>
-      <PageTitle>{resourceTitle}</PageTitle>
+      <PageTitle>Painel de Controle</PageTitle>
+      <Breadcrumb mb={3}>
+        <BreadcrumbItem>
+          <BreadcrumbLink as={Link} to="/painel">
+            Painel de Controle
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+
+        <BreadcrumbItem isCurrentPage>
+          <BreadcrumbLink>
+            <strong>{resourceTitle}</strong>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
       <DataGrid query={useFetchList}>
         <Header>
           <SearchField />

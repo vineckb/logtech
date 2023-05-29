@@ -13,7 +13,7 @@ import MovimentacoesModule from '@/modules/Movimentacoes';
 import PainelModule from '@/modules/Painel';
 
 const menuItems = [
-  ConfiguracaoModule.navigation,
+  ConfiguracaoModule.menuItem,
   PainelModule.menuItem,
   EntradasModule.menuItem,
   MovimentacoesModule.menuItem,

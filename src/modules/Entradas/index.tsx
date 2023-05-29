@@ -15,18 +15,22 @@ const Module = {
       {
         to: '/entradas/consulta-de-fornecedores',
         title: 'Fornecedores',
+        fullTitle: 'Consulta de Fornecedores',
       },
       {
         to: '/entradas/consulta-de-grupos',
         title: 'Grupos',
+        fullTitle: 'Consulta de Grupos',
       },
       {
         to: '/entradas/consulta-de-subgrupos',
         title: 'Subgrupos',
+        fullTitle: 'Consulta de Subgrupos',
       },
       {
         to: '/entradas/consulta-de-produtos',
         title: 'Produtos',
+        fullTitle: 'Consulta de Produtos',
       },
     ],
   },

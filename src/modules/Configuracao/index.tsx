@@ -1,31 +1,31 @@
-import { Outlet } from 'react-router-dom';
 import { FaRegSun } from 'react-icons/fa';
 import { MdOutlinePlaylistAdd, MdPlaylistAdd } from 'react-icons/md';
+import { Outlet } from 'react-router-dom';
 
 import { ConfiguracaoDashboard } from './Dashboard/index';
 
-import { ConexaoList } from './Conexao/List';
-import { ConexaoEdit } from './Conexao/Edit';
 import { ConexaoCreate } from './Conexao/Create';
+import { ConexaoEdit } from './Conexao/Edit';
+import { ConexaoList } from './Conexao/List';
 
-import { LicencaEdit } from './Licenca/Edit';
 import { LicencaCreate } from './Licenca/Create';
+import { LicencaEdit } from './Licenca/Edit';
 import { LicencaList } from './Licenca/List';
 
-import { RotinaList } from './Rotina/List';
-import { RotinaEdit } from './Rotina/Edit';
 import { RotinaCreate } from './Rotina/Create';
+import { RotinaEdit } from './Rotina/Edit';
+import { RotinaList } from './Rotina/List';
 
-import { PermissaoUsuariosList } from './PermissaoUsuarios/List';
-import { PermissaoUsuariosEdit } from './PermissaoUsuarios/Edit';
 import { PermissaoUsuariosCreate } from './PermissaoUsuarios/Create';
+import { PermissaoUsuariosEdit } from './PermissaoUsuarios/Edit';
+import { PermissaoUsuariosList } from './PermissaoUsuarios/List';
 
-import { PermissaoFiliaisList } from './PermissaoFiliais/List';
-import { PermissaoFiliaisEdit } from './PermissaoFiliais/Edit';
 import { PermissaoFiliaisCreate } from './PermissaoFiliais/Create';
+import { PermissaoFiliaisEdit } from './PermissaoFiliais/Edit';
+import { PermissaoFiliaisList } from './PermissaoFiliais/List';
 
 const Module = {
-  navigation: {
+  menuItem: {
     to: '/configuracao',
     title: 'Configuração da Aplicação',
     icon: FaRegSun,

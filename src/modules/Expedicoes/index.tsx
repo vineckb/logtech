@@ -19,26 +19,32 @@ const Module = {
       {
         to: '/expedicoes/consulta-de-regioes',
         title: 'Regiões',
+        fullTitle: 'Consulta de Regiões',
       },
       {
         to: '/expedicoes/consulta-de-rotas',
         title: 'Rotas',
+        fullTitle: 'Consulta de Rotas',
       },
       {
         to: '/expedicoes/consulta-de-clientes',
         title: 'Clientes',
+        fullTitle: 'Consulta de Clientes',
       },
       {
         to: '/expedicoes/consulta-de-vendedores',
         title: 'Vendedores',
+        fullTitle: 'Consulta de Vendedores',
       },
       {
         to: '/expedicoes/consulta-de-transportadoras',
         title: 'Transportadoras',
+        fullTitle: 'Consulta de Transportadoras',
       },
       {
         to: '/expedicoes/consulta-de-veiculos-de-transportadoras',
         title: 'Veículo Transportadora',
+        fullTitle: 'Consulta de Veículo Transportadora',
       },
     ],
   },
