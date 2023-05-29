@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import { List } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -21,10 +21,18 @@ export const Menu = styled(List)`
 
 export const MenuTitle = styled.h3`
   text-transform: uppercase;
-  padding: 15px 30px 10px;
-  transition: opacity 0.2s linear;
+  padding: 15px 18px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
-  &.hidden {
-    opacity: 0;
+  span {
+    transition: opacity 0.2s linear;
+    width: auto;
+    padding-left: 12px;
+  }
+
+  &.hidden span {
+    display: none;
   }
 `;

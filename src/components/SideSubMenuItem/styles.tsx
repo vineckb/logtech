@@ -1,10 +1,10 @@
-import styled from '@emotion/styled';
 import { Link } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 
 export const SubMenuItem = styled(Link)`
   transition: color 0.3s linear;
   display: flex;
-  white-space: break-spaces;
+  white-space: nowrap;
   align-items: center;
 
   &:hover,
