@@ -1,6 +1,5 @@
-import { PageTitle } from '@/components/PageTitle';
-import { Box } from '@chakra-ui/react';
 import { FaShippingFast } from 'react-icons/fa';
+import { MovimentacoesDashboard } from './Dashboard';
 
 const Module = {
   menuItem: {
@@ -11,11 +10,7 @@ const Module = {
   routes: [
     {
       path: 'movimentacoes',
-      element: (
-        <Box p={5}>
-          <PageTitle>Movimentações</PageTitle>
-        </Box>
-      ),
+      element: <MovimentacoesDashboard />,
     },
   ],
 };

@@ -1,6 +1,5 @@
-import { PageTitle } from '@/components/PageTitle';
-import { Box } from '@chakra-ui/react';
 import { FaIndustry } from 'react-icons/fa';
+import { GestaoDashboard } from './Dashboard';
 
 const Module = {
   menuItem: {
@@ -12,11 +11,7 @@ const Module = {
   routes: [
     {
       path: 'gestao',
-      element: (
-        <Box p={5}>
-          <PageTitle>Gestão</PageTitle>
-        </Box>
-      ),
+      element: <GestaoDashboard />,
     },
   ],
 };

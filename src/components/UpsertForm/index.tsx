@@ -40,7 +40,10 @@ export function UpsertForm<T extends { [x: string]: any }>({
   async function _handleSave(data: T) {
     try {
       await handleSave(data);
-    } catch (e) {}
+    } catch (e: any) {
+      alert(e.response.data.mensagem);
+      console.log('catch', e);
+    }
   }
 
   if (isLoading) return <UpsertFormSkeleton />;

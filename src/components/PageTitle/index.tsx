@@ -5,4 +5,6 @@ export const PageTitle = styled.h2`
   font-weight: bold;
   text-transform: uppercase;
   padding: 0 0 20px;
+  white-space: nowrap;
+  flex: 1;
 `;

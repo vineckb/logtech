@@ -4,6 +4,7 @@ export interface Resource {
   idrotina: string;
   idfuncionalidade: string;
   idusuario: string;
+  idusuarioliberacao: string;
   dataliberacao: string;
   ativo: boolean;
   chave: string;
@@ -26,8 +27,13 @@ export function resourceToFormValues({ ...values }: Resource): FormValues {
   };
 }
 
-export function formValuesToResource({ ...values }: FormValues): Resource {
+export function formValuesToResource({
+  idusuario,
+  ...values
+}: FormValues): Resource {
   return {
     ...values,
+    idusuario,
+    idusuarioliberacao: idusuario,
   };
 }

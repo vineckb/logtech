@@ -70,6 +70,10 @@ const Module = {
   },
   routes: [
     {
+      path: '',
+      element: <PainelDashboard />,
+    },
+    {
       path: 'painel',
       element: <PainelDashboard />,
     },

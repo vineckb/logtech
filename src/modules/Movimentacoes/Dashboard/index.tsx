@@ -10,22 +10,22 @@ import { Chart1 } from './chart1';
 import { Chart2 } from './chart2';
 import { Chart3 } from './chart3';
 
-export function PainelDashboard() {
+export function MovimentacoesDashboard() {
   return (
     <PeriodProvider>
       <Box p={5}>
-        <PageHeader title="Painel de Controle">
+        <PageHeader title="Movimentações">
           <PeriodSelector />
         </PageHeader>
 
         <Flex mb={5} justifyContent="stretch" gap={5}>
-          <StatCard label="Entradas" number={102} />
-          <StatCard label="Movimentações" number={50} />
-          <StatCard label="Expedição" number={10} />
-          <StatCard label="Inventário" number={25} />
-          <StatCard label="Estoque" number={8} />
-          <StatCard label="Gestão" number={1} />
-          <StatCard label="Problemas" number={3} />
+          <StatCard label="Itens" number={102} />
+          <StatCard label="Sku's" number={50} />
+          <StatCard label="Ordens de serv" number={10} />
+          <StatCard label="Movimentações" number={25} />
+          <StatCard label="Fornecedores" number={8} />
+          <StatCard label="Faltas" number={1} />
+          <StatCard label="Avarias" number={3} />
         </Flex>
 
         <Grid templateColumns="repeat(8, 1fr)" gap={5}>

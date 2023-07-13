@@ -13,13 +13,13 @@ import MovimentacoesModule from '@/modules/Movimentacoes';
 import PainelModule from '@/modules/Painel';
 
 const menuItems = [
-  ConfiguracaoModule.menuItem,
   PainelModule.menuItem,
   EntradasModule.menuItem,
   MovimentacoesModule.menuItem,
-  ExpedicoesModule.menuItem,
   GestaoModule.menuItem,
+  ExpedicoesModule.menuItem,
   AuditoriaModule.menuItem,
+  ConfiguracaoModule.menuItem,
 ];
 
 export function SideMenu() {

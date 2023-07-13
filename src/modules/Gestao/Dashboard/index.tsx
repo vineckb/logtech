@@ -10,11 +10,11 @@ import { Chart1 } from './chart1';
 import { Chart2 } from './chart2';
 import { Chart3 } from './chart3';
 
-export function PainelDashboard() {
+export function GestaoDashboard() {
   return (
     <PeriodProvider>
       <Box p={5}>
-        <PageHeader title="Painel de Controle">
+        <PageHeader title="Gestão">
           <PeriodSelector />
         </PageHeader>
 
