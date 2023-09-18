@@ -3,14 +3,14 @@ import { z } from 'zod';
 export interface Resource {
   idmotivo?: number;
   nome: string;
-  idtipomotivo: number;
+  idtipomotivo: string;
   bloqestoque: string;
   status: string;
 }
 
 export const schema = z.object({
   nome: z.string().min(1, 'Campo ogrigatório'),
-  idtipomotivo: z.number().min(1, 'Campo ogrigatório'),
+  idtipomotivo: z.string().min(1, 'Campo ogrigatório'),
   bloqestoque: z.boolean(),
   status: z.boolean(),
 });

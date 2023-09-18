@@ -3,7 +3,7 @@ import { z } from 'zod';
 export interface Resource {
   iderp: string;
   nome: string;
-  tiposeparacao: string;
+  tiposeparacao: any;
   tipo: string;
   ordenacao: string;
   deposito: string;
@@ -13,7 +13,7 @@ export interface Resource {
 export const schema = z.object({
   iderp: z.string().min(1, 'Campo obrigatório'),
   nome: z.string().min(1, 'Campo obrigatório'),
-  tiposeparacao: z.string().min(1, 'Campo obrigatório'),
+  tiposeparacao: z.object({value: z.number(), label: z.string()}),
   tipo: z.string().min(1, 'Campo obrigatório'),
   ordenacao: z.string().min(1, 'Campo obrigatório'),
   deposito: z.string().min(1, 'Campo obrigatório'),

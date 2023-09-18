@@ -6,13 +6,13 @@ export interface Resource {
   nome: string;
   status: boolean;
   tipoNome?: string;
-  tipo: string;
+  tipo: any;
 }
 
 export const schema = z.object({
   iderp: z.string().min(1, 'Campo obrigatório'),
   nome: z.string().min(1, 'Campo obrigatório'),
-  tipo: z.string().min(1, 'Campo obrigatório'),
+  tipo: z.object({value: z.number(), label: z.string()}),
   status: z.boolean(),
 });
 

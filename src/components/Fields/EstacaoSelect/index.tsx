@@ -7,13 +7,12 @@ import Select from 'react-select';
 interface Props {
   isInvalid: boolean;
   errorMessage?: React.ReactNode;
-  inputProps: any;
 }
 
 export function FieldEstacaoSelect({
   isInvalid,
   errorMessage,
-  inputProps,
+  ...rest
 }: Props) {
   const { data: options, isLoading } = useQuery({
     queryKey: ['enderecosestacao'],
@@ -42,7 +41,7 @@ export function FieldEstacaoSelect({
         isClearable={true}
         isSearchable={true}
         options={options}
-        {...inputProps}
+        {...rest}
       />
 
       <FormErrorMessage>{errorMessage}</FormErrorMessage>

@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormValues, schema } from './model';
+import { Controller } from 'react-hook-form';
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -28,7 +29,7 @@ export function Form({ isLoading = false, ...props }: Props) {
       flexDirection="column"
       gap={5}
     >
-      {(register, errors) => (
+      {(register, errors, control) => (
         <>
           <Grid templateColumns="repeat(2, 1fr)" gap={5}>
             <GridItem>
@@ -52,13 +53,17 @@ export function Form({ isLoading = false, ...props }: Props) {
               </FormControl>
             </GridItem>
           </Grid>
-
-          <FieldTipoDeposito
-            inputProps={register('tipo')}
-            isInvalid={!!errors.tipo}
-            errorMessage={errors.tipo && errors.tipo.message}
+          <Controller
+            name='tipo'
+            control={control}
+            render={({ field }) => (
+              <FieldTipoDeposito
+                {...field}
+                isInvalid={!!errors.tipo}
+                errorMessage={errors.tipo && errors.tipo.message}
+              />
+            )}
           />
-
           <FormControl isInvalid={!!errors.status}>
             <FormLabel htmlFor="email-alerts" mb="0">
               Ativo?

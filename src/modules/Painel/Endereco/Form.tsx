@@ -12,6 +12,8 @@ import {
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormValues, schema } from './model';
+import { Controller } from 'react-hook-form';
+import { FieldTipoDeposito } from '@/components/Fields/TipoDeposito';
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -29,7 +31,7 @@ export function Form({ isLoading = false, ...props }: Props) {
       flexDirection="column"
       gap={5}
     >
-      {(register, errors) => (
+      {(register, errors, control) => (
         <>
           <Grid templateColumns="repeat(12, 1fr)" gap={5}>
             <GridItem colSpan={4}>
@@ -142,17 +144,28 @@ export function Form({ isLoading = false, ...props }: Props) {
           </Grid>
           <Grid templateColumns="repeat(3, 1fr)" gap={5}>
             <GridItem>
-              <FieldTipoEndereco
-                isInvalid={!!errors.idtipoendereco}
-                errorMessage={errors.idtipoendereco?.message}
-                inputProps={register('idtipoendereco')}
+              <Controller
+                name='idtipoendereco'
+                control={control}
+                render={({ field }) => (
+                  <FieldTipoDeposito
+                    {...field}
+                    isInvalid={!!errors.idtipoendereco}
+                    errorMessage={errors.idtipoendereco && errors.idtipoendereco.message}
+                  />
+                )}
               />
             </GridItem>
             <GridItem>
-              <FieldEstacaoSelect
-                isInvalid={!!errors.idestacao}
-                errorMessage={errors.idestacao?.message}
-                inputProps={register('idestacao')}
+              <Controller
+                name='idestacao'
+                control={control}
+                render={({ field }) => (
+                  <FieldEstacaoSelect
+                    {...field}
+                    isInvalid={!!errors.idestacao}
+                    errorMessage={errors.idestacao && errors.idestacao.message} />
+                )}
               />
             </GridItem>
             <GridItem>

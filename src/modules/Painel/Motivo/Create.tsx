@@ -12,8 +12,8 @@ export function MotivoCreate() {
 
   async function handleSave(values: FormValues) {
     try {
-      const response = await mutateAsync(values);
-      navigate(`${response.data.idconexao}`);
+      await mutateAsync(values);
+      navigate('/painel/cadastro-de-motivos');
     } catch (e) {}
   }
 

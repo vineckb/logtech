@@ -63,16 +63,6 @@ export function Form({ isLoading = false, ...props }: Props) {
           </Grid>
           <Grid templateColumns="repeat(3, 1fr)" gap={5}>
             <GridItem>
-              <FormControl isInvalid={!!errors.datacadastro}>
-                <FormLabel>Data de cadastro:</FormLabel>
-                <Input {...register('datacadastro')} readOnly={true} />
-
-                <FormErrorMessage>
-                  {errors.datacadastro && errors.datacadastro.message}
-                </FormErrorMessage>
-              </FormControl>
-            </GridItem>
-            <GridItem>
               <FormControl isInvalid={!!errors.cpf}>
                 <FormLabel>CPF:</FormLabel>
                 <Input {...register('cpf')} />

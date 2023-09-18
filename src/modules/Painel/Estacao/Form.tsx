@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormValues, schema } from './model';
+import { Controller } from 'react-hook-form';
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -28,7 +29,7 @@ export function Form({ isLoading = false, ...props }: Props) {
       flexDirection="column"
       gap={5}
     >
-      {(register, errors) => (
+      {(register, errors, control) => (
         <>
           <Grid templateColumns="repeat(10, 1fr)" gap={5}>
             <GridItem colSpan={2}>
@@ -52,12 +53,15 @@ export function Form({ isLoading = false, ...props }: Props) {
               </FormControl>
             </GridItem>
             <GridItem colSpan={4}>
-              <FieldTipoEstacao
-                isInvalid={!!errors.tiposeparacao}
-                inputProps={register('tiposeparacao')}
-                errorMessage={
-                  errors.tiposeparacao && errors.tiposeparacao.message
-                }
+              <Controller
+                name='tiposeparacao'
+                control={control}
+                render={({ field }) => (
+                  <FieldTipoEstacao
+                    {...field}
+                    isInvalid={!!errors.tipo}
+                    errorMessage={errors.tiposeparacao && errors.tiposeparacao.message} />
+                )}
               />
             </GridItem>
           </Grid>

@@ -11,7 +11,7 @@ interface Props<T extends { [x: string]: any }> {
   defaultValues?: { [x: string]: any };
   handleSave: (values: T) => Promise<any>;
   resolver: Resolver<T>;
-  children: (register: UseFormRegister<T>, errors: any) => React.ReactElement;
+  children: (register: UseFormRegister<T>, errors: any, control?: any) => React.ReactElement;
 }
 
 export function UpsertForm<T extends { [x: string]: any }>({
@@ -28,6 +28,7 @@ export function UpsertForm<T extends { [x: string]: any }>({
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
+    control
   } = useForm<T>({
     resolver,
     values: defaultValues as T,
@@ -50,7 +51,7 @@ export function UpsertForm<T extends { [x: string]: any }>({
 
   return (
     <Paper as="form" {...props} onSubmit={handleSubmit(_handleSave)} p={7}>
-      {children(register, errors)}
+      {children(register, errors, control)}
 
       <Box gap={10} pt={5} pb={5} display="flex" justifyContent="end">
         <Button variant="link" onClick={handleCancel}>

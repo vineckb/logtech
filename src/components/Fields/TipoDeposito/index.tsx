@@ -8,13 +8,12 @@ import { AddButton } from './AddButton';
 interface Props {
   isInvalid: boolean;
   errorMessage?: React.ReactNode;
-  inputProps: any;
 }
 
 export function FieldTipoDeposito({
   isInvalid,
   errorMessage,
-  inputProps,
+  ...rest
 }: Props) {
   const { data: options, isLoading } = useQuery({
     queryKey: ['tipodeposito'],
@@ -46,7 +45,7 @@ export function FieldTipoDeposito({
         isClearable={true}
         isSearchable={true}
         options={options}
-        {...inputProps}
+        {...rest}
       />
 
       <FormErrorMessage>{errorMessage}</FormErrorMessage>

@@ -3,17 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import { PageTitle } from '@/components/PageTitle';
 import { resourceName } from './settings';
 import { useSave } from './service';
-import { FormValues } from './model';
+import { Resource } from './model';
 import { Form } from './Form';
 
 export function EnderecoCreate() {
   const navigate = useNavigate();
   const { mutateAsync } = useSave();
 
-  async function handleSave(values: FormValues) {
+  async function handleSave(values: Resource) {
     try {
-      const response = await mutateAsync(values);
-      navigate(`${response.data.idconexao}`);
+      const newValue = {
+        ...values,
+        idtipoendereco: values.idtipoendereco.value,
+        idestacao: values.idestacao.value
+      }
+      console.log('newValue', newValue);
+      await mutateAsync(newValue);
+      navigate('/painel/cadastro-de-enderecos');
     } catch (e) {}
   }
 

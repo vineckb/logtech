@@ -8,13 +8,12 @@ import { AddButton } from './AddButton';
 interface Props {
   isInvalid: boolean;
   errorMessage?: React.ReactNode;
-  inputProps: any;
 }
 
 export function FieldTipoEndereco({
   isInvalid,
   errorMessage,
-  inputProps,
+  ...rest
 }: Props) {
   const { data: options, isLoading } = useQuery({
     queryKey: ['tipoendereco'],
@@ -46,7 +45,7 @@ export function FieldTipoEndereco({
         isClearable={true}
         isSearchable={true}
         options={options}
-        {...inputProps}
+        {...rest}
       />
 
       <FormErrorMessage>{errorMessage}</FormErrorMessage>

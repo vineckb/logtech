@@ -2,7 +2,6 @@ import { z } from 'zod';
 
 export interface Resource {
   ativo: string;
-  datacadastro: string;
   email: string;
   idsetor: number;
   idturno: number;
@@ -22,7 +21,6 @@ export const schema = z.object({
   telefone: z.string(),
   idsetor: z.number(),
   idturno: z.number(),
-  datacadastro: z.string(),
   cpf: z.string(),
   ativo: z.boolean(),
 });

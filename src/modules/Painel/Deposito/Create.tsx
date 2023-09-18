@@ -3,17 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import { PageTitle } from '@/components/PageTitle';
 import { resourceSingularName } from './settings';
 import { useSave } from './service';
-import { FormValues } from './model';
+import { Resource } from './model';
 import { Form } from './Form';
 
 export function DepositoCreate() {
   const navigate = useNavigate();
   const { mutateAsync } = useSave();
 
-  async function handleSave(values: FormValues) {
+  async function handleSave(values: Resource) {
     try {
-      const response = await mutateAsync(values);
-      navigate(`${response.data.idconexao}`);
+      const newValue = {
+        ...values,
+        tipo: values.tipo.value
+      }
+      await mutateAsync(newValue);
+      navigate('/painel/cadastro-de-depositos');
     } catch (e) {}
   }
 

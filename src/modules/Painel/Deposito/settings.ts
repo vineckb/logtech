@@ -3,7 +3,7 @@ export const resourceSingularName = 'Depósito';
 export const resourcePluralName = 'Depósitos';
 
 // @todo: review endpoint
-export const resourceKey = 'erp';
+export const resourceKey = 'enderecosdeposito';
 
 export const idKey = 'iderp';
 

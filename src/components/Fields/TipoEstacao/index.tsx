@@ -8,13 +8,12 @@ import { AddButton } from './AddButton';
 interface Props {
   isInvalid: boolean;
   errorMessage?: React.ReactNode;
-  inputProps: any;
 }
 
 export function FieldTipoEstacao({
   isInvalid,
   errorMessage,
-  inputProps,
+  ...rest
 }: Props) {
   const { data: options, isLoading } = useQuery({
     queryKey: ['tipoestacao'],
@@ -40,7 +39,7 @@ export function FieldTipoEstacao({
         isClearable={true}
         isSearchable={true}
         options={options}
-        {...inputProps}
+        {...rest}
       />
 
       <FormErrorMessage>{errorMessage}</FormErrorMessage>
