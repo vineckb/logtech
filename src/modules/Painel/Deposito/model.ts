@@ -14,7 +14,7 @@ export const schema = z.object({
   iddepositoerp: z.string().min(1, "Campo obrigatório"),
   nome: z.string().min(1, "Campo obrigatório"),
   idtipodeposito: z.number().min(1, "Campo obrigatório"),
-  status: z.boolean(),
+  ativo: z.boolean(),
 });
 
 export type FormValues = z.infer<typeof schema>;
@@ -26,17 +26,17 @@ export function resourceToFormValues({
 }: Resource): FormValues {
   return {
     ...values,
-    status: ativo === "s",
+    ativo: ativo === "s",
     iddepositoerp: `${iddepositoerp}`,
   };
 }
 
 export function formValuesToResource({
-  status,
+  ativo,
   ...values
 }: FormValues): Resource {
   return {
     ...values,
-    ativo: status ? "s" : "n",
+    ativo: ativo ? "s" : "n",
   };
 }

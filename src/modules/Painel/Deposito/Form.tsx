@@ -66,11 +66,11 @@ export function Form({ isLoading = false, ...props }: Props) {
               />
             )}
           />
-          <FormControl isInvalid={!!errors.status}>
+          <FormControl isInvalid={!!errors.ativo}>
             <FormLabel htmlFor="email-alerts" mb="0">
               Ativo?
             </FormLabel>
-            <Switch {...register("status")} ml={2} />
+            <Switch {...register("ativo")} ml={2} />
           </FormControl>
         </>
       )}

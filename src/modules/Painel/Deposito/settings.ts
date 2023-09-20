@@ -11,5 +11,10 @@ export const headers = [
   { key: "iddepositoerp", title: "ID ERP" },
   { key: "nome", title: "Descrição" },
   { key: "tipoendereco.nome", title: "Tipo" },
-  { key: "status", title: "Status" },
+  {
+    key: "ativo",
+    title: "Ativo",
+
+    filter: (v: number | string) => (v === "s" || v === 1 ? "Sim" : "Não"),
+  },
 ];
