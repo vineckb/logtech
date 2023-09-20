@@ -1,31 +1,42 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export interface Resource {
   iddeposito?: number;
-  iderp: string;
+  iddepositoerp: string;
+  idtipodeposito: number;
   nome: string;
-  status: boolean;
+  ativo: string;
   tipoNome?: string;
-  tipo: any;
 }
 
 export const schema = z.object({
-  iderp: z.string().min(1, 'Campo obrigatório'),
-  nome: z.string().min(1, 'Campo obrigatório'),
-  tipo: z.object({value: z.number(), label: z.string()}),
+  iddeposito: z.number().optional(),
+  iddepositoerp: z.string().min(1, "Campo obrigatório"),
+  nome: z.string().min(1, "Campo obrigatório"),
+  idtipodeposito: z.number().min(1, "Campo obrigatório"),
   status: z.boolean(),
 });
 
 export type FormValues = z.infer<typeof schema>;
 
-export function resourceToFormValues({ ...values }: Resource): FormValues {
+export function resourceToFormValues({
+  ativo,
+  iddepositoerp,
+  ...values
+}: Resource): FormValues {
   return {
     ...values,
+    status: ativo === "s",
+    iddepositoerp: `${iddepositoerp}`,
   };
 }
 
-export function formValuesToResource({ ...values }: FormValues): Resource {
+export function formValuesToResource({
+  status,
+  ...values
+}: FormValues): Resource {
   return {
     ...values,
+    ativo: status ? "s" : "n",
   };
 }

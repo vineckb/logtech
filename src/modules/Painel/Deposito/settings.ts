@@ -1,15 +1,15 @@
-export const resourceTitle = 'Cadastro de depósito';
-export const resourceSingularName = 'Depósito';
-export const resourcePluralName = 'Depósitos';
+export const resourceTitle = "Cadastro de depósito";
+export const resourceSingularName = "Depósito";
+export const resourcePluralName = "Depósitos";
 
 // @todo: review endpoint
-export const resourceKey = 'enderecosdeposito';
+export const resourceKey = "enderecosdeposito";
 
-export const idKey = 'iderp';
+export const idKey = "iddeposito";
 
 export const headers = [
-  { key: 'iderp', title: 'ID ERP' },
-  { key: 'nome', title: 'Descrição' },
-  { key: 'tipo', title: 'Tipo' },
-  { key: 'status', title: 'Status' },
+  { key: "iddepositoerp", title: "ID ERP" },
+  { key: "nome", title: "Descrição" },
+  { key: "tipoendereco.nome", title: "Tipo" },
+  { key: "status", title: "Status" },
 ];

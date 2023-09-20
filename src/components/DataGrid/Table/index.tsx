@@ -1,10 +1,10 @@
-import { useDataGrid } from '@/hooks/useDataGrid';
-import { Checkbox, Tbody, Td, Text, Th, Tr } from '@chakra-ui/react';
-import { ChangeEvent, MouseEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ResponseType } from '../types';
-import { TableSkeleton } from './TableSkeleton';
-import { TableElement, TableHeading } from './styles';
+import { useDataGrid } from "@/hooks/useDataGrid";
+import { Checkbox, Tbody, Td, Text, Th, Tr } from "@chakra-ui/react";
+import { ChangeEvent, MouseEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ResponseType } from "../types";
+import { TableSkeleton } from "./TableSkeleton";
+import { TableElement, TableHeading } from "./styles";
 
 interface Props {
   idKey?: string;
@@ -23,7 +23,7 @@ export function Table<DataType>({
   selectable = true,
   editable = true,
   headers,
-  idKey = 'id',
+  idKey = "id",
   canOpen = false,
 }: Props) {
   const [allSelected, setAllSelected] = useState<boolean>(false);
@@ -41,7 +41,7 @@ export function Table<DataType>({
   function onRowClick(id: string) {
     return (e: MouseEvent<HTMLElement>) => {
       if (!editable && !canOpen) return null;
-      if (e.currentTarget.nodeName !== 'TR') return;
+      if (e.currentTarget.nodeName !== "TR") return;
 
       navigate(`${id}`);
     };
@@ -82,7 +82,7 @@ export function Table<DataType>({
     filter: undefined | ((v: any) => string),
     value: any
   ): string {
-    if (typeof filter === 'function') {
+    if (typeof filter === "function") {
       return filter(value);
     }
 
@@ -143,7 +143,9 @@ export function Table<DataType>({
                 <Td key={`${row}-${column}`}>
                   {applyFilter(
                     headers[column].filter,
-                    item[key as keyof DataType]
+                    key
+                      .split(".")
+                      .reduce((acc: any, curr: string) => acc[curr], item)
                   )}
                 </Td>
               ))}

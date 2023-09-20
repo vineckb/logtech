@@ -1,5 +1,5 @@
-import { FieldTipoDeposito } from '@/components/Fields/TipoDeposito';
-import { UpsertForm } from '@/components/UpsertForm';
+import { FieldTipoDeposito } from "@/components/Fields/TipoDeposito";
+import { UpsertForm } from "@/components/UpsertForm";
 import {
   FormControl,
   FormErrorMessage,
@@ -8,10 +8,10 @@ import {
   GridItem,
   Input,
   Switch,
-} from '@chakra-ui/react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FormValues, schema } from './model';
-import { Controller } from 'react-hook-form';
+} from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormValues, schema } from "./model";
+import { Controller } from "react-hook-form";
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -33,19 +33,19 @@ export function Form({ isLoading = false, ...props }: Props) {
         <>
           <Grid templateColumns="repeat(2, 1fr)" gap={5}>
             <GridItem>
-              <FormControl isInvalid={!!errors.iderp}>
+              <FormControl isInvalid={!!errors.iddepositoerp}>
                 <FormLabel>ID ERP:</FormLabel>
-                <Input {...register('iderp')} />
+                <Input {...register("iddepositoerp")} />
 
                 <FormErrorMessage>
-                  {errors.iderp && errors.iderp.message}
+                  {errors.iddepositoerp && errors.iddepositoerp.message}
                 </FormErrorMessage>
               </FormControl>
             </GridItem>
             <GridItem>
               <FormControl isInvalid={!!errors.nome}>
                 <FormLabel>Descrição:</FormLabel>
-                <Input {...register('nome')} />
+                <Input {...register("nome")} />
 
                 <FormErrorMessage>
                   {errors.nome && errors.nome.message}
@@ -54,13 +54,15 @@ export function Form({ isLoading = false, ...props }: Props) {
             </GridItem>
           </Grid>
           <Controller
-            name='tipo'
+            name="idtipodeposito"
             control={control}
             render={({ field }) => (
               <FieldTipoDeposito
                 {...field}
-                isInvalid={!!errors.tipo}
-                errorMessage={errors.tipo && errors.tipo.message}
+                isInvalid={!!errors.idtipodeposito}
+                errorMessage={
+                  errors.idtipodeposito && errors.idtipodeposito.message
+                }
               />
             )}
           />
@@ -68,7 +70,7 @@ export function Form({ isLoading = false, ...props }: Props) {
             <FormLabel htmlFor="email-alerts" mb="0">
               Ativo?
             </FormLabel>
-            <Switch {...register('status')} ml={2} />
+            <Switch {...register("status")} ml={2} />
           </FormControl>
         </>
       )}
