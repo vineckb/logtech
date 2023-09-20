@@ -1,23 +1,19 @@
-import { api } from '@/services/api';
-import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/react';
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import Select from 'react-select';
-import { AddButton } from './AddButton';
+import { api } from "@/services/api";
+import { FormControl, FormErrorMessage, FormLabel } from "@chakra-ui/react";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import Select from "react-select";
+import { AddButton } from "./AddButton";
 
 interface Props {
   isInvalid: boolean;
   errorMessage?: React.ReactNode;
 }
 
-export function FieldTipoEstacao({
-  isInvalid,
-  errorMessage,
-  ...rest
-}: Props) {
+export function FieldTipoEstacao({ isInvalid, errorMessage, ...rest }: Props) {
   const { data: options, isLoading } = useQuery({
-    queryKey: ['tipoestacao'],
-    queryFn: () => api.get('/tipoestacao'),
+    queryKey: ["tipoestacao"],
+    queryFn: () => api.get("/tipoestacao"),
     select: (response: any) =>
       response.data.content.map(
         ({ idtipoestacao, nome }: { idtipoestacao: string; nome: string }) => ({
@@ -29,7 +25,9 @@ export function FieldTipoEstacao({
 
   return (
     <FormControl isInvalid={isInvalid} mb="0.40rem">
-      <FormLabel>
+      <FormLabel
+        sx={{ display: "flex", flexWrap: "nowrap", whiteSpace: "nowrap" }}
+      >
         Tipo de Estação
         <AddButton />
       </FormLabel>
