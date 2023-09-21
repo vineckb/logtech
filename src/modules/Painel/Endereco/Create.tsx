@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { PageTitle } from "@/components/PageTitle";
 import { resourceName } from "./settings";
 import { useSave } from "./service";
-import { FormValues, Resource } from "./model";
+import { FormValues } from "./model";
 import { Form } from "./Form";
 
 export function EnderecoCreate() {

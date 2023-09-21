@@ -1,23 +1,35 @@
-import { api } from '@/services/api';
-import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/react';
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import Select from 'react-select';
-import { AddButton } from './AddButton';
+import { api } from "@/services/api";
+import { FormControl, FormLabel } from "@chakra-ui/react";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import Select from "react-select";
+import { AddButton } from "./AddButton";
+import { FieldError } from "@/components/FieldError";
+
+import { FieldError as Error } from "react-hook-form";
 
 interface Props {
   isInvalid: boolean;
-  errorMessage?: React.ReactNode;
+  error?: Error;
+  value: string;
+  onChange: (value: string) => void;
+}
+
+export interface OptionType {
+  label: string;
+  value: string;
 }
 
 export function FieldTipoEndereco({
   isInvalid,
-  errorMessage,
+  value: _value,
+  onChange,
+  error,
   ...rest
 }: Props) {
   const { data: options, isLoading } = useQuery({
-    queryKey: ['tipoendereco'],
-    queryFn: () => api.get('/tipoendereco'),
+    queryKey: ["tipoendereco"],
+    queryFn: () => api.get("/tipoendereco"),
     select: (response: any) =>
       response.data.content.map(
         ({
@@ -26,12 +38,22 @@ export function FieldTipoEndereco({
         }: {
           idtipoendereco: string;
           nome: string;
-        }) => ({
-          value: idtipoendereco,
+        }): OptionType => ({
+          value: String(idtipoendereco),
           label: nome,
         })
       ),
   });
+
+  const value: OptionType = React.useMemo(() => {
+    const selected = options?.filter(
+      (option: OptionType) => option.value === _value
+    );
+    if (!options || !selected) {
+      return { value: _value, label: "" };
+    }
+    return (selected || {}) as unknown as OptionType;
+  }, [options, _value]);
 
   return (
     <FormControl isInvalid={isInvalid}>
@@ -41,14 +63,16 @@ export function FieldTipoEndereco({
       </FormLabel>
 
       <Select
+        {...rest}
         isLoading={isLoading}
         isClearable={true}
         isSearchable={true}
         options={options}
-        {...rest}
+        value={value}
+        onChange={(newValue) => onChange(newValue?.value || "")}
       />
 
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      <FieldError error={error} />
     </FormControl>
   );
 }

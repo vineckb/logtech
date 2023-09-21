@@ -13,7 +13,7 @@ export const headers = [
   { key: "telefone", title: "Telefone" },
   {
     key: "ativo",
-    title: "Status",
+    title: "Ativo",
     filter: (v: number | string) => (v === "s" || v === 1 ? "Sim" : "Não"),
   },
 ];

@@ -3,10 +3,10 @@ import {
   Field,
   FieldLabel,
   FieldValue,
-} from '@/components/DetailsModal';
-import { Grid, GridItem, Text } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
-import { useFetchItem } from './service';
+} from "@/components/DetailsModal";
+import { Grid, GridItem, Text } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
+import { useFetchItem } from "./service";
 
 export function TransportadorasDetails() {
   const { id } = useParams();
@@ -107,7 +107,7 @@ export function TransportadorasDetails() {
         </GridItem>
         <GridItem>
           <Field>
-            <FieldLabel>Status</FieldLabel>
+            <FieldLabel>Avito</FieldLabel>
             <FieldValue>{data?.status}</FieldValue>
           </Field>
         </GridItem>

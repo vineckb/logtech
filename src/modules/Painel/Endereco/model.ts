@@ -1,25 +1,25 @@
 import { z } from "zod";
 
 export interface Resource {
-  altura: any;
-  andar: any;
-  apto: any;
-  ativo: any;
-  direcao: any;
-  iddeposito: any;
-  idendereco: any;
-  idestacao: any;
+  altura: string;
+  andar: string;
+  apto: string;
+  ativo: string;
+  direcao: string;
+  iddeposito: string;
+  idendereco?: number;
+  idestacao: string;
   idtipoendereco: string;
-  largura: any;
-  m3: any;
-  predio: any;
-  profundidade: any;
-  qtdpalete: any;
-  rua: any;
+  largura: string;
+  m3: string;
+  predio: string;
+  profundidade: string;
+  qtdpalete: string;
+  rua: string;
 }
 
 export const schema = z.object({
-  idendereco: z.number(),
+  idendereco: z.number().optional(),
   rua: z.string().min(1, "Campo obrigatório"),
   predio: z.string().min(1, "Campo obrigatório"),
   andar: z.string(),
@@ -31,21 +31,41 @@ export const schema = z.object({
   m3: z.string(),
   qtdpalete: z.string(),
   idtipoendereco: z.string().min(1, "Campo obrigatório"),
-  idestacao: z.object({ value: z.number(), label: z.string() }),
+  idestacao: z.string().min(1, "Campo obrigatório"),
   iddeposito: z.string().min(1, "Campo obrigatório"),
   ativo: z.boolean(),
 });
 
 export type FormValues = z.infer<typeof schema>;
 
-export function resourceToFormValues({ ...values }: Resource): FormValues {
+export function resourceToFormValues({
+  ativo,
+  andar,
+  apto,
+  idtipoendereco,
+  iddeposito,
+  idestacao,
+  qtdpalete,
+  ...values
+}: Resource): FormValues {
   return {
     ...values,
+    ativo: ativo === "s" ? true : false,
+    idestacao: String(idestacao),
+    andar: String(andar),
+    apto: String(apto),
+    iddeposito: String(iddeposito),
+    idtipoendereco: String(idtipoendereco),
+    qtdpalete: String(qtdpalete),
   };
 }
 
-export function formValuesToResource({ ...values }: FormValues): Resource {
+export function formValuesToResource({
+  ativo,
+  ...values
+}: FormValues): Resource {
   return {
     ...values,
+    ativo: ativo ? "s" : "n",
   };
 }

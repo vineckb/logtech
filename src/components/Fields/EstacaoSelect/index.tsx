@@ -29,14 +29,8 @@ export function FieldEstacaoSelect({
     queryFn: () => api.get("/enderecosestacao"),
     select: (response: any) =>
       response.data.content.map(
-        ({
-          idenderecosestacao,
-          nome,
-        }: {
-          idenderecosestacao: string;
-          nome: string;
-        }) => ({
-          value: idenderecosestacao,
+        ({ idestacao, nome }: { idestacao: string; nome: string }) => ({
+          value: String(idestacao),
           label: nome,
         })
       ),

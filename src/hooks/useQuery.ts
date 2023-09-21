@@ -1,8 +1,8 @@
-import { queryClient } from '@/App';
-import { api } from '@/services/api';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { AxiosResponse } from 'axios';
-import React from 'react';
+import { queryClient } from "@/App";
+import { api } from "@/services/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { AxiosResponse } from "axios";
+import React from "react";
 
 export interface FetchListQueryParams {
   page: number;
@@ -33,6 +33,7 @@ export function useGenericFetchItem<Input, Output = Input>({
   id: number | string;
 }) {
   return useQuery({
+    cacheTime: 0,
     queryKey: [`${resourceKey}-item`, id],
     queryFn: (): Promise<AxiosResponse<Input>> =>
       api.get(`/${resourceKey}/${id}`),
@@ -60,7 +61,7 @@ export function useGenericSave<Input, Output>({
   const mutation = useMutation({
     mutationKey: [`${resourceKey}-save`],
     mutationFn: (values: Input) => {
-      const body = typeof transform === 'function' ? transform(values) : values;
+      const body = typeof transform === "function" ? transform(values) : values;
 
       return id
         ? api.put(`/${resourceKey}/${id}`, body)

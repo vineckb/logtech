@@ -13,6 +13,7 @@ export function AddButton() {
         colorScheme="facebook"
         rounded="full"
         ml={3}
+        mb="-3px"
         size="xs"
         {...getButtonProps()}
       >

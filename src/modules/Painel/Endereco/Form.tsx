@@ -11,8 +11,9 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormValues, schema } from "./model";
 import { Controller } from "react-hook-form";
-import { FieldTipoDeposito } from "@/components/Fields/TipoDeposito";
 import { FieldError } from "@/components/FieldError";
+import { FieldDeposito } from "@/components/Fields/Deposito";
+import { FieldTipoEndereco } from "@/components/Fields/TipoEndereco";
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -123,12 +124,17 @@ export function Form({ isLoading = false, ...props }: Props) {
           </Grid>
           <Grid templateColumns="repeat(3, 1fr)" gap={5}>
             <GridItem>
-              <FormControl isInvalid={!!errors.idtipoendereco}>
-                <FormLabel>Tipo de Endereço:</FormLabel>
-                <Input {...register("idtipoendereco")} />
-
-                <FieldError error={errors.idtipoendereco} />
-              </FormControl>
+              <Controller
+                name="idtipoendereco"
+                control={control}
+                render={({ field }) => (
+                  <FieldTipoEndereco
+                    {...field}
+                    isInvalid={!!errors.idtipoendereco}
+                    error={errors.idtipoendereco}
+                  />
+                )}
+              />
             </GridItem>
             <GridItem>
               <Controller
@@ -148,7 +154,7 @@ export function Form({ isLoading = false, ...props }: Props) {
                 name="iddeposito"
                 control={control}
                 render={({ field }) => (
-                  <FieldTipoDeposito
+                  <FieldDeposito
                     {...field}
                     isInvalid={!!errors.iddeposito}
                     error={errors.iddeposito}
