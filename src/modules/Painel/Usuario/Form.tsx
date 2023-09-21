@@ -57,6 +57,14 @@ export function Form({ isLoading = false, ...props }: Props) {
           </Grid>
           <Grid templateColumns="repeat(3, 1fr)" gap={5}>
             <GridItem>
+              <FormControl isInvalid={!!errors.email}>
+                <FormLabel>E-mail:</FormLabel>
+                <Input type="email" {...register("email")} />
+
+                <FieldError error={errors.email && errors.email.message} />
+              </FormControl>
+            </GridItem>
+            <GridItem>
               <FormControl isInvalid={!!errors.cpf}>
                 <FormLabel>CPF:</FormLabel>
                 <Input {...register("cpf")} />

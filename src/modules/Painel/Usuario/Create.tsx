@@ -1,19 +1,19 @@
-import { Box, Text } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
-import { PageTitle } from '@/components/PageTitle';
-import { resourceName } from './settings';
-import { useSave } from './service';
-import { FormValues } from './model';
-import { Form } from './Form';
+import { Box, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { PageTitle } from "@/components/PageTitle";
+import { resourceName } from "./settings";
+import { useSave } from "./service";
+import { FormValues } from "./model";
+import { Form } from "./Form";
 
 export function UsuarioCreate() {
-  const navigate = useNavigate();
   const { mutateAsync } = useSave();
+  const navigate = useNavigate();
 
   async function handleSave(values: FormValues) {
     try {
-      const response = await mutateAsync(values);
-      navigate(`${response.data.idconexao}`);
+      await mutateAsync(values);
+      navigate("/painel/cadastro-de-usuarios");
     } catch (e) {}
   }
 

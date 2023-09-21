@@ -8,7 +8,7 @@ export const resourceKey = "enderecosdeposito";
 export const idKey = "iddeposito";
 
 export const headers = [
-  { key: "iddepositoerp", title: "ID ERP" },
+  { key: "iddeposito", title: "ID" },
   { key: "nome", title: "Descrição" },
   { key: "tipoendereco.nome", title: "Tipo" },
   {
