@@ -2,11 +2,16 @@ import { api } from "@/services/api";
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-
-import { FieldError as Error } from "react-hook-form";
 import Select from "react-select";
 import { AddButton } from "./AddButton";
+import { AxiosResponse } from "axios";
+import { FieldError as Error } from "react-hook-form";
 import { FieldError } from "@/components/FieldError";
+
+export interface TipoDepositoResource {
+  iddeposito: string;
+  nome: string;
+}
 
 interface Props {
   isInvalid: boolean;
@@ -20,7 +25,7 @@ export interface OptionType {
   value: string;
 }
 
-export function FieldTipoEstacao({
+export function FieldDeposito({
   isInvalid,
   error,
   value: _value,
@@ -28,33 +33,33 @@ export function FieldTipoEstacao({
   ...rest
 }: Props) {
   const { data: options, isLoading } = useQuery({
-    queryKey: ["tipoestacao"],
-    queryFn: () => api.get("/tipoestacao"),
-    select: (response: any) =>
+    queryKey: ["enderecosdeposito"],
+    queryFn: () => api.get("/enderecosdeposito"),
+    select: (
+      response: AxiosResponse<{
+        content: Array<TipoDepositoResource>;
+      }>
+    ): OptionType[] =>
       response.data.content.map(
-        ({ idtipoestacao, nome }: { idtipoestacao: string; nome: string }) => ({
-          value: idtipoestacao,
+        ({ iddeposito, nome }: { iddeposito: string; nome: string }) => ({
+          value: String(iddeposito) as string,
           label: nome,
         })
       ),
   });
 
   const value: OptionType = React.useMemo(() => {
-    const selected = options?.filter(
-      (option: OptionType) => option.value === _value
-    );
+    const selected = options?.filter((option) => option.value === _value);
     if (!options || !selected) {
-      return { value: _value, label: "" };
+      return { value: String(_value), label: "" };
     }
-    return selected as unknown as OptionType;
+    return (selected || {}) as unknown as OptionType;
   }, [options, _value]);
 
   return (
     <FormControl isInvalid={isInvalid} mb="0.40rem">
-      <FormLabel
-        sx={{ display: "flex", flexWrap: "nowrap", whiteSpace: "nowrap" }}
-      >
-        Tipo de Estação
+      <FormLabel>
+        Depósito
         <AddButton />
       </FormLabel>
 
@@ -65,10 +70,7 @@ export function FieldTipoEstacao({
         isSearchable={true}
         options={options}
         value={value}
-        onChange={(newValue) => {
-          console.log(newValue);
-          onChange(newValue?.value || "");
-        }}
+        onChange={(newValue) => onChange(newValue?.value || "")}
       />
 
       <FieldError error={error} />

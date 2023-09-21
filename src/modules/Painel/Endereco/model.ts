@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export interface Resource {
   altura: any;
@@ -9,7 +9,7 @@ export interface Resource {
   iddeposito: any;
   idendereco: any;
   idestacao: any;
-  idtipoendereco: any;
+  idtipoendereco: string;
   largura: any;
   m3: any;
   predio: any;
@@ -20,8 +20,8 @@ export interface Resource {
 
 export const schema = z.object({
   idendereco: z.number(),
-  rua: z.string().min(1, 'Campo obrigatório'),
-  predio: z.string().min(1, 'Campo obrigatório'),
+  rua: z.string().min(1, "Campo obrigatório"),
+  predio: z.string().min(1, "Campo obrigatório"),
   andar: z.string(),
   apto: z.string(),
   direcao: z.string(),
@@ -30,9 +30,9 @@ export const schema = z.object({
   profundidade: z.string(),
   m3: z.string(),
   qtdpalete: z.string(),
-  idtipoendereco: z.object({value: z.number(), label: z.string()}),
-  idestacao: z.object({value: z.number(), label: z.string()}),
-  iddeposito: z.string().min(1, 'Campo obrigatório'),
+  idtipoendereco: z.string().min(1, "Campo obrigatório"),
+  idestacao: z.object({ value: z.number(), label: z.string() }),
+  iddeposito: z.string().min(1, "Campo obrigatório"),
   ativo: z.boolean(),
 });
 

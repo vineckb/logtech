@@ -11,10 +11,8 @@ export function DepositoCreate() {
   const { mutateAsync } = useSave();
 
   async function handleSave(values: FormValues) {
-    try {
-      await mutateAsync(values);
-      navigate("/painel/cadastro-de-depositos");
-    } catch (e) {}
+    await mutateAsync(values);
+    navigate("/painel/cadastro-de-depositos");
   }
 
   return (

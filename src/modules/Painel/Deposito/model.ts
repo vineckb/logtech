@@ -6,7 +6,6 @@ export interface Resource {
   idtipodeposito: number;
   nome: string;
   ativo: string;
-  tipoNome?: string;
 }
 
 export const schema = z.object({

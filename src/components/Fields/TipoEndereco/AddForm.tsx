@@ -1,18 +1,18 @@
+import { FieldError } from "@/components/FieldError";
 import {
   Button,
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Input,
   ModalBody,
   ModalFooter,
-} from '@chakra-ui/react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+} from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 export const schema = z.object({
-  nome: z.string().min(1, 'Campo obrigatório'),
+  nome: z.string().min(1, "Campo obrigatório"),
 });
 export type FormType = z.infer<typeof schema>;
 
@@ -41,11 +41,9 @@ export function AddForm({ handleCancel, handleSave }: Props) {
       <ModalBody>
         <FormControl isInvalid={!!errors.nome}>
           <FormLabel>Descrição:</FormLabel>
-          <Input {...register('nome')} />
+          <Input {...register("nome")} />
 
-          <FormErrorMessage>
-            {errors.nome && errors.nome.message}
-          </FormErrorMessage>
+          <FieldError error={errors.nome} />
         </FormControl>
       </ModalBody>
       <ModalFooter gap={5} pt={10}>

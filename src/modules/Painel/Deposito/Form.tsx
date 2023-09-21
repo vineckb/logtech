@@ -2,7 +2,6 @@ import { FieldTipoDeposito } from "@/components/Fields/TipoDeposito";
 import { UpsertForm } from "@/components/UpsertForm";
 import {
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Grid,
   GridItem,
@@ -12,6 +11,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormValues, schema } from "./model";
 import { Controller } from "react-hook-form";
+import { FieldError } from "@/components/FieldError";
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -37,9 +37,7 @@ export function Form({ isLoading = false, ...props }: Props) {
                 <FormLabel>ID ERP:</FormLabel>
                 <Input {...register("iddepositoerp")} />
 
-                <FormErrorMessage>
-                  {errors.iddepositoerp && errors.iddepositoerp.message}
-                </FormErrorMessage>
+                <FieldError error={errors.iddepositoerp} />
               </FormControl>
             </GridItem>
             <GridItem>
@@ -47,9 +45,7 @@ export function Form({ isLoading = false, ...props }: Props) {
                 <FormLabel>Descrição:</FormLabel>
                 <Input {...register("nome")} />
 
-                <FormErrorMessage>
-                  {errors.nome && errors.nome.message}
-                </FormErrorMessage>
+                <FieldError error={errors.nome} />
               </FormControl>
             </GridItem>
           </Grid>
@@ -60,9 +56,7 @@ export function Form({ isLoading = false, ...props }: Props) {
               <FieldTipoDeposito
                 {...field}
                 isInvalid={!!errors.idtipodeposito}
-                errorMessage={
-                  errors.idtipodeposito && errors.idtipodeposito.message
-                }
+                error={errors.idtipodeposito}
               />
             )}
           />

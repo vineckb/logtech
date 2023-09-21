@@ -1,9 +1,9 @@
-import { Box, Button, Icon } from '@chakra-ui/react';
-import { Resolver, UseFormRegister, useForm } from 'react-hook-form';
-import { MdCheck } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
-import { Paper } from '../Paper';
-import { UpsertFormSkeleton } from './Skeleton';
+import { Box, Button, Icon } from "@chakra-ui/react";
+import { Resolver, UseFormRegister, useForm } from "react-hook-form";
+import { MdCheck } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { Paper } from "../Paper";
+import { UpsertFormSkeleton } from "./Skeleton";
 
 interface Props<T extends { [x: string]: any }> {
   [x: string]: any;
@@ -11,7 +11,11 @@ interface Props<T extends { [x: string]: any }> {
   defaultValues?: { [x: string]: any };
   handleSave: (values: T) => Promise<any>;
   resolver: Resolver<T>;
-  children: (register: UseFormRegister<T>, errors: any, control?: any) => React.ReactElement;
+  children: (
+    register: UseFormRegister<T>,
+    errors: any,
+    control?: any
+  ) => React.ReactElement;
 }
 
 export function UpsertForm<T extends { [x: string]: any }>({
@@ -28,14 +32,14 @@ export function UpsertForm<T extends { [x: string]: any }>({
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-    control
+    control,
   } = useForm<T>({
     resolver,
     values: defaultValues as T,
   });
 
   function handleCancel() {
-    navigate('..');
+    navigate("..");
   }
 
   async function _handleSave(data: T) {
@@ -43,11 +47,13 @@ export function UpsertForm<T extends { [x: string]: any }>({
       await handleSave(data);
     } catch (e: any) {
       alert(e.response.data.mensagem);
-      console.log('catch', e);
+      console.log("catch", e);
     }
   }
 
   if (isLoading) return <UpsertFormSkeleton />;
+
+  console.log(errors);
 
   return (
     <Paper as="form" {...props} onSubmit={handleSubmit(_handleSave)} p={7}>

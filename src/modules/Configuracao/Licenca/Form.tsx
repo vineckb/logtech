@@ -1,15 +1,15 @@
-import { UpsertForm } from '@/components/UpsertForm';
+import { UpsertForm } from "@/components/UpsertForm";
 import {
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Grid,
   GridItem,
   Input,
   Switch,
-} from '@chakra-ui/react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FormValues, schema } from './model';
+} from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormValues, schema } from "./model";
+import { FieldError } from "@/components/FieldError";
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -35,21 +35,19 @@ export function Form({ isLoading = false, ...props }: Props) {
               <GridItem>
                 <FormControl isInvalid={!!errors.cnpj}>
                   <FormLabel>CNPJ:</FormLabel>
-                  <Input {...register('cnpj')} />
+                  <Input {...register("cnpj")} />
 
-                  <FormErrorMessage>
-                    {errors.cnpj && errors.cnpj.message}
-                  </FormErrorMessage>
+                  <FieldError error={errors.cnpj && errors.cnpj.message} />
                 </FormControl>
               </GridItem>
               <GridItem>
                 <FormControl isInvalid={!!errors.cliente}>
                   <FormLabel>Cliente:</FormLabel>
-                  <Input {...register('cliente')} />
+                  <Input {...register("cliente")} />
 
-                  <FormErrorMessage>
-                    {errors.cliente && errors.cliente.message}
-                  </FormErrorMessage>
+                  <FieldError
+                    error={errors.cliente && errors.cliente.message}
+                  />
                 </FormControl>
               </GridItem>
             </Grid>
@@ -59,21 +57,25 @@ export function Form({ isLoading = false, ...props }: Props) {
                   <GridItem>
                     <FormControl isInvalid={!!errors.qtd_usuarios}>
                       <FormLabel>Quantidade Usuários:</FormLabel>
-                      <Input {...register('qtd_usuarios')} />
+                      <Input {...register("qtd_usuarios")} />
 
-                      <FormErrorMessage>
-                        {errors.qtd_usuarios && errors.qtd_usuarios.message}
-                      </FormErrorMessage>
+                      <FieldError
+                        error={
+                          errors.qtd_usuarios && errors.qtd_usuarios.message
+                        }
+                      />
                     </FormControl>
                   </GridItem>
                   <GridItem>
                     <FormControl isInvalid={!!errors.dataliberacao}>
                       <FormLabel>Data Liberação:</FormLabel>
-                      <Input type="date" {...register('dataliberacao')} />
+                      <Input type="date" {...register("dataliberacao")} />
 
-                      <FormErrorMessage>
-                        {errors.dataliberacao && errors.dataliberacao.message}
-                      </FormErrorMessage>
+                      <FieldError
+                        error={
+                          errors.dataliberacao && errors.dataliberacao.message
+                        }
+                      />
                     </FormControl>
                   </GridItem>
                 </Grid>
@@ -81,11 +83,9 @@ export function Form({ isLoading = false, ...props }: Props) {
               <GridItem>
                 <FormControl isInvalid={!!errors.chave}>
                   <FormLabel>Chave:</FormLabel>
-                  <Input {...register('chave')} />
+                  <Input {...register("chave")} />
 
-                  <FormErrorMessage>
-                    {errors.chave && errors.chave.message}
-                  </FormErrorMessage>
+                  <FieldError error={errors.chave && errors.chave.message} />
                 </FormControl>
               </GridItem>
             </Grid>
@@ -94,7 +94,7 @@ export function Form({ isLoading = false, ...props }: Props) {
               <FormLabel htmlFor="email-alerts" mb="0">
                 Ativo?
               </FormLabel>
-              <Switch {...register('status')} ml={2} />
+              <Switch {...register("status")} ml={2} />
             </FormControl>
           </>
         );

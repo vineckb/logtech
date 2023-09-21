@@ -1,13 +1,8 @@
-import {
-  FormLabel,
-  Input,
-  FormControl,
-  FormErrorMessage,
-  Switch,
-} from '@chakra-ui/react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FormValues, schema } from './model';
-import { UpsertForm } from '@/components/UpsertForm';
+import { FormLabel, Input, FormControl, Switch } from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormValues, schema } from "./model";
+import { UpsertForm } from "@/components/UpsertForm";
+import { FieldError } from "@/components/FieldError";
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -29,33 +24,31 @@ export function Form({ isLoading = false, ...props }: Props) {
         <>
           <FormControl isInvalid={!!errors.nome}>
             <FormLabel>Descrição:</FormLabel>
-            <Input {...register('nome')} />
+            <Input {...register("nome")} />
 
-            <FormErrorMessage>
-              {errors.nome && errors.nome.message}
-            </FormErrorMessage>
+            <FieldError error={errors.nome && errors.nome.message} />
           </FormControl>
           <FormControl isInvalid={!!errors.idtipomotivo}>
             <FormLabel>Tipo:</FormLabel>
-            <Input {...register('idtipomotivo')} />
+            <Input {...register("idtipomotivo")} />
 
-            <FormErrorMessage>
-              {errors.idtipomotivo && errors.idtipomotivo.message}
-            </FormErrorMessage>
+            <FieldError
+              error={errors.idtipomotivo && errors.idtipomotivo.message}
+            />
           </FormControl>
 
           <FormControl>
             <FormLabel htmlFor="email-alerts" mb="0">
               Bloqueia estoque?
             </FormLabel>
-            <Switch {...register('bloqestoque')} ml={2} />
+            <Switch {...register("bloqestoque")} ml={2} />
           </FormControl>
 
           <FormControl>
             <FormLabel htmlFor="email-alerts" mb="0">
               Ativo?
             </FormLabel>
-            <Switch {...register('status')} ml={2} />
+            <Switch {...register("status")} ml={2} />
           </FormControl>
         </>
       )}

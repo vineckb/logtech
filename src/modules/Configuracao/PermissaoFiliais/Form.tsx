@@ -1,15 +1,15 @@
-import { UpsertForm } from '@/components/UpsertForm';
+import { UpsertForm } from "@/components/UpsertForm";
 import {
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Grid,
   GridItem,
   Input,
   Switch,
-} from '@chakra-ui/react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FormValues, schema } from './model';
+} from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormValues, schema } from "./model";
+import { FieldError } from "@/components/FieldError";
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -33,31 +33,33 @@ export function Form({ isLoading = false, ...props }: Props) {
             <GridItem>
               <FormControl isInvalid={!!errors.idrotina}>
                 <FormLabel>ID Rotina:</FormLabel>
-                <Input {...register('idrotina')} />
+                <Input {...register("idrotina")} />
 
-                <FormErrorMessage>
-                  {errors.idrotina && errors.idrotina.message}
-                </FormErrorMessage>
+                <FieldError
+                  error={errors.idrotina && errors.idrotina.message}
+                />
               </FormControl>
             </GridItem>
             <GridItem>
               <FormControl isInvalid={!!errors.idfuncionalidade}>
                 <FormLabel>ID Funcionalidade:</FormLabel>
-                <Input {...register('idfuncionalidade')} />
+                <Input {...register("idfuncionalidade")} />
 
-                <FormErrorMessage>
-                  {errors.idfuncionalidade && errors.idfuncionalidade.message}
-                </FormErrorMessage>
+                <FieldError
+                  error={
+                    errors.idfuncionalidade && errors.idfuncionalidade.message
+                  }
+                />
               </FormControl>
             </GridItem>
             <GridItem>
               <FormControl isInvalid={!!errors.idusuario}>
                 <FormLabel>ID Usuário:</FormLabel>
-                <Input {...register('idusuario')} />
+                <Input {...register("idusuario")} />
 
-                <FormErrorMessage>
-                  {errors.idusuario && errors.idusuario.message}
-                </FormErrorMessage>
+                <FieldError
+                  error={errors.idusuario && errors.idusuario.message}
+                />
               </FormControl>
             </GridItem>
           </Grid>
@@ -65,21 +67,19 @@ export function Form({ isLoading = false, ...props }: Props) {
             <GridItem>
               <FormControl isInvalid={!!errors.dataliberacao}>
                 <FormLabel>Data Liberação:</FormLabel>
-                <Input {...register('dataliberacao')} />
+                <Input {...register("dataliberacao")} />
 
-                <FormErrorMessage>
-                  {errors.dataliberacao && errors.dataliberacao.message}
-                </FormErrorMessage>
+                <FieldError
+                  error={errors.dataliberacao && errors.dataliberacao.message}
+                />
               </FormControl>
             </GridItem>
             <GridItem>
               <FormControl isInvalid={!!errors.chave}>
                 <FormLabel>Chave:</FormLabel>
-                <Input {...register('chave')} />
+                <Input {...register("chave")} />
 
-                <FormErrorMessage>
-                  {errors.chave && errors.chave.message}
-                </FormErrorMessage>
+                <FieldError error={errors.chave && errors.chave.message} />
               </FormControl>
             </GridItem>
           </Grid>
@@ -87,7 +87,7 @@ export function Form({ isLoading = false, ...props }: Props) {
             <FormLabel htmlFor="email-alerts" mb="0">
               Ativo?
             </FormLabel>
-            <Switch {...register('ativo')} ml={2} />
+            <Switch {...register("ativo")} ml={2} />
           </FormControl>
         </>
       )}

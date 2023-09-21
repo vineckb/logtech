@@ -2,14 +2,14 @@ import {
   FormLabel,
   Input,
   FormControl,
-  FormErrorMessage,
   Switch,
   Grid,
   GridItem,
-} from '@chakra-ui/react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FormValues, schema } from './model';
-import { UpsertForm } from '@/components/UpsertForm';
+} from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormValues, schema } from "./model";
+import { UpsertForm } from "@/components/UpsertForm";
+import { FieldError } from "@/components/FieldError";
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -33,31 +33,27 @@ export function Form({ isLoading = false, ...props }: Props) {
             <GridItem colSpan={3}>
               <FormControl isInvalid={!!errors.nomebd}>
                 <FormLabel>Nome do banco de dados:</FormLabel>
-                <Input {...register('nomebd')} />
+                <Input {...register("nomebd")} />
 
-                <FormErrorMessage>
-                  {errors.nomebd && errors.nomebd.message}
-                </FormErrorMessage>
+                <FieldError error={errors.nomebd && errors.nomebd.message} />
               </FormControl>
             </GridItem>
             <GridItem colSpan={3}>
               <FormControl isInvalid={!!errors.servidor}>
                 <FormLabel>Servidor:</FormLabel>
-                <Input {...register('servidor')} />
+                <Input {...register("servidor")} />
 
-                <FormErrorMessage>
-                  {errors.servidor && errors.servidor.message}
-                </FormErrorMessage>
+                <FieldError
+                  error={errors.servidor && errors.servidor.message}
+                />
               </FormControl>
             </GridItem>
             <GridItem colSpan={4}>
               <FormControl isInvalid={!!errors.usuario}>
                 <FormLabel>Usuário:</FormLabel>
-                <Input {...register('usuario')} />
+                <Input {...register("usuario")} />
 
-                <FormErrorMessage>
-                  {errors.usuario && errors.usuario.message}
-                </FormErrorMessage>
+                <FieldError error={errors.usuario && errors.usuario.message} />
               </FormControl>
             </GridItem>
           </Grid>
@@ -66,31 +62,25 @@ export function Form({ isLoading = false, ...props }: Props) {
             <GridItem colSpan={5}>
               <FormControl isInvalid={!!errors.senha}>
                 <FormLabel>Senha:</FormLabel>
-                <Input {...register('senha')} />
+                <Input {...register("senha")} />
 
-                <FormErrorMessage>
-                  {errors.senha && errors.senha.message}
-                </FormErrorMessage>
+                <FieldError error={errors.senha && errors.senha.message} />
               </FormControl>
             </GridItem>
             <GridItem colSpan={2}>
               <FormControl isInvalid={!!errors.iderp}>
                 <FormLabel>ID ERP:</FormLabel>
-                <Input {...register('iderp')} />
+                <Input {...register("iderp")} />
 
-                <FormErrorMessage>
-                  {errors.iderp && errors.iderp.message}
-                </FormErrorMessage>
+                <FieldError error={errors.iderp && errors.iderp.message} />
               </FormControl>
             </GridItem>
             <GridItem colSpan={5}>
               <FormControl isInvalid={!!errors.iderp}>
                 <FormLabel>ID ERP:</FormLabel>
-                <Input {...register('iderp')} />
+                <Input {...register("iderp")} />
 
-                <FormErrorMessage>
-                  {errors.iderp && errors.iderp.message}
-                </FormErrorMessage>
+                <FieldError error={errors.iderp && errors.iderp.message} />
               </FormControl>
             </GridItem>
           </Grid>
@@ -99,7 +89,7 @@ export function Form({ isLoading = false, ...props }: Props) {
             <FormLabel htmlFor="email-alerts" mb="0">
               Ativo?
             </FormLabel>
-            <Switch id="email-alerts" {...register('ativo')} />
+            <Switch {...register("ativo")} />
           </FormControl>
         </>
       )}

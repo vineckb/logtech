@@ -11,7 +11,7 @@ export const headers = [
   { key: "andar", title: "Andar" },
   { key: "apto", title: "Apartamento" },
   { key: "direcao", title: "Direção" },
-  { key: "tipo", title: "Tipo" },
+  { key: "tipoendereco.nome", title: "Tipo" },
   { key: "enderecosestacao.nome", title: "Estação" },
   { key: "enderecosdeposito.nome", title: "Depósito" },
   {

@@ -1,0 +1,5 @@
+- depositos
+  - tipo: está usando tipoendereço, tem que usar tipodeposito
+  - buscar por nome
+- usuarios: falta campo cpf
+- enderecos: falta campo ativo na listagem

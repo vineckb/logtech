@@ -10,7 +10,6 @@ export const headers = [
   { key: "nome", title: "Estação" },
   { key: "tiposeparacao", title: "Tipo Separação" },
   { key: "tipoestacao.nome", title: "Tipo Estação" },
-  { key: "ordenacao", title: "Ordenação" },
   { key: "enderecosdeposito.nome", title: "Depósito" },
   {
     key: "ativo",
