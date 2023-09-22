@@ -1,20 +1,21 @@
 export interface Resource {
-  idtipotransportadora?: number;
-  nome: string;
-  cpfcnpj: string;
+  cp_transportadoras: string;
   idtransportadora: string;
+  nometransportadora: string;
   nomefantasia: string;
+  cpfcnpj: string;
+  idtipotransportadora?: number;
   ie: string;
-  cidade: string;
-  logradouro: string;
+  codcidade: string;
+  endereco: string;
   numero: string;
   complemento: string;
   bairro: string;
   cep: string;
   telefone: string;
   email: string;
-  status: string;
+  ativo: string;
   contato: string;
   datacadastro: string;
-  observacao: string;
+  obs: string;
 }

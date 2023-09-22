@@ -3,10 +3,10 @@ import {
   Field,
   FieldLabel,
   FieldValue,
-} from '@/components/DetailsModal';
-import { Grid, GridItem, Text } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
-import { useFetchItem } from './service';
+} from "@/components/DetailsModal";
+import { Grid, GridItem, Text } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
+import { useFetchItem } from "./service";
 
 export function ProdutosDetails() {
   const { id } = useParams();
@@ -28,7 +28,7 @@ export function ProdutosDetails() {
         <GridItem>
           <Field>
             <FieldLabel>Fornecedor</FieldLabel>
-            <FieldValue>{data?.cp_fornecedores}</FieldValue>
+            <FieldValue>{data?.fornecedores.nome}</FieldValue>
           </Field>
         </GridItem>
         <GridItem>
@@ -48,13 +48,13 @@ export function ProdutosDetails() {
         <GridItem>
           <Field>
             <FieldLabel>Grupo</FieldLabel>
-            <FieldValue>{data?.cp_grupos}</FieldValue>
+            <FieldValue>{data?.grupos.nome}</FieldValue>
           </Field>
         </GridItem>
         <GridItem>
           <Field>
             <FieldLabel>Subgrupo</FieldLabel>
-            <FieldValue>{data?.cp_subgrupos}</FieldValue>
+            <FieldValue>{data?.subgrupos.nome}</FieldValue>
           </Field>
         </GridItem>
       </Grid>

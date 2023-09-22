@@ -22,7 +22,7 @@ export function VeiculoTransportadoraDetails() {
         <GridItem>
           <Field>
             <FieldLabel>Descrição</FieldLabel>
-            <FieldValue>{data?.name}</FieldValue>
+            <FieldValue>{data?.nomeveiculo}</FieldValue>
           </Field>
         </GridItem>
         <GridItem>
@@ -101,7 +101,7 @@ export function VeiculoTransportadoraDetails() {
 
       <Field mb={10}>
         <FieldLabel>Ativo</FieldLabel>
-        <FieldValue>{data?.ativo}</FieldValue>
+        <FieldValue>{data?.ativo === 1 ? "Sim" : "Não"}</FieldValue>
       </Field>
     </DetailsModal>
   );

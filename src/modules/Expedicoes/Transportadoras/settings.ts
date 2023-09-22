@@ -3,11 +3,15 @@ export const resourceTitle = "Consulta de Transportadoras";
 // @todo: review endpoint
 export const resourceKey = "transportadoras";
 
-export const idKey = "idgrupo";
+export const idKey = "cp_transportadoras";
 
 export const headers = [
-  { key: "idrota", title: "ID Transportadora" },
-  { key: "nome", title: "Nome" },
-  { key: "regiao", title: "CPF ou CNPJ" },
-  { key: "ativo", title: "Ativo" },
+  { key: "idtransportadora", title: "ID Transportadora" },
+  { key: "nometransportadora", title: "Nome" },
+  { key: "cpfcnpj", title: "CPF ou CNPJ" },
+  {
+    key: "ativo",
+    title: "Ativo",
+    filter: (v: string) => (v.toLowerCase() === "v" ? "Sim" : "Não"),
+  },
 ];

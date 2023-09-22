@@ -1,16 +1,16 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export interface Resource {
   idmotivo?: number;
-  nome: string;
+  descricao: string;
   idtipomotivo: string;
   bloqestoque: string;
   status: string;
 }
 
 export const schema = z.object({
-  nome: z.string().min(1, 'Campo ogrigatório'),
-  idtipomotivo: z.string().min(1, 'Campo ogrigatório'),
+  descricao: z.string().min(1, "Campo ogrigatório"),
+  idtipomotivo: z.string().min(1, "Campo ogrigatório"),
   bloqestoque: z.boolean(),
   status: z.boolean(),
 });
@@ -24,8 +24,8 @@ export function resourceToFormValues({
 }: Resource): FormValues {
   return {
     ...values,
-    bloqestoque: bloqestoque === 's',
-    status: status === 's',
+    bloqestoque: bloqestoque === "s",
+    status: status === "s",
   };
 }
 
@@ -36,7 +36,7 @@ export function formValuesToResource({
 }: FormValues): Resource {
   return {
     ...values,
-    bloqestoque: bloqestoque ? 's' : 'n',
-    status: status ? 's' : 'n',
+    bloqestoque: bloqestoque ? "s" : "n",
+    status: status ? "s" : "n",
   };
 }

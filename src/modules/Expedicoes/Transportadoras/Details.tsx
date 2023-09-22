@@ -10,11 +10,15 @@ import { useFetchItem } from "./service";
 
 export function TransportadorasDetails() {
   const { id } = useParams();
-  const { data, isLoading } = useFetchItem(String(id));
+  const { data, isLoading } = useFetchItem(id as string);
 
   return (
     <DetailsModal
-      title={<Text as="h1">Detalhes da Transportadora #{id}</Text>}
+      title={
+        <Text as="h1">
+          Detalhes da Transportadora #{id}({data?.idtransportadora})
+        </Text>
+      }
       isLoading={isLoading}
       minWidth={800}
     >
@@ -22,7 +26,7 @@ export function TransportadorasDetails() {
         <GridItem colSpan={3}>
           <Field>
             <FieldLabel>Nome</FieldLabel>
-            <FieldValue>{data?.nome}</FieldValue>
+            <FieldValue>{data?.nometransportadora}</FieldValue>
           </Field>
         </GridItem>
         <GridItem colSpan={3}>
@@ -48,7 +52,7 @@ export function TransportadorasDetails() {
         <GridItem>
           <Field>
             <FieldLabel>Cidade</FieldLabel>
-            <FieldValue>{data?.cidade}</FieldValue>
+            <FieldValue>{data?.codcidade}</FieldValue>
           </Field>
         </GridItem>
       </Grid>
@@ -57,7 +61,7 @@ export function TransportadorasDetails() {
         <GridItem colSpan={6}>
           <Field>
             <FieldLabel>Logradouro</FieldLabel>
-            <FieldValue>{data?.logradouro}</FieldValue>
+            <FieldValue>{data?.endereco}</FieldValue>
           </Field>
         </GridItem>
         <GridItem colSpan={2}>
@@ -108,14 +112,14 @@ export function TransportadorasDetails() {
         <GridItem>
           <Field>
             <FieldLabel>Avito</FieldLabel>
-            <FieldValue>{data?.status}</FieldValue>
+            <FieldValue>{data?.ativo === "s" ? "Sim" : "Não"}</FieldValue>
           </Field>
         </GridItem>
       </Grid>
 
       <Field mb={10}>
         <FieldLabel>Observação</FieldLabel>
-        <FieldValue>{data?.observacao}</FieldValue>
+        <FieldValue>{data?.obs}</FieldValue>
       </Field>
       <Grid templateColumns="repeat(3, 1fr)" gap={10} mb={10}>
         <GridItem>

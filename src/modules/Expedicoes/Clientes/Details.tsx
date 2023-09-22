@@ -10,7 +10,7 @@ import { useFetchItem } from "./service";
 
 export function ClientesDetails() {
   const { id } = useParams();
-  const { data, isLoading } = useFetchItem(String(id));
+  const { data, isLoading } = useFetchItem(id as string);
 
   return (
     <DetailsModal
@@ -48,7 +48,7 @@ export function ClientesDetails() {
         <GridItem>
           <Field>
             <FieldLabel>Cidade</FieldLabel>
-            <FieldValue>{data?.cidade}</FieldValue>
+            <FieldValue>{data?.nomecidade}</FieldValue>
           </Field>
         </GridItem>
       </Grid>

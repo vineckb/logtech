@@ -1,8 +1,8 @@
 export interface Resource {
   idveiculo: number;
-  name: string;
+  nomeveiculo: string;
   transportadora: string;
-  ativo: string;
+  ativo: number;
   m3: string;
   profundidade: string;
   altura: string;

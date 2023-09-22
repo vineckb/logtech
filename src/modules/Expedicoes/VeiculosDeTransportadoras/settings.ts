@@ -1,12 +1,17 @@
-export const resourceTitle = 'Consulta de Veículos Transportadoras';
+export const resourceTitle = "Consulta de Veículos Transportadoras";
 
-export const resourceKey = 'transportadorasveiculos';
+export const resourceKey = "transportadorasveiculos";
 
-export const idKey = 'idveiculo';
+export const idKey = "cp_transportadorasveiculos";
 
 export const headers = [
-  { key: 'idveiculo', title: 'ID Veículo' },
-  { key: 'name', title: 'Descrição' },
-  { key: 'transportadra', title: 'Transportadora' },
-  { key: 'ativo', title: 'Ativo' },
+  { key: "cp_transportadorasveiculos", title: "ID" },
+  { key: "idveiculo", title: "Cód Veículo" },
+  { key: "nomeveiculo", title: "Descrição" },
+  { key: "nomefantasia", title: "Transportadora" },
+  {
+    key: "ativo",
+    title: "Ativo",
+    filter: (v: number) => (v === 1 ? "Sim" : "Não"),
+  },
 ];

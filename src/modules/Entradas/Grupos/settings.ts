@@ -7,5 +7,9 @@ export const idKey = "idgrupo";
 export const headers = [
   { key: "idgrupo", title: "ID" },
   { key: "nome", title: "Descrição" },
-  { key: "ativo", title: "Ativo" },
+  {
+    key: "ativo",
+    title: "Ativo",
+    filter: (v: string) => (v === "s" ? "Sim" : "Não"),
+  },
 ];

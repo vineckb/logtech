@@ -22,19 +22,18 @@ export function Form({ isLoading = false, ...props }: Props) {
     >
       {(register, errors) => (
         <>
-          <FormControl isInvalid={!!errors.nome}>
+          <FormControl isInvalid={!!errors.descricao}>
             <FormLabel>Descrição:</FormLabel>
-            <Input {...register("nome")} />
+            <Input {...register("descricao")} />
 
-            <FieldError error={errors.nome && errors.nome.message} />
+            <FieldError error={errors.descricao} />
           </FormControl>
+
           <FormControl isInvalid={!!errors.idtipomotivo}>
             <FormLabel>Tipo:</FormLabel>
             <Input {...register("idtipomotivo")} />
 
-            <FieldError
-              error={errors.idtipomotivo && errors.idtipomotivo.message}
-            />
+            <FieldError error={errors.idtipomotivo} />
           </FormControl>
 
           <FormControl>

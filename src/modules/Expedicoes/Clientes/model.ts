@@ -9,7 +9,7 @@ export interface Resource extends NotImplementedYetResource {
 interface NotImplementedYetResource {
   ie: string;
   rota: string;
-  cidade: string;
+  nomecidade: string;
   logradouro: string;
   numero: string;
   complemento: string;

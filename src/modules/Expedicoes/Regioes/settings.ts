@@ -1,12 +1,16 @@
-export const resourceTitle = 'Consulta de Regiões';
+export const resourceTitle = "Consulta de Regiões";
 
 // @todo: review endpoint
-export const resourceKey = 'grupos';
+export const resourceKey = "clientesregioes";
 
-export const idKey = 'idgrupo';
+export const idKey = "idregiao";
 
 export const headers = [
-  { key: 'idregiao', title: 'ID Regiao' },
-  { key: 'nome', title: 'Descrição' },
-  { key: 'ativo', title: 'Ativo' },
+  { key: "idregiao", title: "ID Regiao" },
+  { key: "nome", title: "Descrição" },
+  {
+    key: "ativo",
+    title: "Ativo",
+    filter: (v: string) => (v.toLowerCase() === "v" ? "Sim" : "Não"),
+  },
 ];

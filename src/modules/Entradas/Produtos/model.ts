@@ -4,6 +4,15 @@ export interface Resource {
   controlanumserie: string;
   controlavalidade: string;
   cp_fornecedores: number;
+  fornecedores: {
+    nome: string;
+  };
+  subgrupos: {
+    nome: string;
+  };
+  grupos: {
+    nome: string;
+  };
   cp_grupos: number;
   cp_produtos: number;
   cp_subgrupos: number;
