@@ -75,14 +75,6 @@ export function Form({ isLoading = false, ...props }: Props) {
                 <FieldError error={errors.iderp && errors.iderp.message} />
               </FormControl>
             </GridItem>
-            <GridItem colSpan={5}>
-              <FormControl isInvalid={!!errors.iderp}>
-                <FormLabel>ID ERP:</FormLabel>
-                <Input {...register("iderp")} />
-
-                <FieldError error={errors.iderp && errors.iderp.message} />
-              </FormControl>
-            </GridItem>
           </Grid>
 
           <FormControl display="flex" alignItems="center">

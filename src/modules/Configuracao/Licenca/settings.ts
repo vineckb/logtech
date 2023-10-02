@@ -10,5 +10,9 @@ export const headers = [
   { key: "cliente", title: "Cliente" },
   { key: "qtd_usuarios", title: "Qtde usuários" },
   { key: "chave", title: "Chave" },
-  { key: "status", title: "Ativo" },
+  {
+    key: "status",
+    title: "Ativo",
+    filter: (v: boolean) => (v ? "Sim" : "Não"),
+  },
 ];

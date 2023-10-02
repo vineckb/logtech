@@ -16,9 +16,8 @@ export function errorMessage(error: Error): string {
     case "too_small":
       return error.message as string;
     case "required":
-    case "invalid_type":
       return "Campo Obrigatório";
     default:
-      return JSON.stringify(error);
+      return error.message as string;
   }
 }

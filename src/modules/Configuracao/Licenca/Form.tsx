@@ -10,6 +10,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormValues, schema } from "./model";
 import { FieldError } from "@/components/FieldError";
+import { DateInput } from "@/components/DateInput";
 
 interface Props {
   defaultValues?: { [x: string]: any };
@@ -27,7 +28,7 @@ export function Form({ isLoading = false, ...props }: Props) {
       flexDirection="column"
       gap={5}
     >
-      {(register, errors) => {
+      {(register, errors, control) => {
         console.log(errors);
         return (
           <>
@@ -69,7 +70,7 @@ export function Form({ isLoading = false, ...props }: Props) {
                   <GridItem>
                     <FormControl isInvalid={!!errors.dataliberacao}>
                       <FormLabel>Data Liberação:</FormLabel>
-                      <Input type="date" {...register("dataliberacao")} />
+                      <DateInput name="dataliberacao" control={control} />
 
                       <FieldError
                         error={

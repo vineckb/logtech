@@ -26,41 +26,35 @@ export function Form({ isLoading = false, ...props }: Props) {
             <FormLabel>Nome da Rotina:</FormLabel>
             <Input {...register("nomerotina")} />
 
-            <FieldError
-              error={errors.nomerotina && errors.nomerotina.message}
-            />
+            <FieldError error={errors.nomerotina} />
           </FormControl>
 
           <FormControl isInvalid={!!errors.idaplicacao}>
             <FormLabel>Aplicação:</FormLabel>
             <Input {...register("idaplicacao")} />
 
-            <FieldError
-              error={errors.idaplicacao && errors.idaplicacao.message}
-            />
+            <FieldError error={errors.idaplicacao} />
           </FormControl>
 
           <FormControl isInvalid={!!errors.idmenu}>
             <FormLabel>Menu:</FormLabel>
             <Input {...register("idmenu")} />
 
-            <FieldError error={errors.idmenu && errors.idmenu.message} />
+            <FieldError error={errors.idmenu} />
           </FormControl>
 
           <FormControl isInvalid={!!errors.idtiporotina}>
             <FormLabel>Tipo:</FormLabel>
             <Input {...register("idtiporotina")} />
 
-            <FieldError
-              error={errors.idtiporotina && errors.idtiporotina.message}
-            />
+            <FieldError error={errors.idtiporotina} />
           </FormControl>
 
           <FormControl isInvalid={!!errors.ordem}>
             <FormLabel>Ordem:</FormLabel>
             <Input {...register("ordem")} />
 
-            <FieldError error={errors.ordem && errors.ordem.message} />
+            <FieldError error={errors.ordem} />
           </FormControl>
 
           <FormControl isInvalid={!!errors.status}>
